@@ -1,6 +1,6 @@
-﻿jadeVersionNumber "22.0.01";
+﻿jadeVersionNumber "22.0.03";
 schemaDefinition
-SimpleBankModel subschemaOf RootSchema completeDefinition, patchVersioningEnabled = false;
+SimpleBankModel subschemaOf RootSchema completeDefinition;
 	setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.455;
 localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
@@ -8,7 +8,7 @@ localeDefinitions
 typeHeaders
 	SimpleBankModel subclassOf RootSchemaApp transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2052;
 	Bank subclassOf Object highestSubId = 2, highestOrdinal = 4, number = 2058;
-	BankAccount subclassOf Object abstract, highestOrdinal = 3, number = 2179;
+	BankAccount subclassOf Object abstract, highestOrdinal = 4, number = 2179;
 	CurrentAccount subclassOf BankAccount highestOrdinal = 1, number = 2183;
 	SavingsAccount subclassOf BankAccount highestOrdinal = 1, number = 2185;
 	Customer subclassOf Object highestSubId = 1, highestOrdinal = 10, number = 2054;
@@ -70,13 +70,15 @@ without inverses and requires manual maintenance.`
 		Default_Overdraft_Limit:       Integer = 500 number = 1001;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:12:12.144;
 	attributeDefinitions
+		accountName:                   String[31] readonly, number = 4, ordinal = 4;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:14:25:26.135;
 		accountNumber:                 Integer readonly, number = 1, ordinal = 1;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:10:19:44.756;
 		balance:                       Decimal[12,2] protected, number = 3, ordinal = 3;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:21:34.509;
 	referenceDefinitions
 		myCustomer:                    Customer   explicitEmbeddedInverse, number = 2, ordinal = 2;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:10:32:38.080;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:15:33:04.184;
 	jadeMethodDefinitions
 		canWithdraw(amount: Decimal): Boolean abstract, number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:19:36.642;
@@ -86,6 +88,10 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:06:15:52:12.248;
 		getBalance(): Decimal number = 1004;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:22:44.932;
+		set(
+			accName: String; 
+			newMyCustomer: Customer) updating, number = 1006;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:14:58:52.479;
 		withdraw(amount: Decimal) updating, number = 1005;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:25:20:20:53.530;
 	)
@@ -135,10 +141,14 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:55:08.225;
 	referenceDefinitions
 		allBankAccounts:               BankAccountByNumberDict   explicitInverse, subId = 1, number = 10, ordinal = 10;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:10:32:36.256;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:15:33:04.189;
 		myBank:                        Bank  protected, number = 9, ordinal = 9;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:06:13:14:17.202;
 	jadeMethodDefinitions
+		addBankAccount(
+			accName: String; 
+			accType: String) number = 1004;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:14:48:19.311;
 		create(
 			cFirstName: String; 
 			cLastName: String; 
@@ -259,9 +269,9 @@ databaseDefinitions
 	databaseFileDefinitions
 		"simplebankaccount" number = 64;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:10:18:08.973;
-		"simplebankcustomer" number = 53;
+		"simplebankcustomer" number = 55;
 		setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:39:06.027;
-		"simplebankmodel" number = 62;
+		"simplebankmodel" number = 54;
 		setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.457;
 	defaultFileDefinition "simplebankmodel";
 	classMapDefinitions
@@ -376,6 +386,15 @@ begin
 
 end;
 }
+set
+{
+set(accName : String; newMyCustomer : Customer) updating;
+
+begin
+	accountName := accName;
+	myCustomer := newMyCustomer;
+end;
+}
 withdraw
 {
 withdraw(amount: Decimal) updating;
@@ -443,6 +462,26 @@ end;
 	)
 	Customer (
 	jadeMethodSources
+addBankAccount
+{
+addBankAccount(accName, accType : String);
+
+vars
+	currAccount : CurrentAccount;
+	savsAccount : SavingsAccount;
+
+begin
+	beginTransaction;
+		if accType = '1' then
+			create currAccount(app.myBank.nextAccountNumber());
+			currAccount.set(accName, self);
+		else
+			create savsAccount(app.myBank.);
+			savsAccount.set(accName, self);
+		endif;
+	commitTransaction;
+end;
+}
 create
 {
 /*
