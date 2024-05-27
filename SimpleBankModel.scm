@@ -7,7 +7,7 @@ localeDefinitions
 	setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.421;
 typeHeaders
 	SimpleBankModel subclassOf RootSchemaApp transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2052;
-	Bank subclassOf Object highestSubId = 2, highestOrdinal = 4, number = 2058;
+	Bank subclassOf Object highestSubId = 2, highestOrdinal = 5, number = 2058;
 	BankAccount subclassOf Object abstract, highestOrdinal = 4, number = 2179;
 	CurrentAccount subclassOf BankAccount highestOrdinal = 1, number = 2183;
 	SavingsAccount subclassOf BankAccount highestOrdinal = 1, number = 2185;
@@ -16,9 +16,11 @@ typeHeaders
 	SSimpleBankModel subclassOf RootSchemaSession transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2055;
 	BankAccountByNumberDict subclassOf MemberKeyDictionary loadFactor = 66, number = 2184;
 	CustomerByLastNameDict subclassOf MemberKeyDictionary duplicatesAllowed, loadFactor = 66, number = 2087;
+	CustomerByNumeberDict subclassOf MemberKeyDictionary loadFactor = 66, number = 2061;
 membershipDefinitions
 	BankAccountByNumberDict of BankAccount;
 	CustomerByLastNameDict of Customer;
+	CustomerByNumeberDict of Customer;
 typeDefinitions
 	Object completeDefinition
 	(
@@ -48,11 +50,13 @@ typeDefinitions
 		lastCustomerNumber:            Integer protected, number = 1, ordinal = 1;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:14:35:17.460;
 	referenceDefinitions
-		allCustomers:                  CustomerByLastNameDict  implicitMemberInverse, readonly, subId = 1, number = 2, ordinal = 3;
+		allCustomersByLastName:        CustomerByLastNameDict  implicitMemberInverse, readonly, subId = 1, number = 2, ordinal = 3;
 		documentationText
 `WARNING! The Bank (allCustomers) to Customer (myBank) relationship was defined
 without inverses and requires manual maintenance.`
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:14:28:54.548;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.300;
+		allCustomersByNumber:          CustomerByNumeberDict  implicitMemberInverse, readonly, subId = 2, number = 4, ordinal = 5;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:15:34:38.046;
 	jadeMethodDefinitions
 		create() updating, number = 1003;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:14:52:20.983;
@@ -60,6 +64,10 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:55:24.978;
 		nextCustomerNumber(): Integer updating, number = 1001;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:14:35:17.444;
+		searchLastName(search_String: String): ObjectArray number = 1004;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:15:27:57.676;
+		searchNumber(search_Num: Integer): ObjectArray number = 1005;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:15:37:47.411;
 	)
 	BankAccount completeDefinition
 	(
@@ -86,6 +94,8 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:07:23.620;
 		deposit(amount: Decimal) updating, number = 1003;
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:06:15:52:12.248;
+		getAccName(): String number = 1007;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:18:01:27:30.951;
 		getBalance(): Decimal number = 1004;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:22:44.932;
 		set(
@@ -121,7 +131,7 @@ without inverses and requires manual maintenance.`
 	)
 	Customer completeDefinition
 	(
-		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:06:15:49:29.620;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:18:01:16:15.514;
 	attributeDefinitions
 		city:                          String[21] protected, number = 6, ordinal = 6;
 		setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:55:13.107;
@@ -145,10 +155,6 @@ without inverses and requires manual maintenance.`
 		myBank:                        Bank  protected, number = 9, ordinal = 9;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:06:13:14:17.202;
 	jadeMethodDefinitions
-		addBankAccount(
-			accName: String; 
-			accType: String) number = 1004;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:14:48:19.311;
 		create(
 			cFirstName: String; 
 			cLastName: String; 
@@ -157,7 +163,7 @@ without inverses and requires manual maintenance.`
 			cSuburb: String; 
 			cCity: String; 
 			cCreditScore: Integer) updating, number = 1001;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:26:18:52:28.293;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:15:28:44.056;
 		getFullName(): String number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:20:57:26.171;
 		setProps(
@@ -189,15 +195,15 @@ without inverses and requires manual maintenance.`
 		createTestCustomer() updating, number = 1001;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:00:27.632;
 		iterationWithForeach() number = 1013;
-		setModifiedTimeStamp "cza14" "22.0.01" 2024:03:28:12:05:10.374;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
 		iterationWithIterator() number = 1014;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:21:25:14.341;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
 		purgeAccounts() updating, number = 1011;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:19:37:39.922;
 		purgeCustomers() number = 1007;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:41:30.342;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
 		testAutomatedInverseAssignment() updating, number = 1010;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:17:09:56.489;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
 		workingDecimalType() number = 1003;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:11:12:50:24.635;
 		workingWithDatesAndTimes() number = 1005;
@@ -244,6 +250,10 @@ without inverses and requires manual maintenance.`
 	(
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:13:14:14:12.156;
 	)
+	CustomerByNumeberDict completeDefinition
+	(
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:24:55.580;
+	)
 	Decimal completeDefinition
 	(
 	jadeMethodDefinitions
@@ -258,6 +268,10 @@ memberKeyDefinitions
 	CustomerByLastNameDict completeDefinition
 	(
 		lastName;
+	)
+	CustomerByNumeberDict completeDefinition
+	(
+		number;
 	)
 inverseDefinitions
 	allBankAccounts of Customer automatic peerOf myCustomer of BankAccount manual;
@@ -281,6 +295,7 @@ databaseDefinitions
 		CurrentAccount in "simplebankaccount";
 		Customer in "simplebankcustomer";
 		CustomerByLastNameDict in "simplebankcustomer";
+		CustomerByNumeberDict in "simplebankmodel";
 		GSimpleBankModel in "simplebankmodel";
 		SSimpleBankModel in "_environ";
 		SavingsAccount in "simplebankaccount";
@@ -348,6 +363,50 @@ begin
 	return self.lastCustomerNumber;
 end;
 }
+searchLastName
+{
+searchLastName(search_String : String) : ObjectArray;
+
+vars
+	custArray : ObjectArray;
+	iter : Iterator;
+	cust : Customer;
+
+begin
+	create custArray transient;
+	iter := app.ourBank.allCustomersByLastName.createIterator();
+	while iter.next(cust) do
+		if cust.lastName = search_String then
+			custArray.add(cust);
+		endif;
+	endwhile;
+	
+	return custArray;
+
+end;
+}
+searchNumber
+{
+searchNumber(search_Num : Integer) : ObjectArray;
+
+vars
+	custArray : ObjectArray;
+	iter : Iterator;
+	cust : Customer;
+
+begin
+	create custArray transient;
+	iter := app.ourBank.allCustomersByLastName.createIterator();
+	while iter.next(cust) do
+		if cust.getPropertyValue("number").Integer = search_Num then
+			custArray.add(cust);
+		endif;
+	endwhile;
+	
+	return custArray;
+
+end;
+}
 	)
 	BankAccount (
 	jadeMethodSources
@@ -373,6 +432,16 @@ deposit(amount: Decimal) updating;
 begin
 	self.balance := self.balance + amount;
 
+end;
+}
+getAccName
+{
+getAccName() : String;
+
+vars
+
+begin
+	return self.accountName.String;
 end;
 }
 getBalance
@@ -462,26 +531,6 @@ end;
 	)
 	Customer (
 	jadeMethodSources
-addBankAccount
-{
-addBankAccount(accName, accType : String);
-
-vars
-	currAccount : CurrentAccount;
-	savsAccount : SavingsAccount;
-
-begin
-	beginTransaction;
-		if accType = '1' then
-			create currAccount(app.myBank.nextAccountNumber());
-			currAccount.set(accName, self);
-		else
-			create savsAccount(app.myBank.);
-			savsAccount.set(accName, self);
-		endif;
-	commitTransaction;
-end;
-}
 create
 {
 /*
@@ -508,7 +557,8 @@ begin
 
 	// Reference & collection maintenance, manual on both sides.
 	self.myBank := app.ourBank;
-	self.myBank.allCustomers.add(self);
+	self.myBank.allCustomersByLastName.add(self);
+	self.myBank.allCustomersByNumber.add(self);
 
 end;
 }
@@ -686,7 +736,7 @@ begin
 	write "Running " & currentSchema.name & "::" & self.getName() & "::" & method.name & " method." & CrLf;
 	write "Customers with A. A. initials:" & CrLf;
 	
-	foreach cust in app.ourBank.allCustomers 
+	foreach cust in app.ourBank.allCustomersByLastName 
 	where cust.lastName[1] = 'A' and cust.firstName[1] = 'A'
 	do
 		write cust.lastName & ", " & cust.firstName;
@@ -709,13 +759,13 @@ begin
 	write "Running " & currentSchema.name & "::" & self.getName() & "::" & method.name & " method." & CrLf;
 	write "The average credit score is:" & CrLf;
 	
-	iter := app.ourBank.allCustomers.createIterator();
+	iter := app.ourBank.allCustomersByLastName.createIterator();
 	
 	while iter.next(cust) do
 		sum := sum + cust.creditScore;
 	endwhile;
 	
-	write (sum / app.ourBank.allCustomers.size()).String;
+	write (sum / app.ourBank.allCustomersByLastName.size()).String;
 
 	
 end;
@@ -749,7 +799,7 @@ purgeCustomers();
 begin
 	beginTransaction;
 	// Customer.instances.purge();
-	Bank.firstInstance().allCustomers.purge();
+	Bank.firstInstance().allCustomersByLastName.purge();
 	// Reset customer number initial value.
 	Bank.firstInstance().setPropertyValue('lastCustomerNumber', 0);
 	commitTransaction;
@@ -775,7 +825,7 @@ begin
 	// There should be at least one instance.
 	savs := SavingsAccount.firstInstance();
 	// Note the subscript array-like element acces by dictionary (lastName) key!
-	cust := app.ourBank.allCustomers['Acevedo'];
+	cust := app.ourBank.allCustomersByLastName['Acevedo'];
 	
 	// This is a checkpoint.
 	// Have you imported Customer data from file?
