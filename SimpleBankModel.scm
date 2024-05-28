@@ -1,19 +1,14 @@
-﻿jadeVersionNumber "22.0.03";
+﻿jadeVersionNumber "22.0.01";
 schemaDefinition
-SimpleBankModel subschemaOf RootSchema completeDefinition;
+SimpleBankModel subschemaOf RootSchema completeDefinition, patchVersioningEnabled = false;
 	setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.455;
 localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
 	setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.421;
 typeHeaders
 	SimpleBankModel subclassOf RootSchemaApp transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2052;
-<<<<<<< Updated upstream
-	Bank subclassOf Object highestSubId = 2, highestOrdinal = 5, number = 2058;
-	BankAccount subclassOf Object abstract, highestOrdinal = 4, number = 2179;
-=======
 	Bank subclassOf Object highestSubId = 2, highestOrdinal = 4, number = 2058;
 	BankAccount subclassOf Object abstract, highestSubId = 1, highestOrdinal = 5, number = 2179;
->>>>>>> Stashed changes
 	CurrentAccount subclassOf BankAccount highestOrdinal = 1, number = 2183;
 	SavingsAccount subclassOf BankAccount highestOrdinal = 1, number = 2185;
 	Customer subclassOf Object highestSubId = 1, highestOrdinal = 10, number = 2054;
@@ -24,19 +19,13 @@ typeHeaders
 	SSimpleBankModel subclassOf RootSchemaSession transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2055;
 	BankAccountByNumberDict subclassOf MemberKeyDictionary loadFactor = 66, number = 2184;
 	CustomerByLastNameDict subclassOf MemberKeyDictionary duplicatesAllowed, loadFactor = 66, number = 2087;
-<<<<<<< Updated upstream
 	CustomerByNumeberDict subclassOf MemberKeyDictionary loadFactor = 66, number = 2061;
-membershipDefinitions
-	BankAccountByNumberDict of BankAccount;
-	CustomerByLastNameDict of Customer;
-	CustomerByNumeberDict of Customer;
-=======
 	TransactionsByDate subclassOf MemberKeyDictionary loadFactor = 66, number = 2056;
 membershipDefinitions
 	BankAccountByNumberDict of BankAccount;
 	CustomerByLastNameDict of Customer;
+	CustomerByNumeberDict of Customer;
 	TransactionsByDate of Transaction;
->>>>>>> Stashed changes
 typeDefinitions
 	Object completeDefinition
 	(
@@ -102,7 +91,7 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:21:34.509;
 	referenceDefinitions
 		myCustomer:                    Customer   explicitEmbeddedInverse, number = 2, ordinal = 2;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:15:33:04.184;
+		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:14:23.171;
 		myTransactions:                TransactionsByDate   explicitInverse, protected, subId = 1, number = 5, ordinal = 5;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:14:27:27.692;
 	jadeMethodDefinitions
@@ -112,13 +101,8 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:07:23.620;
 		deposit(amount: Decimal) updating, number = 1003;
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:06:15:52:12.248;
-<<<<<<< Updated upstream
-		getAccName(): String number = 1007;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:18:01:27:30.951;
-=======
 		getAccountName(): String number = 1007;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:41:53.382;
->>>>>>> Stashed changes
 		getBalance(): Decimal number = 1004;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:22:44.932;
 		getTransactions(): TransactionsByDate number = 1008;
@@ -176,7 +160,7 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:55:08.225;
 	referenceDefinitions
 		allBankAccounts:               BankAccountByNumberDict   explicitInverse, subId = 1, number = 10, ordinal = 10;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:15:33:04.189;
+		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:14:23.171;
 		myBank:                        Bank  protected, number = 9, ordinal = 9;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:06:13:14:17.202;
 	jadeMethodDefinitions
@@ -222,13 +206,9 @@ without inverses and requires manual maintenance.`
 		iterationWithForeach() number = 1013;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
 		iterationWithIterator() number = 1014;
-<<<<<<< Updated upstream
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
-=======
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:21:25:14.341;
 		makeTransaction() number = 1008;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:59:13.729;
->>>>>>> Stashed changes
 		purgeAccounts() updating, number = 1011;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:19:37:39.922;
 		purgeCustomers() number = 1007;
@@ -326,15 +306,13 @@ without inverses and requires manual maintenance.`
 	(
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:13:14:14:12.156;
 	)
-<<<<<<< Updated upstream
 	CustomerByNumeberDict completeDefinition
 	(
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:24:55.580;
-=======
+	)
 	TransactionsByDate completeDefinition
 	(
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:14:23:47.837;
->>>>>>> Stashed changes
 	)
 	Decimal completeDefinition
 	(
@@ -351,15 +329,13 @@ memberKeyDefinitions
 	(
 		lastName;
 	)
-<<<<<<< Updated upstream
 	CustomerByNumeberDict completeDefinition
 	(
 		number;
-=======
+	)
 	TransactionsByDate completeDefinition
 	(
 		date descending;
->>>>>>> Stashed changes
 	)
 inverseDefinitions
 	allBankAccounts of Customer automatic peerOf myCustomer of BankAccount manual;
@@ -384,11 +360,8 @@ databaseDefinitions
 		CurrentAccount in "simplebankaccount";
 		Customer in "simplebankcustomer";
 		CustomerByLastNameDict in "simplebankcustomer";
-<<<<<<< Updated upstream
 		CustomerByNumeberDict in "simplebankmodel";
-=======
 		Deposit in "simplebankmodel";
->>>>>>> Stashed changes
 		GSimpleBankModel in "simplebankmodel";
 		Payment in "simplebankmodel";
 		SSimpleBankModel in "_environ";
@@ -529,24 +502,14 @@ begin
 
 end;
 }
-<<<<<<< Updated upstream
-getAccName
-{
-getAccName() : String;
-=======
 getAccountName
 {
 getAccountName() : String;
->>>>>>> Stashed changes
 
 vars
 
 begin
-<<<<<<< Updated upstream
-	return self.accountName.String;
-=======
 	return self.accountName;
->>>>>>> Stashed changes
 end;
 }
 getBalance

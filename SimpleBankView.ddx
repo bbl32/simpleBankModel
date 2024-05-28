@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schema name="SimpleBankView" JadeVersionNumber="22.0.03" JadePatchNumber="0" CompleteDefinition="true">
+<schema name="SimpleBankView" JadeVersionNumber="22.0.01" JadePatchNumber="0" CompleteDefinition="true">
 	<Application name="SimpleBankMDI">
 		<__overridePatchNumber>0</__overridePatchNumber>
 		<__patchControlString/>
@@ -622,7 +622,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>327</left>
+		<left>794</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -648,7 +648,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>232</top>
+		<top>83</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -876,9 +876,9 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>114</left>
+		<left>764</left>
 		<maxButton>true</maxButton>
-		<mdiChild>0</mdiChild>
+		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
 		<mdiPinned>false</mdiPinned>
 		<minButton>true</minButton>
@@ -902,7 +902,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>104</top>
+		<top>73</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -990,7 +990,7 @@
 				<description/>
 				<disableReason/>
 				<dragCursor/>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 				<firstLineIndent>0</firstLineIndent>
 				<focusBackColor>0</focusBackColor>
 				<focusForeColor>0</focusForeColor>
@@ -1116,7 +1116,7 @@
 				<description/>
 				<disableReason/>
 				<dragCursor/>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 				<firstLineIndent>0</firstLineIndent>
 				<focusBackColor>0</focusBackColor>
 				<focusForeColor>0</focusForeColor>
@@ -1477,7 +1477,7 @@
 				<description/>
 				<disableReason/>
 				<dragCursor/>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 				<firstLineIndent>0</firstLineIndent>
 				<focusBackColor>0</focusBackColor>
 				<focusForeColor>0</focusForeColor>
@@ -1545,7 +1545,7 @@
 				<description/>
 				<disableReason/>
 				<dragCursor/>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 				<firstLineIndent>0</firstLineIndent>
 				<focusBackColor>0</focusBackColor>
 				<focusForeColor>0</focusForeColor>
@@ -1613,7 +1613,7 @@
 				<description/>
 				<disableReason/>
 				<dragCursor/>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 				<firstLineIndent>0</firstLineIndent>
 				<focusBackColor>0</focusBackColor>
 				<focusForeColor>0</focusForeColor>
@@ -2965,7 +2965,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>110</left>
+		<left>254</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -2991,7 +2991,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>36</top>
+		<top>63</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -3028,7 +3028,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>616</left>
+		<left>1038</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -3054,7 +3054,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>211</top>
+		<top>56</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -3221,7 +3221,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>94</left>
+		<left>614</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -3247,7 +3247,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>147</top>
+		<top>59</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -3258,6 +3258,202 @@
 		<width>425</width>
 		<windowState>0</windowState>
 		<controlList>
+			<Button name="btnSearch">
+				<autoSize>1</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>0</borderStyle>
+				<bubbleHelp/>
+				<buttonPicture>0</buttonPicture>
+				<cancel>false</cancel>
+				<caption>Search</caption>
+				<default>false</default>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName/>
+				<fontSize>8.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483630</foreColor>
+				<form name="CustomerSearch" />
+				<height>20</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>355</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>btnSearch</name>
+				<parent name="CustomerSearch" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>426</parentBottomOffset>
+				<parentRightOffset>10</parentRightOffset>
+				<picture/>
+				<pictureDisabled/>
+				<pictureDown/>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<style>0</style>
+				<tabIndex>7</tabIndex>
+				<tabStop>true</tabStop>
+				<tag/>
+				<top>11</top>
+				<userScript/>
+				<value>false</value>
+				<visible>true</visible>
+				<webFileName/>
+				<width>44</width>
+			</Button>
+			<TextBox name="txtSearchBar">
+				<alignment>0</alignment>
+				<autoTab>false</autoTab>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483643</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>2</borderStyle>
+				<bubbleHelp/>
+				<case>0</case>
+				<dataType>0</dataType>
+				<decimals>0</decimals>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName/>
+				<fontSize>8.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483640</foreColor>
+				<form name="CustomerSearch" />
+				<formatOut/>
+				<height>20</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<hintBackColor>-2147483648</hintBackColor>
+				<hintForeColor>-2147483648</hintForeColor>
+				<hintText/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<integralHeight>false</integralHeight>
+				<left>137</left>
+				<maxLength>0</maxLength>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>txtSearchBar</name>
+				<parent name="CustomerSearch" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>426</parentBottomOffset>
+				<parentRightOffset>68</parentRightOffset>
+				<passwordField>false</passwordField>
+				<readOnly>false</readOnly>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<scrollBars>0</scrollBars>
+				<scrollHorizontal>false</scrollHorizontal>
+				<scrollVertical>false</scrollVertical>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<selectionStyle>0</selectionStyle>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<tabIndex>6</tabIndex>
+				<tabStop>true</tabStop>
+				<tag/>
+				<text/>
+				<textOffset>0</textOffset>
+				<top>11</top>
+				<userScript/>
+				<visible>true</visible>
+				<wantReturn>false</wantReturn>
+				<webInputType/>
+				<width>204</width>
+			</TextBox>
+			<ComboBox name="comBoxSearchType">
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483643</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>2</borderStyle>
+				<bubbleHelp/>
+				<defaultLineHeight>0</defaultLineHeight>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName/>
+				<fontSize>8.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483640</foreColor>
+				<form name="CustomerSearch" />
+				<hasPictures>false</hasPictures>
+				<hasPlusMinus>false</hasPlusMinus>
+				<hasTreeLines>false</hasTreeLines>
+				<height>20</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>55</left>
+				<listWidth>0</listWidth>
+				<maxLength>0</maxLength>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>comBoxSearchType</name>
+				<parent name="CustomerSearch" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>426</parentBottomOffset>
+				<parentRightOffset>284</parentRightOffset>
+				<pictureClosed/>
+				<pictureLeaf/>
+				<pictureMinus/>
+				<pictureOpen/>
+				<picturePlus/>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<sortCased>false</sortCased>
+				<sorted>true</sorted>
+				<style>2</style>
+				<tabIndex>5</tabIndex>
+				<tabStop>true</tabStop>
+				<tag/>
+				<top>11</top>
+				<userScript/>
+				<visible>true</visible>
+				<width>70</width>
+			</ComboBox>
 			<Button name="backBtn">
 				<autoSize>1</autoSize>
 				<backBrush/>
@@ -3284,19 +3480,19 @@
 				<fontUnderline>false</fontUnderline>
 				<foreColor>-2147483630</foreColor>
 				<form name="CustomerSearch" />
-				<height>22</height>
+				<height>20</height>
 				<helpContextId>0</helpContextId>
 				<helpKeyword/>
 				<ignoreSkin>false</ignoreSkin>
 				<index>0</index>
-				<left>12</left>
+				<left>6</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
 				<name>backBtn</name>
 				<parent name="CustomerSearch" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>427</parentBottomOffset>
-				<parentRightOffset>360</parentRightOffset>
+				<parentBottomOffset>426</parentBottomOffset>
+				<parentRightOffset>366</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
 				<pictureDown/>
@@ -3312,7 +3508,7 @@
 				<tabIndex>4</tabIndex>
 				<tabStop>true</tabStop>
 				<tag/>
-				<top>8</top>
+				<top>11</top>
 				<userScript/>
 				<value>false</value>
 				<visible>true</visible>
@@ -3536,9 +3732,9 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>125</left>
+		<left>78</left>
 		<maxButton>true</maxButton>
-		<mdiChild>0</mdiChild>
+		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
 		<mdiPinned>false</mdiPinned>
 		<minButton>true</minButton>
@@ -3562,7 +3758,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>85</top>
+		<top>71</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -3631,7 +3827,7 @@
 				<width>82</width>
 				<wordWrap>false</wordWrap>
 			</Label>
-			<Button name="addAccBtn_1">
+			<Button name="viewAccountBtn">
 				<autoSize>1</autoSize>
 				<backBrush/>
 				<backBrushStyle>0</backBrushStyle>
@@ -3665,7 +3861,7 @@
 				<left>528</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
-				<name>addAccBtn_1</name>
+				<name>viewAccountBtn</name>
 				<parent name="CustomerView" />
 				<parentAspect>0</parentAspect>
 				<parentBottomOffset>74</parentBottomOffset>
@@ -3957,7 +4153,7 @@
 				<description/>
 				<disableReason/>
 				<dragCursor/>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 				<firstLineIndent>0</firstLineIndent>
 				<focusBackColor>0</focusBackColor>
 				<focusForeColor>0</focusForeColor>
@@ -4025,7 +4221,7 @@
 				<description/>
 				<disableReason/>
 				<dragCursor/>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 				<firstLineIndent>0</firstLineIndent>
 				<focusBackColor>0</focusBackColor>
 				<focusForeColor>0</focusForeColor>
@@ -4093,7 +4289,7 @@
 				<description/>
 				<disableReason/>
 				<dragCursor/>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 				<firstLineIndent>0</firstLineIndent>
 				<focusBackColor>0</focusBackColor>
 				<focusForeColor>0</focusForeColor>
@@ -4161,7 +4357,7 @@
 				<description/>
 				<disableReason/>
 				<dragCursor/>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 				<firstLineIndent>0</firstLineIndent>
 				<focusBackColor>0</focusBackColor>
 				<focusForeColor>0</focusForeColor>
@@ -4229,7 +4425,7 @@
 				<description/>
 				<disableReason/>
 				<dragCursor/>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 				<firstLineIndent>0</firstLineIndent>
 				<focusBackColor>0</focusBackColor>
 				<focusForeColor>0</focusForeColor>
@@ -4297,7 +4493,7 @@
 				<description/>
 				<disableReason/>
 				<dragCursor/>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 				<firstLineIndent>0</firstLineIndent>
 				<focusBackColor>0</focusBackColor>
 				<focusForeColor>0</focusForeColor>
@@ -5322,13 +5518,13 @@
 		<disableReason/>
 		<dragCursor/>
 		<enabled>true</enabled>
-		<height>569</height>
+		<height>549</height>
 		<helpContextId>0</helpContextId>
 		<helpKeyword/>
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>50</left>
+		<left>282</left>
 		<maxButton>true</maxButton>
 		<mdiChild>0</mdiChild>
 		<mdiFrame>true</mdiFrame>
@@ -5354,7 +5550,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>37</top>
+		<top>184</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -5365,83 +5561,69 @@
 		<width>1194</width>
 		<windowState>0</windowState>
 		<controlList>
+			<Button name="btnStart">
+				<autoSize>1</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>0</borderStyle>
+				<bubbleHelp/>
+				<buttonPicture>0</buttonPicture>
+				<cancel>false</cancel>
+				<caption>Start</caption>
+				<default>false</default>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName/>
+				<fontSize>8.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483630</foreColor>
+				<form name="MainMenu" />
+				<height>103</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>430</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>btnStart</name>
+				<parent name="MainMenu" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>222</parentBottomOffset>
+				<parentRightOffset>564</parentRightOffset>
+				<picture/>
+				<pictureDisabled/>
+				<pictureDown/>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<style>0</style>
+				<tabIndex>1</tabIndex>
+				<tabStop>true</tabStop>
+				<tag/>
+				<top>185</top>
+				<userScript/>
+				<value>false</value>
+				<visible>true</visible>
+				<webFileName/>
+				<width>184</width>
+			</Button>
 		</controlList>
 		<menuList>
-			<MenuItem name="mnuCustomer">
-				<backColor>0</backColor>
-				<caption>&amp;Customer</caption>
-				<checked>false</checked>
-				<commandId>0</commandId>
-				<description/>
-				<disableReason/>
-				<enabled>true</enabled>
-				<foreColor>0</foreColor>
-				<form name="MainMenu" />
-				<hasSubMenu>true</hasSubMenu>
-				<helpContextId>0</helpContextId>
-				<helpKeyword/>
-				<helpList>false</helpList>
-				<level>1</level>
-				<name>mnuCustomer</name>
-				<picture/>
-				<securityLevelEnabled>0</securityLevelEnabled>
-				<securityLevelVisible>0</securityLevelVisible>
-				<visible>true</visible>
-				<webFileName/>
-				<windowList>false</windowList>
-				<shortCutKey/>
-				<shortCutFlags/>
-			</MenuItem>
-			<MenuItem name="mnuCustomerAdd">
-				<backColor>0</backColor>
-				<caption>&amp;Add</caption>
-				<checked>false</checked>
-				<commandId>0</commandId>
-				<description/>
-				<disableReason/>
-				<enabled>true</enabled>
-				<foreColor>0</foreColor>
-				<form name="MainMenu" />
-				<hasSubMenu>false</hasSubMenu>
-				<helpContextId>0</helpContextId>
-				<helpKeyword/>
-				<helpList>false</helpList>
-				<level>2</level>
-				<name>mnuCustomerAdd</name>
-				<picture/>
-				<securityLevelEnabled>0</securityLevelEnabled>
-				<securityLevelVisible>0</securityLevelVisible>
-				<visible>true</visible>
-				<webFileName/>
-				<windowList>false</windowList>
-				<shortCutKey/>
-				<shortCutFlags/>
-			</MenuItem>
-			<MenuItem name="mnuCustomerList">
-				<backColor>0</backColor>
-				<caption>&amp;List</caption>
-				<checked>false</checked>
-				<commandId>0</commandId>
-				<description/>
-				<disableReason/>
-				<enabled>true</enabled>
-				<foreColor>0</foreColor>
-				<form name="MainMenu" />
-				<hasSubMenu>false</hasSubMenu>
-				<helpContextId>0</helpContextId>
-				<helpKeyword/>
-				<helpList>false</helpList>
-				<level>2</level>
-				<name>mnuCustomerList</name>
-				<picture/>
-				<securityLevelEnabled>0</securityLevelEnabled>
-				<securityLevelVisible>0</securityLevelVisible>
-				<visible>true</visible>
-				<webFileName/>
-				<windowList>false</windowList>
-				<shortCutKey/>
-				<shortCutFlags/>
-			</MenuItem>
 		</menuList>
 	</Form>
 	<Form locale="5129" name="NoFraud">
@@ -5466,7 +5648,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>409</left>
+		<left>410</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -5492,7 +5674,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>648</top>
+		<top>195</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -5648,10 +5830,10 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>326</left>
+		<left>175</left>
 		<maxButton>true</maxButton>
-		<mdiChild>0</mdiChild>
-		<mdiFrame>true</mdiFrame>
+		<mdiChild>2</mdiChild>
+		<mdiFrame>false</mdiFrame>
 		<mdiPinned>false</mdiPinned>
 		<minButton>true</minButton>
 		<minimumHeight>0</minimumHeight>
@@ -5674,7 +5856,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>24</top>
+		<top>62</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -5865,7 +6047,7 @@
 				<webFileName/>
 				<width>140</width>
 			</Button>
-			<Button name="customerAddBtn">
+			<Button name="customerAdminBtn">
 				<autoSize>1</autoSize>
 				<backBrush/>
 				<backBrushStyle>0</backBrushStyle>
@@ -5899,7 +6081,7 @@
 				<left>55</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
-				<name>customerAddBtn</name>
+				<name>customerAdminBtn</name>
 				<parent name="OpeningScreen" />
 				<parentAspect>0</parentAspect>
 				<parentBottomOffset>131</parentBottomOffset>
@@ -6076,7 +6258,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>209</left>
+		<left>359</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -6102,7 +6284,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>136</top>
+		<top>101</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
