@@ -1,6 +1,6 @@
-﻿jadeVersionNumber "22.0.03";
+﻿jadeVersionNumber "22.0.01";
 schemaDefinition
-SimpleBankModel subschemaOf RootSchema completeDefinition;
+SimpleBankModel subschemaOf RootSchema completeDefinition, patchVersioningEnabled = false;
 	setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.455;
 localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
@@ -86,7 +86,7 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:21:34.509;
 	referenceDefinitions
 		myCustomer:                    Customer   explicitEmbeddedInverse, number = 2, ordinal = 2;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:15:33:04.184;
+		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:14:23.171;
 	jadeMethodDefinitions
 		canWithdraw(amount: Decimal): Boolean abstract, number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:19:36.642;
@@ -151,7 +151,7 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:55:08.225;
 	referenceDefinitions
 		allBankAccounts:               BankAccountByNumberDict   explicitInverse, subId = 1, number = 10, ordinal = 10;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:15:33:04.189;
+		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:14:23.171;
 		myBank:                        Bank  protected, number = 9, ordinal = 9;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:06:13:14:17.202;
 	jadeMethodDefinitions
