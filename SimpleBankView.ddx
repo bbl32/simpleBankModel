@@ -5,11 +5,11 @@
 		<__patchControlString/>
 		<_aboutFormName/>
 		<_defaultLocaleId>5129</_defaultLocaleId>
-		<_modifiedBy>cza14</_modifiedBy>
-		<_modifiedTimestamp>2024:05:02:21:53:59.504</_modifiedTimestamp>
+		<_modifiedBy>Theo</_modifiedBy>
+		<_modifiedTimestamp>2024:05:28:12:54:34.451</_modifiedTimestamp>
 		<_patchVersion>0</_patchVersion>
-		<_startupFormName>MainMenu</_startupFormName>
-		<_systemVersion>22.0.01</_systemVersion>
+		<_startupFormName>OpeningScreen</_startupFormName>
+		<_systemVersion>22.0.03</_systemVersion>
 		<aboutForm/>
 		<appVersion/>
 		<applicationType>G</applicationType>
@@ -5633,9 +5633,9 @@
 		<backColor>-2147483633</backColor>
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
-		<caption>OpeningScreen</caption>
+		<caption>Simple Banking Application</caption>
 		<clientHeight>370</clientHeight>
-		<clientWidth>425</clientWidth>
+		<clientWidth>424</clientWidth>
 		<clipControls>true</clipControls>
 		<controlBox>true</controlBox>
 		<description/>
@@ -5648,10 +5648,10 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>366</left>
+		<left>326</left>
 		<maxButton>true</maxButton>
 		<mdiChild>0</mdiChild>
-		<mdiFrame>false</mdiFrame>
+		<mdiFrame>true</mdiFrame>
 		<mdiPinned>false</mdiPinned>
 		<minButton>true</minButton>
 		<minimumHeight>0</minimumHeight>
@@ -5674,7 +5674,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>116</top>
+		<top>24</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -5682,7 +5682,7 @@
 		<webBrowserDisableBackButton>false</webBrowserDisableBackButton>
 		<webEncodingType/>
 		<webFileName/>
-		<width>441</width>
+		<width>440</width>
 		<windowState>0</windowState>
 		<controlList>
 			<Label name="firstName">
@@ -5724,7 +5724,7 @@
 				<parent name="OpeningScreen" />
 				<parentAspect>0</parentAspect>
 				<parentBottomOffset>203</parentBottomOffset>
-				<parentRightOffset>47</parentRightOffset>
+				<parentRightOffset>46</parentRightOffset>
 				<relativeHeight>false</relativeHeight>
 				<relativeLeft>false</relativeLeft>
 				<relativeTop>false</relativeTop>
@@ -5781,7 +5781,7 @@
 				<parent name="OpeningScreen" />
 				<parentAspect>0</parentAspect>
 				<parentBottomOffset>80</parentBottomOffset>
-				<parentRightOffset>152</parentRightOffset>
+				<parentRightOffset>151</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
 				<pictureDown/>
@@ -5842,7 +5842,7 @@
 				<parent name="OpeningScreen" />
 				<parentAspect>0</parentAspect>
 				<parentBottomOffset>131</parentBottomOffset>
-				<parentRightOffset>59</parentRightOffset>
+				<parentRightOffset>58</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
 				<pictureDown/>
@@ -5903,7 +5903,7 @@
 				<parent name="OpeningScreen" />
 				<parentAspect>0</parentAspect>
 				<parentBottomOffset>131</parentBottomOffset>
-				<parentRightOffset>230</parentRightOffset>
+				<parentRightOffset>229</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
 				<pictureDown/>
