@@ -6,7 +6,7 @@ localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
 	setModifiedTimeStamp "cza14" "22.0.03" 2024:03:13:16:39:52.846;
 	1033 "English (United States)" _cloneOf 5129;
-	setModifiedTimeStamp "<unknown>" "" 2024:04:24:04:13:13;
+	setModifiedTimeStamp "<unknown>" "" 2024:05:28:11:55:57;
 typeHeaders
 	SimpleBankView subclassOf SimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2088;
 	GSimpleBankView subclassOf GSimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2089;
@@ -68,7 +68,7 @@ typeDefinitions
 	(
 	jadeMethodDefinitions
 		runBankTeller() number = 1017;
-		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:08:17:54.404;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:12:06:06.236;
 		runCustomerAddForm() number = 1012;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:17:44:20.273;
 		runCustomerDetailsForm() number = 1015;
@@ -436,7 +436,7 @@ typeDefinitions
 	)
 	OpeningScreen completeDefinition
 	(
-		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:33:32.255;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:13:04:02.257;
 	referenceDefinitions
 		accounAdminBtn:                Button  number = 2, ordinal = 2;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:14:38:06.600;
@@ -514,7 +514,7 @@ runBankTeller
 runBankTeller();
 
 vars
-	form : DisplayCustomer;
+	form : OpeningScreen;
 
 begin
 	app.initialize();
