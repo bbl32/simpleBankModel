@@ -15,7 +15,7 @@ typeHeaders
 	AddAccount subclassOf AccountDetails transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2065;
 	EditAccount subclassOf AccountDetails transient, transientAllowed, subclassTransientAllowed, number = 2066;
 	AccountSearch subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 5, number = 2077;
-	AccountView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 18, number = 2072;
+	AccountView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 19, number = 2072;
 	CustomerDetails subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 15, number = 2092;
 	CustomerAdd subclassOf CustomerDetails transient, transientAllowed, subclassTransientAllowed, number = 2186;
 	CustomerEdit subclassOf CustomerDetails transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2067;
@@ -27,6 +27,7 @@ typeHeaders
 	NoFraud subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 2, number = 2079;
 	OpeningScreen subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 5, number = 2074;
 	TestForm subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2071;
+	TransactionView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 11, number = 2057;
 	WithdrawDeposit subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 10, number = 2078;
 membershipDefinitions
 typeDefinitions
@@ -158,7 +159,7 @@ typeDefinitions
 	)
 	AccountView completeDefinition
 	(
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:19:27.745;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:16:53.358;
 	referenceDefinitions
 		accountNumView:                JadeRichText  number = 12, ordinal = 12;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.649;
@@ -194,6 +195,8 @@ typeDefinitions
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.647;
 		transactionTitleLabel:         Label  number = 18, ordinal = 18;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:19:27.744;
+		viewTransactionBtn:            Button  number = 19, ordinal = 19;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:16:53.358;
 		withdrawDepositBtn:            Button  number = 15, ordinal = 15;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.650;
 	jadeMethodDefinitions
@@ -209,6 +212,8 @@ typeDefinitions
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:53:02.753;
 		load() updating, number = 1001;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:58:44.694;
+		viewTransactionBtn_click(btn: Button input) updating, number = 1006;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:45:03.489;
 		withdrawDepositBtn_click(btn: Button input) updating, number = 1003;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:48:45.591;
 	eventMethodMappings
@@ -216,6 +221,7 @@ typeDefinitions
 		backBtn_click = click of Button;
 		gotFocus = gotFocus of Form;
 		load = load of Form;
+		viewTransactionBtn_click = click of Button;
 		withdrawDepositBtn_click = click of Button;
 	)
 	CustomerDetails completeDefinition
@@ -552,6 +558,40 @@ typeDefinitions
 		load = load of Form;
 		msgButton_click = click of Button;
 	)
+	TransactionView completeDefinition
+	(
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:50:16.742;
+	referenceDefinitions
+		balanceField:                  TextBox  number = 10, ordinal = 10;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.777;
+		dateField:                     TextBox  number = 1, ordinal = 1;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.775;
+		dateLabel:                     Label  number = 2, ordinal = 2;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.775;
+		dateLabel_1:                   Label  number = 3, ordinal = 3;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.775;
+		dateLabel_1_1:                 Label  number = 4, ordinal = 4;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
+		dateLabel_1_1_1:               Label  number = 5, ordinal = 5;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
+		dateLabel_1_1_1_1:             Label  number = 6, ordinal = 6;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
+		myTransaction:                 Transaction  protected, number = 11, ordinal = 11;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:28:55.180;
+		payeeField:                    TextBox  number = 9, ordinal = 9;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.777;
+		typeField:                     TextBox  number = 8, ordinal = 8;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
+		valueField:                    TextBox  number = 7, ordinal = 7;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
+	jadeMethodDefinitions
+		load() updating, number = 1001;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:51:28.757;
+		setTransaction(transaction: Transaction) updating, number = 1002;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:30:32.488;
+	eventMethodMappings
+		load = load of Form;
+	)
 	WithdrawDeposit completeDefinition
 	(
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:20:19.786;
@@ -827,6 +867,25 @@ begin
 	
 	self.accountViewListBox.displayCollection(self.myAccount.getTransactions, true,
 	ListBox.DisplayCollection_Reversed, null, '');
+end;
+}
+viewTransactionBtn_click
+{
+viewTransactionBtn_click(btn: Button input) updating;
+
+vars
+	form : TransactionView;
+	transaction : Transaction;
+begin
+	transaction := self.accountViewListBox.listObject.Transaction;
+	
+	if transaction = null then
+		app.msgBox("Select a transaction to view first please", "No Transaction Selected", MsgBox_OK_Only);
+	else
+		create form transient;
+		form.setTransaction(transaction);
+		form.show();
+	endif;
 end;
 }
 withdrawDepositBtn_click
@@ -1553,6 +1612,33 @@ vars
 begin
 	app.msgBox("Hello", "Swag", MsgBox_OK_Only);
 
+end;
+}
+	)
+	TransactionView (
+	jadeMethodSources
+load
+{
+load() updating;
+
+vars
+
+begin
+	self.dateField.text := self.myTransaction.getDate.String;
+	self.typeField.text := self.myTransaction.class.name;
+	self.balanceField.text := self.myTransaction.getBalanceAfterTransaction.currencyFormat;
+	self.payeeField.text := self.myTransaction.getPayee;
+	self.valueField.text := self.myTransaction.getValue.currencyFormat;
+end;
+}
+setTransaction
+{
+setTransaction(transaction : Transaction) updating;
+
+vars
+
+begin
+	self.myTransaction := transaction;
 end;
 }
 	)

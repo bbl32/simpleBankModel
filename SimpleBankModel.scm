@@ -155,7 +155,7 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:03:48.079;
 	jadeMethodDefinitions
 		importXml() number = 1002;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:20:15:47.653;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:23:59:10.385;
 		validateXML(account: BankAccount): String number = 1001;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:18:22:03.736;
 	)
@@ -248,6 +248,8 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:37:17.472;
 		testAutomatedInverseAssignment() updating, number = 1010;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
+		testImportXML() number = 1020;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:23:54:49.774;
 		testValidateXML() number = 1019;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:44:46.520;
 		transactionTesting() number = 1018;
@@ -292,9 +294,13 @@ without inverses and requires manual maintenance.`
 		getPayee(): String number = 1004;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:56:33.337;
 		getTransactionDetails(): String number = 1006;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:37:30.303;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:52:52.887;
 		getValue(): Decimal number = 1005;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:57:42.710;
+		setDate(date: Date) updating, number = 1007;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:23:34:58.726;
+		setPayee(payee: String) updating, number = 1008;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:23:37:42.396;
 	)
 	Deposit completeDefinition
 	(
@@ -710,9 +716,114 @@ importXml
 importXml();
 
 vars
-
+	inputFile : String;
+	xmlDoc : JadeXMLDocument;
+	parser : JadeXMLDocumentParser;
+	rootElem, custElem, accountElem, transactionsElem, transactionElem : JadeXMLElement;
+    transactions : JadeXMLElementArray;
+	custFirstName : String;
+	custLastName : String;
+	custPhone : String;
+	custAddress : String;
+	custSuburb : String;
+	custCity : String;
+	custCredit : String;
+	accountType : String;
+	overdraftLimit : String;
+	cust : Customer;
+	account : BankAccount;
+	deposit : Deposit;
+	payment : Payment;
+	tDate : String;
+	tPayee : String;
+	tBalance : String;
 begin
+	inputFile := "C:\account-statement.0.short.xml";
+	create xmlDoc transient;
+	create parser transient;
+	create transactions transient;
+	parser.parseDocumentFile(xmlDoc, inputFile);
+	rootElem := xmlDoc.rootElement;
+	if rootElem.tagName = "statement" then
+		custElem := rootElem.getElementByTagName("customer");
+		accountElem := rootElem.getElementByTagName("account");
+		transactionsElem := accountElem.getElementByTagName("transactions");
+		transactionsElem.getElementsByTagName("transaction", transactions);
+		
+		custFirstName := custElem.getElementByTagName("first_name").text;
+		custLastName := custElem.getElementByTagName("last_name").text;
+		custPhone := custElem.getElementByTagName("phone").text;
+		custAddress := custElem.getElementByTagName("street_address").text;
+		custSuburb := custElem.getElementByTagName("suburb").text;
+		custCity := custElem.getElementByTagName("city").text;
+		custCredit := custElem.getElementByTagName("credit_score").text;
+		
+		accountType := accountElem.getAttributeByName("type").value;
+		overdraftLimit := accountElem.getElementByTagName("overdraft_limit").text;
+		
+		// write custFirstName;
+		// write custLastName;
+		// write custPhone;
+		// write custAddress;
+		// write custSuburb;
+		// write custCity;
+		// write custCredit;
+		// write accountType;
+		// write overdraftLimit;
+		
+		// Create customer etc 
+		beginTransaction;
+		
+			cust := create Customer(
+			custFirstName, 
+			custLastName, 
+			custPhone, 
+			custAddress, 
+			custSuburb, 
+			custCity, 
+			custCredit.Integer
+			) persistent;
+			
+			if accountType = "CurrentAccount" then
+				account := create CurrentAccount(app.ourBank.nextAccountNumber);
+				account.set("Imported Current Account", cust);
+			elseif accountType = "SavingsAccount" then
+				account := create SavingsAccount(app.ourBank.nextAccountNumber);
+				account.set("Imported Savings Account", cust);
+			else
+				// raise exception
+			endif;
+			
+			foreach transactionElem in (transactions) do
+				
+				tDate := transactionElem.getElementByTagName("Date").text;
+				tPayee := transactionElem.getElementByTagName("Payee").text;
+				tBalance := transactionElem.getElementByTagName("Balance").text;
+				if transactionElem.getElementByTagName("Payment") = null and transactionElem.getElementByTagName("Deposit") = null then
+					// raise exception
+				elseif transactionElem.getElementByTagName("Payment") = null then
+					deposit := create Deposit(transactionElem.getElementByTagName("Deposit").text.Decimal, 
+					tBalance.Decimal, 
+					account
+					);
+					deposit.setDate(tDate.Date);
+					deposit.setPayee(tPayee);
+				else
+					payment := create Payment(transactionElem.getElementByTagName("Payment").text.Decimal, 
+					tPayee, 
+					tBalance.Decimal,
+					account
+					);
+					payment.setDate(tDate.Date);
+				endif;
+				
+			endforeach;
+		
+		commitTransaction;
+		
+		
 
+	endif;
 end;
 }
 validateXML
@@ -1209,6 +1320,17 @@ begin
 	endif;
 end;
 }
+testImportXML
+{
+testImportXML();
+
+vars
+
+begin
+	app.initialize();
+	app.bankXml.importXml();
+end;
+}
 testValidateXML
 {
 testValidateXML();
@@ -1421,6 +1543,26 @@ vars
 
 begin
 	return self.value;
+end;
+}
+setDate
+{
+setDate(date : Date) updating;
+
+vars
+
+begin
+	self.date := date;
+end;
+}
+setPayee
+{
+setPayee(payee : String) updating;
+
+vars
+
+begin
+	self.payee := payee;
 end;
 }
 	)
