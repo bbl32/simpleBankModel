@@ -6,11 +6,12 @@ localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
 	setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.421;
 typeHeaders
-	SimpleBankModel subclassOf RootSchemaApp transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2052;
+	SimpleBankModel subclassOf RootSchemaApp transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, highestOrdinal = 2, number = 2052;
 	Bank subclassOf Object highestSubId = 3, highestOrdinal = 6, number = 2058;
-	BankAccount subclassOf Object abstract, highestSubId = 1, highestOrdinal = 6, number = 2179;
+	BankAccount subclassOf Object abstract, highestSubId = 1, highestOrdinal = 7, number = 2179;
 	CurrentAccount subclassOf BankAccount highestOrdinal = 1, number = 2183;
 	SavingsAccount subclassOf BankAccount highestOrdinal = 1, number = 2185;
+	BankXml subclassOf Object number = 2049;
 	Customer subclassOf Object highestSubId = 1, highestOrdinal = 10, number = 2054;
 	GSimpleBankModel subclassOf RootSchemaGlobal transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2053;
 	Transaction subclassOf Object protected, highestOrdinal = 8, number = 2048;
@@ -40,11 +41,13 @@ typeDefinitions
 	(
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:06:15:47:30.570;
 	referenceDefinitions
+		bankXml:                       BankXml  readonly, number = 2, ordinal = 2;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:36:21.570;
 		ourBank:                       Bank  readonly, number = 1, ordinal = 1;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:19:14:04:41.264;
 	jadeMethodDefinitions
 		initialize() updating, number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:16:14:42.451;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:36:44.513;
 	)
 	Bank completeDefinition
 	(
@@ -89,6 +92,8 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:10:19:44.756;
 		balance:                       Decimal[12,2] protected, number = 3, ordinal = 3;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:21:34.509;
+		overDraftLimit:                Integer protected, number = 7, ordinal = 7;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:39:52.258;
 		transactionNumber:             Integer protected, number = 6, ordinal = 6;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:14:19:43.794;
 	referenceDefinitions
@@ -100,13 +105,15 @@ without inverses and requires manual maintenance.`
 		canWithdraw(amount: Decimal): Boolean abstract, number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:19:36.642;
 		create(number: Integer) updating, number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:14:29:37.201;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:36:10.850;
 		deposit(amount: Decimal) updating, number = 1003;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:17:01.431;
 		getAccountName(): String number = 1007;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:41:53.382;
 		getBalance(): Decimal number = 1004;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:22:44.932;
+		getOverdraft(): Integer number = 1011;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:39:40.188;
 		getTransactions(): TransactionsByDate number = 1008;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:53:58.564;
 		nextTransactionNumber(): Integer updating, number = 1009;
@@ -115,6 +122,8 @@ without inverses and requires manual maintenance.`
 			accName: String; 
 			newMyCustomer: Customer) updating, number = 1006;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:14:58:52.479;
+		setOverdraft(amount: Integer) updating, number = 1010;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:39:30.625;
 		withdraw(
 			amount: Decimal; 
 			payee: String) updating, number = 1005;
@@ -122,15 +131,12 @@ without inverses and requires manual maintenance.`
 	)
 	CurrentAccount completeDefinition
 	(
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:10:20:08.021;
-	attributeDefinitions
-		overdraftLimit:                Integer readonly, number = 1, ordinal = 1;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:09:08.876;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:33:18.731;
 	jadeMethodDefinitions
 		canWithdraw(amount: Decimal): Boolean number = 1002;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:39:12.871;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:34:36.341;
 		create(number: Integer) updating, number = 1001;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:12:51.577;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:34:57.475;
 	)
 	SavingsAccount completeDefinition
 	(
@@ -142,7 +148,16 @@ without inverses and requires manual maintenance.`
 		canWithdraw(amount: Decimal): Boolean number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:38:23.262;
 		create(number: Integer) updating, number = 1001;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:27:10:09:18.285;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:36:24.288;
+	)
+	BankXml completeDefinition
+	(
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:03:48.079;
+	jadeMethodDefinitions
+		importXml() number = 1002;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:20:15:47.653;
+		validateXML(account: BankAccount): String number = 1001;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:18:22:03.736;
 	)
 	Customer completeDefinition
 	(
@@ -178,9 +193,21 @@ without inverses and requires manual maintenance.`
 			cSuburb: String; 
 			cCity: String; 
 			cCreditScore: Integer) updating, number = 1001;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:15:28:44.056;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:21:42.194;
+		getAddress(): String number = 1007;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:24:13.514;
+		getCity(): String number = 1009;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:25:09.336;
+		getCredit(): Integer number = 1005;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:22:51.997;
 		getFullName(): String number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:20:57:26.171;
+		getNumber(): Integer number = 1004;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:22:18.399;
+		getPhone(): String number = 1006;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:23:28.595;
+		getSuburb(): String number = 1008;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:24:41.401;
 		setProps(
 			cFirstName: String; 
 			cLastName: String; 
@@ -218,9 +245,11 @@ without inverses and requires manual maintenance.`
 		purgeAccounts() updating, number = 1011;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:10:28:36.294;
 		purgeCustomers() number = 1007;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:37:17.472;
 		testAutomatedInverseAssignment() updating, number = 1010;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
+		testValidateXML() number = 1019;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:44:46.520;
 		transactionTesting() number = 1018;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:31:50.299;
 		workingDecimalType() number = 1003;
@@ -377,6 +406,7 @@ databaseDefinitions
 		Bank in "simplebankmodel";
 		BankAccount in "simplebankaccount";
 		BankAccountByNumberDict in "simplebankaccount";
+		BankXml in "simplebankmodel";
 		CurrentAccount in "simplebankaccount";
 		Customer in "simplebankcustomer";
 		CustomerByLastNameDict in "simplebankcustomer";
@@ -409,6 +439,14 @@ begin
 	if self.ourBank = null then
 		beginTransaction;
 		create self.ourBank persistent;
+		commitTransaction;
+	endif;
+	
+	self.bankXml := BankXml.firstInstance();
+	
+	if self.bankXml = null then
+		beginTransaction;
+		create self.bankXml persistent;
 		commitTransaction;
 	endif;
 end;
@@ -546,6 +584,16 @@ begin
 
 end;
 }
+getOverdraft
+{
+getOverdraft() : Integer;
+
+vars
+
+begin
+	return self.overDraftLimit;
+end;
+}
 getTransactions
 {
 getTransactions() : TransactionsByDate;
@@ -576,6 +624,16 @@ begin
 	myCustomer := newMyCustomer;
 end;
 }
+setOverdraft
+{
+setOverdraft(amount : Integer) updating;
+
+vars
+
+begin
+	self.overDraftLimit := amount;
+end;
+}
 withdraw
 {
 withdraw(amount: Decimal; payee : String) updating;
@@ -603,7 +661,7 @@ vars
 
 begin
 	// Can't withdraw if amount is greater than the sum of balance and overdraft.
-	if amount > self.balance + self.overdraftLimit then
+	if amount > self.balance + self.getOverdraft then
 		return false;
 	else
 		return true;
@@ -618,7 +676,7 @@ create(number : Integer) ::super(number) updating;
 vars
 
 begin
-	self.overdraftLimit := BankAccount.Default_Overdraft_Limit;
+	self.setOverdraft(BankAccount.Default_Overdraft_Limit);
 
 end;
 }
@@ -641,6 +699,91 @@ create(number : Integer) ::super(number) updating;
 
 begin
 	self.interestRate := BankAccount.Default_Interest_Rate;
+	self.setOverdraft(0);
+end;
+}
+	)
+	BankXml (
+	jadeMethodSources
+importXml
+{
+importXml();
+
+vars
+
+begin
+
+end;
+}
+validateXML
+{
+validateXML(account : BankAccount) : String;
+// Generates and validates XML Statement of a particular customer's bank account
+vars
+	xmlDoc : JadeXMLDocument;
+	statementElem, custElem, accountElem,  overdraftElem, transactionsElem, transactionElem, elmt: JadeXMLElement;
+	customerNumber : Integer;
+	firstName : String;
+	lastName : String;
+	phone : String;
+	streetAddress : String;
+	suburb : String;
+	city : String;
+	creditScore : Integer;
+	transactions : TransactionsByDate;
+	transaction : Transaction;
+	accType : String;
+	overDraftLimit : Integer;
+begin
+	customerNumber := account.myCustomer.getNumber;
+	firstName := account.myCustomer.firstName;
+	lastName := account.myCustomer.lastName;
+	phone := account.myCustomer.getPhone;
+	streetAddress := account.myCustomer.getAddress;
+	suburb := account.myCustomer.getSuburb;
+	city := account.myCustomer.getCity;
+	creditScore := account.myCustomer.getCredit;
+	transactions := account.getTransactions;
+	accType := account.class.name;
+	overDraftLimit := account.getOverdraft;
+	
+	create xmlDoc transient;
+	statementElem := xmlDoc.addElement("statement");
+	custElem := statementElem.addElement("customer");
+	elmt := custElem.addElement("customer_number");
+	elmt.setText(customerNumber.String);
+	elmt := custElem.addElement("first_name");
+	elmt.setText(firstName);
+	elmt := custElem.addElement("last_name");
+	elmt.setText(lastName);
+	elmt := custElem.addElement("phone");
+	elmt.setText(phone);
+	elmt := custElem.addElement("street_address");
+	elmt.setText(streetAddress);
+	elmt := custElem.addElement("suburb");
+	elmt.setText(suburb);
+	elmt := custElem.addElement("city");
+	elmt.setText(city);
+	elmt := custElem.addElement("credit_score");
+	elmt.setText(creditScore.String);
+	accountElem := statementElem.addElement("account");
+	accountElem.addAttribute("type", accType);
+	overdraftElem := accountElem.addElement("overdraft_limit");
+	overdraftElem.setText(overDraftLimit.String);
+	transactionsElem := accountElem.addElement("transactions");
+	foreach transaction in (transactions) do
+		transactionElem := transactionsElem.addElement("transaction");
+		elmt := transactionElem.addElement("Date");
+		elmt.setText(transaction.getDate.format("yyy-mm-dd"));
+		elmt := transactionElem.addElement(transaction.class.name); // Payment or Deposit
+		elmt.setText(transaction.getValue.String);
+		elmt := transactionElem.addElement("Payee");
+		elmt.setText(transaction.getPayee);
+		elmt := transactionElem.addElement("Balance");
+		elmt.setText(transaction.getBalanceAfterTransaction.String);
+	endforeach;
+	
+	return xmlDoc.writeToString;
 
 end;
 }
@@ -678,6 +821,36 @@ begin
 
 end;
 }
+getAddress
+{
+getAddress() : String;
+
+vars
+
+begin
+	return self.streetAddress;
+end;
+}
+getCity
+{
+getCity() : String ;
+
+vars
+
+begin
+	return self.city;
+end;
+}
+getCredit
+{
+getCredit() : Integer;
+
+vars
+
+begin
+	return self.creditScore;
+end;
+}
 getFullName
 {
 getFullName() : String;
@@ -690,6 +863,36 @@ begin
 	fullName := self.lastName & ', ' & self.firstName;
 	return fullName;
 
+end;
+}
+getNumber
+{
+getNumber() : Integer;
+
+vars
+
+begin
+	return self.number;
+end;
+}
+getPhone
+{
+getPhone() : String;
+
+vars
+
+begin
+	return self.phone;
+end;
+}
+getSuburb
+{
+getSuburb() : String;
+
+vars
+
+begin
+	return self.suburb;
 end;
 }
 setProps
@@ -937,8 +1140,10 @@ begin
 	beginTransaction;
 	// Customer.instances.purge();
 	Bank.firstInstance().allCustomersByLastName.purge();
+	Bank.firstInstance().allCustomersByNumber.purge();
 	// Reset customer number initial value.
 	Bank.firstInstance().setPropertyValue('lastCustomerNumber', 0);
+	BankXml.instances.purge();
 	commitTransaction;
 end;
 }
@@ -1003,6 +1208,38 @@ begin
 		"Arrgh!", MsgBox_OK_Only);
 	endif;
 end;
+}
+testValidateXML
+{
+testValidateXML();
+
+vars
+	currentAcc : CurrentAccount;
+	savAcc : SavingsAccount;
+	bankXml : BankXml;
+	result : String;
+	cust1 : Customer;
+	cust2 : Customer;
+begin
+	app.initialize();
+	bankXml := app.bankXml;
+	beginTransaction;
+	cust1 := create Customer("first", "last",
+								'+64-03-266-0400', '32 Dovdale Avenue',
+								'Upper Riccarton', 'Chisrtchurch',
+								500) persistent;
+	savAcc := create SavingsAccount(1001) persistent;
+	currentAcc := create CurrentAccount(1002) persistent;
+	savAcc.set("testSaving", cust1);
+	currentAcc.set("testCurrentAcc", cust2);
+	commitTransaction;
+	savAcc.deposit(20);
+	currentAcc.deposit(20);
+	
+	result := bankXml.validateXML(savAcc);
+	write result;
+end;
+	
 }
 transactionTesting
 {
