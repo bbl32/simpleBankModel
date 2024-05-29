@@ -1,6 +1,6 @@
-﻿jadeVersionNumber "22.0.01";
+﻿jadeVersionNumber "22.0.03";
 schemaDefinition
-SimpleBankView subschemaOf SimpleBankModel completeDefinition, patchVersioningEnabled = false;
+SimpleBankView subschemaOf SimpleBankModel completeDefinition;
 	setModifiedTimeStamp "cza14" "16.0.01" 2017:02:24:18:50:00.343;
 localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
@@ -14,20 +14,20 @@ typeHeaders
 	AccountDetails subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 9, number = 2064;
 	AddAccount subclassOf AccountDetails transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2065;
 	EditAccount subclassOf AccountDetails transient, transientAllowed, subclassTransientAllowed, number = 2066;
-	AccountSearch subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 3, number = 2077;
-	AccountView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 17, number = 2072;
+	AccountSearch subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 5, number = 2077;
+	AccountView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 18, number = 2072;
 	CustomerDetails subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 15, number = 2092;
 	CustomerAdd subclassOf CustomerDetails transient, transientAllowed, subclassTransientAllowed, number = 2186;
 	CustomerEdit subclassOf CustomerDetails transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2067;
 	CustomerList subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 3, number = 2068;
 	CustomerSearch subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 7, number = 2076;
-	CustomerView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 20, number = 2073;
+	CustomerView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 21, number = 2073;
 	DisplayCustomer subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 10, number = 2070;
 	MainMenu subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 7, number = 2069;
 	NoFraud subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 2, number = 2079;
-	OpeningScreen subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 4, number = 2074;
+	OpeningScreen subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 5, number = 2074;
 	TestForm subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2071;
-	WithdrawDeposit subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 5, number = 2078;
+	WithdrawDeposit subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 10, number = 2078;
 membershipDefinitions
 typeDefinitions
 	Object completeDefinition
@@ -48,7 +48,7 @@ typeDefinitions
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:13:16:39:52.873;
 	jadeMethodDefinitions
 		initialize() updating, number = 1001;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:26:12:38:40.632;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:38:42.565;
 	)
 	Global completeDefinition
 	(
@@ -143,18 +143,22 @@ typeDefinitions
 	)
 	AccountSearch completeDefinition
 	(
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:29:17.795;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:15:08:29.022;
 	referenceDefinitions
 		backBtn:                       Button  number = 3, ordinal = 3;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:24:56.427;
 		listOfAccounts:                ListBox  number = 1, ordinal = 1;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:24:56.427;
+		searchBtn:                     Button  number = 5, ordinal = 5;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:15:08:29.022;
+		textBox1:                      TextBox  number = 4, ordinal = 4;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:15:08:29.021;
 		viewBtn:                       Button  number = 2, ordinal = 2;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:24:56.427;
 	)
 	AccountView completeDefinition
 	(
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:16:09:31.218;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:19:27.745;
 	referenceDefinitions
 		accountNumView:                JadeRichText  number = 12, ordinal = 12;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.649;
@@ -164,8 +168,6 @@ typeDefinitions
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.645;
 		accountViewListBox:            ListBox  number = 3, ordinal = 3;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.645;
-		addAccBtn_2:                   Button  number = 15, ordinal = 15;
-		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.650;
 		backBtn:                       Button  number = 11, ordinal = 11;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.648;
 		balanceAmt:                    Label  number = 10, ordinal = 10;
@@ -190,14 +192,31 @@ typeDefinitions
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:36:28.348;
 		nameView:                      JadeRichText  number = 6, ordinal = 6;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.647;
+		transactionTitleLabel:         Label  number = 18, ordinal = 18;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:19:27.744;
+		withdrawDepositBtn:            Button  number = 15, ordinal = 15;
+		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.650;
 	jadeMethodDefinitions
+		accountViewListBox_displayRow(
+			listbox: ListBox input; 
+			transaction: Transaction; 
+			lstIndex: Integer; 
+			bcontinue: Boolean io): String updating, number = 1005;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:09:32.076;
 		backBtn_click(btn: Button input) updating, number = 1002;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:59:31.956;
+		gotFocus(cntrl: Control input) updating, number = 1004;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:53:02.753;
 		load() updating, number = 1001;
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:43:33.932;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:58:44.694;
+		withdrawDepositBtn_click(btn: Button input) updating, number = 1003;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:48:45.591;
 	eventMethodMappings
+		accountViewListBox_displayRow = displayRow of ListBox;
 		backBtn_click = click of Button;
+		gotFocus = gotFocus of Form;
 		load = load of Form;
+		withdrawDepositBtn_click = click of Button;
 	)
 	CustomerDetails completeDefinition
 	(
@@ -292,7 +311,7 @@ typeDefinitions
 		gotFocus(cntrl: Control input) updating, number = 1004;
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:06:16:05:31.671;
 		load() updating, number = 1001;
-		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:02:20:24:48.095;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:12:05:55.652;
 		lstCustomers_displayRow(
 			listbox: ListBox input; 
 			cust: Customer; 
@@ -356,7 +375,7 @@ typeDefinitions
 	)
 	CustomerView completeDefinition
 	(
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:32:02.058;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:09:47:58.600;
 	referenceDefinitions
 		accountView:                   ListBox  number = 14, ordinal = 14;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:14:59:27.368;
@@ -396,7 +415,7 @@ typeDefinitions
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:14:59:27.362;
 		suburbView:                    JadeRichText  number = 12, ordinal = 12;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:14:59:27.366;
-		viewAccountBtn:                Button  number = 18, ordinal = 18;
+		viewAccountBtn:                Button  number = 21, ordinal = 21;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:14:59:27.369;
 	jadeMethodDefinitions
 		accountView_displayRow(
@@ -404,7 +423,7 @@ typeDefinitions
 			acc: BankAccount; 
 			lstIndex: Integer; 
 			bcontinue: Boolean io): String updating, number = 1005;
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:13:48:18.039;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:12:04:17.215;
 		addAccBtn_click(btn: Button input) updating, number = 1004;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:13:37:53.302;
 		backBtn_click(btn: Button input) updating, number = 1003;
@@ -469,12 +488,12 @@ typeDefinitions
 	)
 	MainMenu completeDefinition
 	(
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:48:30.329;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:09:47:58.601;
 	referenceDefinitions
-		btnStart:                      Button  number = 1, ordinal = 7;
+		btnStart:                      Button  number = 7, ordinal = 7;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:48:29.345;
 	jadeMethodDefinitions
-		btnStart_click(btn: Button input) updating, number = 1003;
+		btnStart_click(btn: Button input) updating, number = 1005;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:49:38.929;
 		load() updating, number = 1001;
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:01:16:58:54.910;
@@ -496,11 +515,11 @@ typeDefinitions
 	)
 	OpeningScreen completeDefinition
 	(
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:46:59.837;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:09:47:58.600;
 	referenceDefinitions
 		accounAdminBtn:                Button  number = 2, ordinal = 2;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:14:38:06.600;
-		customerAdminBtn:              Button  number = 1, ordinal = 1;
+		customerAdminBtn:              Button  number = 5, ordinal = 5;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:14:38:06.599;
 		firstName:                     Label  number = 4, ordinal = 4;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:14:38:06.600;
@@ -535,18 +554,41 @@ typeDefinitions
 	)
 	WithdrawDeposit completeDefinition
 	(
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:30:46.626;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:20:19.786;
 	referenceDefinitions
+		accountNameLabel:              Label  number = 10, ordinal = 10;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:12:11:24.703;
 		amountNumber:                  TextBox  number = 3, ordinal = 3;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:35:21.287;
 		depositBtn:                    Button  number = 5, ordinal = 5;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:35:21.287;
+		myAccount:                     BankAccount  protected, number = 6, ordinal = 6;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:50:11.652;
+		particularsField:              TextBox  number = 7, ordinal = 7;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:57:51.687;
+		particularsLabel:              Label  number = 8, ordinal = 8;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:57:51.687;
+		statusLine:                    StatusLine  number = 9, ordinal = 9;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:12:08:24.328;
 		withdrawBtn:                   Button  number = 4, ordinal = 4;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:35:21.287;
 		withdrawOrDepositLabel:        Label  number = 1, ordinal = 1;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:35:21.287;
 		withdrawOrDepositLabel_1:      Label  number = 2, ordinal = 2;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:35:21.287;
+	jadeMethodDefinitions
+		depositBtn_click(btn: Button input) updating, number = 1003;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:02:00.408;
+		load() updating, number = 1002;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:12:15:32.772;
+		setAccount(account: BankAccount) updating, number = 1001;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:50:18.547;
+		withdrawBtn_click(btn: Button input) updating, number = 1004;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:15:05:46.995;
+	eventMethodMappings
+		depositBtn_click = click of Button;
+		load = load of Form;
+		withdrawBtn_click = click of Button;
 	)
 databaseDefinitions
 	SimpleBankViewDb
@@ -571,7 +613,6 @@ initialize() updating;
 vars
 
 begin
-	write self.name & "::" & method.name;
 	
 	inheritMethod();
 		
@@ -726,6 +767,17 @@ end;
 	)
 	AccountView (
 	jadeMethodSources
+accountViewListBox_displayRow
+{
+accountViewListBox_displayRow(listbox: ListBox input; transaction: Transaction; 
+lstIndex: Integer; bcontinue: Boolean io):String updating;
+
+vars
+
+begin
+	return transaction.getTransactionDetails;
+end;
+}
 backBtn_click
 {
 backBtn_click(btn: Button input) updating;
@@ -742,6 +794,21 @@ begin
 	self.unloadForm();
 end;
 }
+gotFocus
+{
+gotFocus(cntrl: Control input) updating;
+
+vars
+
+begin
+	self.nameView.text := myCustomer.getPropertyValue('firstName').String;
+	self.lastnameView.text := myCustomer.getPropertyValue('lastName').String;
+	self.balanceView.text := myAccount.getPropertyValue("balance").String;
+	self.customerNumView.text := myCustomer.getPropertyValue("number").String;
+	self.accountNumView.text := myAccount.getPropertyValue("accountNumber").String;
+	self.accountViewLabel.caption := "Account View: " & myAccount.accountName;
+end;
+}
 load
 {
 load() updating;
@@ -756,6 +823,22 @@ begin
 	self.balanceView.text := myAccount.getPropertyValue("balance").String;
 	self.customerNumView.text := myCustomer.getPropertyValue("number").String;
 	self.accountNumView.text := myAccount.getPropertyValue("accountNumber").String;
+	self.accountViewLabel.caption := "Account View: " & myAccount.accountName;
+	
+	self.accountViewListBox.displayCollection(self.myAccount.getTransactions, true,
+	ListBox.DisplayCollection_Reversed, null, '');
+end;
+}
+withdrawDepositBtn_click
+{
+withdrawDepositBtn_click(btn: Button input) updating;
+
+vars
+	wDForm : WithdrawDeposit;
+begin
+	wDForm := create WithdrawDeposit transient;
+	wDForm.setAccount(self.myAccount);
+	wDForm.show();
 end;
 }
 	)
@@ -1015,7 +1098,7 @@ load
 load() updating;
 
 begin
-	self.lstCustomers.displayCollection(app.ourBank.allCustomers, true,
+	self.lstCustomers.displayCollection(app.ourBank.allCustomersByLastName, true,
 	ListBox.DisplayCollection_Forward, null, "");
 
 end;
@@ -1167,7 +1250,7 @@ accountView_displayRow(listbox: ListBox input; acc: BankAccount; lstIndex: Integ
 vars
 
 begin
-	return acc.getAccName;
+	return acc.getAccountName;
 end;
 }
 addAccBtn_click
@@ -1469,6 +1552,66 @@ vars
 
 begin
 	app.msgBox("Hello", "Swag", MsgBox_OK_Only);
+
+end;
+}
+	)
+	WithdrawDeposit (
+	jadeMethodSources
+depositBtn_click
+{
+depositBtn_click(btn: Button input) updating;
+
+vars
+
+begin
+	self.myAccount.deposit(self.amountNumber.text.Decimal);
+	self.statusLine.caption := "Deposit of " & self.amountNumber.text.Decimal.currencyFormat & " successful!";
+end;
+}
+load
+{
+load() updating;
+
+vars
+
+begin
+	self.accountNameLabel.caption := self.myAccount.accountName;
+end;
+}
+setAccount
+{
+setAccount(account : BankAccount) updating;
+
+vars
+
+begin
+	self.myAccount := account;
+end;
+}
+withdrawBtn_click
+{
+withdrawBtn_click(btn: Button input) updating;
+
+vars
+	amount : Decimal[12];
+	withdrawText : String;
+begin
+	amount := self.amountNumber.text.Decimal;
+	
+	if self.particularsField.text <> '' then 
+		withdrawText := self.particularsField.text;
+	else
+		withdrawText := "Withdrawal";
+	endif;
+	
+	if self.myAccount.canWithdraw(amount) then
+		self.myAccount.withdraw(amount, withdrawText);
+		statusLine.caption := "Withdrew amount of " & amount.currencyFormat & " successfully!";
+	else
+		statusLine.caption := "Withdraw failed...";
+		app.msgBox("Your withdraw amount has been reached, you cannot withdraw any more money.", "Invalid withdrawal amount", MsgBox_OK_Only);
+	endif;
 
 end;
 }

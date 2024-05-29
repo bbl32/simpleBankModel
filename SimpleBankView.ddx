@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<schema name="SimpleBankView" JadeVersionNumber="22.0.01" JadePatchNumber="0" CompleteDefinition="true">
+<schema name="SimpleBankView" JadeVersionNumber="22.0.03" JadePatchNumber="0" CompleteDefinition="true">
 	<Application name="SimpleBankMDI">
 		<__overridePatchNumber>0</__overridePatchNumber>
 		<__patchControlString/>
@@ -622,7 +622,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>794</left>
+		<left>186</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -648,7 +648,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>83</top>
+		<top>49</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -659,6 +659,138 @@
 		<width>427</width>
 		<windowState>0</windowState>
 		<controlList>
+			<Button name="searchBtn">
+				<autoSize>1</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>0</borderStyle>
+				<bubbleHelp/>
+				<buttonPicture>0</buttonPicture>
+				<cancel>false</cancel>
+				<caption>Search</caption>
+				<default>false</default>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName/>
+				<fontSize>8.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483630</foreColor>
+				<form name="AccountSearch" />
+				<height>18</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>327</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>searchBtn</name>
+				<parent name="AccountSearch" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>421</parentBottomOffset>
+				<parentRightOffset>39</parentRightOffset>
+				<picture/>
+				<pictureDisabled/>
+				<pictureDown/>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<style>0</style>
+				<tabIndex>6</tabIndex>
+				<tabStop>true</tabStop>
+				<tag/>
+				<top>16</top>
+				<userScript/>
+				<value>false</value>
+				<visible>true</visible>
+				<webFileName/>
+				<width>45</width>
+			</Button>
+			<TextBox name="textBox1">
+				<alignment>0</alignment>
+				<autoTab>false</autoTab>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483643</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>2</borderStyle>
+				<bubbleHelp/>
+				<case>0</case>
+				<dataType>0</dataType>
+				<decimals>0</decimals>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName/>
+				<fontSize>8.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483640</foreColor>
+				<form name="AccountSearch" />
+				<formatOut/>
+				<height>22</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<hintBackColor>-2147483648</hintBackColor>
+				<hintForeColor>-2147483648</hintForeColor>
+				<hintText/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<integralHeight>false</integralHeight>
+				<left>93</left>
+				<maxLength>0</maxLength>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>textBox1</name>
+				<parent name="AccountSearch" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>419</parentBottomOffset>
+				<parentRightOffset>95</parentRightOffset>
+				<passwordField>false</passwordField>
+				<readOnly>false</readOnly>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<scrollBars>0</scrollBars>
+				<scrollHorizontal>false</scrollHorizontal>
+				<scrollVertical>false</scrollVertical>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<selectionStyle>0</selectionStyle>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<tabIndex>5</tabIndex>
+				<tabStop>true</tabStop>
+				<tag/>
+				<text/>
+				<textOffset>0</textOffset>
+				<top>14</top>
+				<userScript/>
+				<visible>true</visible>
+				<wantReturn>false</wantReturn>
+				<webInputType/>
+				<width>223</width>
+			</TextBox>
 			<Button name="backBtn">
 				<autoSize>1</autoSize>
 				<backBrush/>
@@ -876,7 +1008,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>764</left>
+		<left>212</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -902,7 +1034,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>73</top>
+		<top>12</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -913,7 +1045,65 @@
 		<width>704</width>
 		<windowState>0</windowState>
 		<controlList>
-			<Button name="addAccBtn_2">
+			<Label name="transactionTitleLabel">
+				<alignment>7</alignment>
+				<autoSize>false</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>0</borderStyle>
+				<bubbleHelp/>
+				<caption>Transaction History</caption>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName>Tahoma</fontName>
+				<fontSize>14.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483640</foreColor>
+				<form name="AccountView" />
+				<formatOut/>
+				<height>41</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<hyperlink/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>435</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>transactionTitleLabel</name>
+				<noPrefix>false</noPrefix>
+				<parent name="AccountView" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>373</parentBottomOffset>
+				<parentRightOffset>58</parentRightOffset>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<tabIndex>30</tabIndex>
+				<tabStop>false</tabStop>
+				<tag/>
+				<top>76</top>
+				<transparent>false</transparent>
+				<userScript/>
+				<visible>true</visible>
+				<width>195</width>
+				<wordWrap>false</wordWrap>
+			</Label>
+			<Button name="withdrawDepositBtn">
 				<autoSize>1</autoSize>
 				<backBrush/>
 				<backBrushStyle>0</backBrushStyle>
@@ -947,7 +1137,7 @@
 				<left>198</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
-				<name>addAccBtn_2</name>
+				<name>withdrawDepositBtn</name>
 				<parent name="AccountView" />
 				<parentAspect>0</parentAspect>
 				<parentBottomOffset>82</parentBottomOffset>
@@ -1199,14 +1389,14 @@
 				<helpKeyword/>
 				<ignoreSkin>false</ignoreSkin>
 				<index>0</index>
-				<left>25</left>
+				<left>23</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
 				<name>backBtn</name>
 				<parent name="AccountView" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>423</parentBottomOffset>
-				<parentRightOffset>595</parentRightOffset>
+				<parentBottomOffset>443</parentBottomOffset>
+				<parentRightOffset>597</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
 				<pictureDown/>
@@ -1222,7 +1412,7 @@
 				<tabIndex>1</tabIndex>
 				<tabStop>true</tabStop>
 				<tag/>
-				<top>39</top>
+				<top>19</top>
 				<userScript/>
 				<value>false</value>
 				<visible>true</visible>
@@ -6244,21 +6434,21 @@
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
 		<caption>WithdrawDeposit</caption>
-		<clientHeight>242</clientHeight>
-		<clientWidth>407</clientWidth>
+		<clientHeight>280</clientHeight>
+		<clientWidth>405</clientWidth>
 		<clipControls>true</clipControls>
 		<controlBox>true</controlBox>
 		<description/>
 		<disableReason/>
 		<dragCursor/>
 		<enabled>true</enabled>
-		<height>281</height>
+		<height>319</height>
 		<helpContextId>0</helpContextId>
 		<helpKeyword/>
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>359</left>
+		<left>283</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -6284,7 +6474,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>101</top>
+		<top>13</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -6292,9 +6482,260 @@
 		<webBrowserDisableBackButton>false</webBrowserDisableBackButton>
 		<webEncodingType/>
 		<webFileName/>
-		<width>423</width>
+		<width>421</width>
 		<windowState>0</windowState>
 		<controlList>
+			<Label name="accountNameLabel">
+				<alignment>7</alignment>
+				<autoSize>true</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>0</borderStyle>
+				<bubbleHelp/>
+				<caption>Account Name</caption>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName>Tahoma</fontName>
+				<fontSize>9.75</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483640</foreColor>
+				<form name="WithdrawDeposit" />
+				<formatOut/>
+				<height>16</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<hyperlink/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>161</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>accountNameLabel</name>
+				<noPrefix>false</noPrefix>
+				<parent name="WithdrawDeposit" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>209</parentBottomOffset>
+				<parentRightOffset>162</parentRightOffset>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<tabIndex>9</tabIndex>
+				<tabStop>false</tabStop>
+				<tag/>
+				<top>55</top>
+				<transparent>true</transparent>
+				<userScript/>
+				<visible>true</visible>
+				<width>82</width>
+				<wordWrap>false</wordWrap>
+			</Label>
+			<StatusLine name="statusLine">
+				<alignment>0</alignment>
+				<autoSize>true</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<bevelColor>-2147483628</bevelColor>
+				<bevelInner>1</bevelInner>
+				<bevelInnerWidth>1</bevelInnerWidth>
+				<bevelOuter>2</bevelOuter>
+				<bevelOuterWidth>1</bevelOuterWidth>
+				<bevelShadowColor>-2147483632</bevelShadowColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>1</borderStyle>
+				<boundaryBrush>0</boundaryBrush>
+				<boundaryColor>-2147483633</boundaryColor>
+				<boundaryWidth>1</boundaryWidth>
+				<bubbleHelp/>
+				<caption/>
+				<clipControls>true</clipControls>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName/>
+				<fontSize>8.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483630</foreColor>
+				<form name="WithdrawDeposit" />
+				<height>21</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>0</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>statusLine</name>
+				<parent name="WithdrawDeposit" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>0</parentBottomOffset>
+				<parentRightOffset>0</parentRightOffset>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<tabIndex>8</tabIndex>
+				<tabStop>false</tabStop>
+				<tag/>
+				<top>259</top>
+				<userScript/>
+				<visible>true</visible>
+				<width>405</width>
+				<wordWrap>false</wordWrap>
+			</StatusLine>
+			<Label name="particularsLabel">
+				<alignment>1</alignment>
+				<autoSize>true</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>0</borderStyle>
+				<bubbleHelp/>
+				<caption>Particulars (optional, for withdrawals):</caption>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName>Tahoma</fontName>
+				<fontSize>9.75</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483640</foreColor>
+				<form name="WithdrawDeposit" />
+				<formatOut/>
+				<height>16</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<hyperlink/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>94</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>particularsLabel</name>
+				<noPrefix>false</noPrefix>
+				<parent name="WithdrawDeposit" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>135</parentBottomOffset>
+				<parentRightOffset>90</parentRightOffset>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<tabIndex>7</tabIndex>
+				<tabStop>false</tabStop>
+				<tag/>
+				<top>129</top>
+				<transparent>true</transparent>
+				<userScript/>
+				<visible>true</visible>
+				<width>221</width>
+				<wordWrap>false</wordWrap>
+			</Label>
+			<TextBox name="particularsField">
+				<alignment>0</alignment>
+				<autoTab>false</autoTab>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483643</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>2</borderStyle>
+				<bubbleHelp/>
+				<case>0</case>
+				<dataType>0</dataType>
+				<decimals>0</decimals>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName/>
+				<fontSize>8.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483640</foreColor>
+				<form name="WithdrawDeposit" />
+				<formatOut/>
+				<height>30</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<hintBackColor>-2147483648</hintBackColor>
+				<hintForeColor>-2147483648</hintForeColor>
+				<hintText/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<integralHeight>false</integralHeight>
+				<left>40</left>
+				<maxLength>0</maxLength>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>particularsField</name>
+				<parent name="WithdrawDeposit" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>99</parentBottomOffset>
+				<parentRightOffset>49</parentRightOffset>
+				<passwordField>false</passwordField>
+				<readOnly>false</readOnly>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<scrollBars>0</scrollBars>
+				<scrollHorizontal>false</scrollHorizontal>
+				<scrollVertical>false</scrollVertical>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<selectionStyle>0</selectionStyle>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<tabIndex>6</tabIndex>
+				<tabStop>true</tabStop>
+				<tag/>
+				<text/>
+				<textOffset>0</textOffset>
+				<top>151</top>
+				<userScript/>
+				<visible>true</visible>
+				<wantReturn>false</wantReturn>
+				<webInputType/>
+				<width>316</width>
+			</TextBox>
 			<Button name="depositBtn">
 				<autoSize>1</autoSize>
 				<backBrush/>
@@ -6326,14 +6767,14 @@
 				<helpKeyword/>
 				<ignoreSkin>false</ignoreSkin>
 				<index>0</index>
-				<left>207</left>
+				<left>217</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
 				<name>depositBtn</name>
 				<parent name="WithdrawDeposit" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>49</parentBottomOffset>
-				<parentRightOffset>122</parentRightOffset>
+				<parentBottomOffset>45</parentBottomOffset>
+				<parentRightOffset>110</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
 				<pictureDown/>
@@ -6349,7 +6790,7 @@
 				<tabIndex>5</tabIndex>
 				<tabStop>true</tabStop>
 				<tag/>
-				<top>164</top>
+				<top>206</top>
 				<userScript/>
 				<value>false</value>
 				<visible>true</visible>
@@ -6387,14 +6828,14 @@
 				<helpKeyword/>
 				<ignoreSkin>false</ignoreSkin>
 				<index>0</index>
-				<left>116</left>
+				<left>90</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
 				<name>withdrawBtn</name>
 				<parent name="WithdrawDeposit" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>50</parentBottomOffset>
-				<parentRightOffset>213</parentRightOffset>
+				<parentBottomOffset>45</parentBottomOffset>
+				<parentRightOffset>237</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
 				<pictureDown/>
@@ -6410,7 +6851,7 @@
 				<tabIndex>4</tabIndex>
 				<tabStop>true</tabStop>
 				<tag/>
-				<top>163</top>
+				<top>206</top>
 				<userScript/>
 				<value>false</value>
 				<visible>true</visible>
@@ -6427,8 +6868,8 @@
 				<borderStyle>2</borderStyle>
 				<bubbleHelp/>
 				<case>0</case>
-				<dataType>0</dataType>
-				<decimals>0</decimals>
+				<dataType>3</dataType>
+				<decimals>-1</decimals>
 				<description/>
 				<disableReason/>
 				<dragCursor/>
@@ -6444,7 +6885,7 @@
 				<foreColor>-2147483640</foreColor>
 				<form name="WithdrawDeposit" />
 				<formatOut/>
-				<height>33</height>
+				<height>30</height>
 				<helpContextId>0</helpContextId>
 				<helpKeyword/>
 				<hintBackColor>-2147483648</hintBackColor>
@@ -6453,15 +6894,15 @@
 				<ignoreSkin>false</ignoreSkin>
 				<index>0</index>
 				<integralHeight>false</integralHeight>
-				<left>102</left>
+				<left>108</left>
 				<maxLength>0</maxLength>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
 				<name>amountNumber</name>
 				<parent name="WithdrawDeposit" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>95</parentBottomOffset>
-				<parentRightOffset>57</parentRightOffset>
+				<parentBottomOffset>163</parentBottomOffset>
+				<parentRightOffset>49</parentRightOffset>
 				<passwordField>false</passwordField>
 				<readOnly>false</readOnly>
 				<relativeHeight>false</relativeHeight>
@@ -6481,7 +6922,7 @@
 				<tag/>
 				<text/>
 				<textOffset>0</textOffset>
-				<top>114</top>
+				<top>87</top>
 				<userScript/>
 				<visible>true</visible>
 				<wantReturn>false</wantReturn>
@@ -6519,15 +6960,15 @@
 				<hyperlink/>
 				<ignoreSkin>false</ignoreSkin>
 				<index>0</index>
-				<left>44</left>
+				<left>43</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
 				<name>withdrawOrDepositLabel_1</name>
 				<noPrefix>false</noPrefix>
 				<parent name="WithdrawDeposit" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>102</parentBottomOffset>
-				<parentRightOffset>314</parentRightOffset>
+				<parentBottomOffset>172</parentBottomOffset>
+				<parentRightOffset>313</parentRightOffset>
 				<relativeHeight>false</relativeHeight>
 				<relativeLeft>false</relativeLeft>
 				<relativeTop>false</relativeTop>
@@ -6539,7 +6980,7 @@
 				<tabIndex>2</tabIndex>
 				<tabStop>false</tabStop>
 				<tag/>
-				<top>124</top>
+				<top>92</top>
 				<transparent>true</transparent>
 				<userScript/>
 				<visible>true</visible>
@@ -6555,7 +6996,7 @@
 				<borderColorSingle>0</borderColorSingle>
 				<borderStyle>0</borderStyle>
 				<bubbleHelp/>
-				<caption>Withdraw or Deposit?</caption>
+				<caption>Withdraw or Deposit</caption>
 				<description/>
 				<disableReason/>
 				<dragCursor/>
@@ -6577,15 +7018,15 @@
 				<hyperlink/>
 				<ignoreSkin>false</ignoreSkin>
 				<index>0</index>
-				<left>102</left>
+				<left>106</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
 				<name>withdrawOrDepositLabel</name>
 				<noPrefix>false</noPrefix>
 				<parent name="WithdrawDeposit" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>159</parentBottomOffset>
-				<parentRightOffset>103</parentRightOffset>
+				<parentBottomOffset>235</parentBottomOffset>
+				<parentRightOffset>107</parentRightOffset>
 				<relativeHeight>false</relativeHeight>
 				<relativeLeft>false</relativeLeft>
 				<relativeTop>false</relativeTop>
@@ -6597,11 +7038,11 @@
 				<tabIndex>1</tabIndex>
 				<tabStop>false</tabStop>
 				<tag/>
-				<top>58</top>
+				<top>20</top>
 				<transparent>true</transparent>
 				<userScript/>
 				<visible>true</visible>
-				<width>202</width>
+				<width>192</width>
 				<wordWrap>false</wordWrap>
 			</Label>
 		</controlList>
