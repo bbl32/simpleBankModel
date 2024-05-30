@@ -1,12 +1,12 @@
-﻿jadeVersionNumber "22.0.01";
+﻿jadeVersionNumber "22.0.03";
 schemaDefinition
-SimpleBankView subschemaOf SimpleBankModel completeDefinition, patchVersioningEnabled = false;
+SimpleBankView subschemaOf SimpleBankModel completeDefinition;
 	setModifiedTimeStamp "cza14" "16.0.01" 2017:02:24:18:50:00.343;
 localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
 	setModifiedTimeStamp "cza14" "22.0.03" 2024:03:13:16:39:52.846;
 	1033 "English (United States)" _cloneOf 5129;
-	setModifiedTimeStamp "<unknown>" "" 2024:05:30:14:53:29;
+	setModifiedTimeStamp "<unknown>" "" 2024:05:30:19:21:39;
 typeHeaders
 	SimpleBankView subclassOf SimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2088;
 	GSimpleBankView subclassOf GSimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2089;
@@ -14,20 +14,17 @@ typeHeaders
 	AccountDetails subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 9, number = 2064;
 	AddAccount subclassOf AccountDetails transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2065;
 	EditAccount subclassOf AccountDetails transient, transientAllowed, subclassTransientAllowed, number = 2066;
-	AccountSearch subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 5, number = 2077;
-	AccountView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 21, number = 2072;
+	AccountSearch subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 6, number = 2077;
+	AccountView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 23, number = 2072;
+	AccountViewFromSearch subclassOf AccountView transient, transientAllowed, subclassTransientAllowed, number = 2063;
 	CustomerDetails subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 17, number = 2092;
 	CustomerAdd subclassOf CustomerDetails transient, transientAllowed, subclassTransientAllowed, number = 2186;
 	CustomerEdit subclassOf CustomerDetails transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2067;
-	CustomerList subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 3, number = 2068;
-	CustomerSearch subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 7, number = 2076;
+	CustomerSearch subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 9, number = 2076;
 	CustomerView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 23, number = 2073;
-	DisplayCustomer subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 10, number = 2070;
 	ImportXml subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 4, number = 2059;
 	MainMenu subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 8, number = 2069;
-	NoFraud subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 2, number = 2079;
 	OpeningScreen subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 5, number = 2074;
-	TestForm subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2071;
 	TransactionView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 11, number = 2057;
 	WithdrawDeposit subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 10, number = 2078;
 membershipDefinitions
@@ -130,10 +127,10 @@ typeDefinitions
 	)
 	AddAccount completeDefinition
 	(
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:15:11:51.616;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:35:35.246;
 	jadeMethodDefinitions
 		btnOK_click(btn: Button input) updating, number = 1001;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:15:13:35.336;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:50:01.358;
 		createAccount() number = 1002;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:13:43:50.613;
 	eventMethodMappings
@@ -145,22 +142,47 @@ typeDefinitions
 	)
 	AccountSearch completeDefinition
 	(
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:15:08:29.022;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:26:15.314;
 	referenceDefinitions
 		backBtn:                       Button  number = 3, ordinal = 3;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:24:56.427;
 		listOfAccounts:                ListBox  number = 1, ordinal = 1;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:24:56.427;
+		searchBar:                     TextBox  number = 4, ordinal = 4;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:15:08:29.021;
 		searchBtn:                     Button  number = 5, ordinal = 5;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:15:08:29.022;
-		textBox1:                      TextBox  number = 4, ordinal = 4;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:15:08:29.021;
+		title:                         Label  number = 6, ordinal = 6;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:26:15.314;
 		viewBtn:                       Button  number = 2, ordinal = 2;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:24:56.427;
+	jadeMethodDefinitions
+		backBtn_click(btn: Button input) updating, number = 1001;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:16:23:36.933;
+		listOfAccounts_displayRow(
+			listbox: ListBox input; 
+			acc: BankAccount; 
+			lstIndex: Integer; 
+			bcontinue: Boolean io): String updating, number = 1004;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:24:38.560;
+		load() updating, number = 1006;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:17:31:40.208;
+		search() number = 1002;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:17:28:12.355;
+		searchBtn_click(btn: Button input) updating, number = 1003;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:16:59:18.320;
+		viewBtn_click(btn: Button input) updating, number = 1005;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:17:24:07.387;
+	eventMethodMappings
+		backBtn_click = click of Button;
+		listOfAccounts_displayRow = displayRow of ListBox;
+		load = load of Form;
+		searchBtn_click = click of Button;
+		viewBtn_click = click of Button;
 	)
 	AccountView completeDefinition
 	(
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:42:32.437;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:55:36.168;
 	referenceDefinitions
 		accountNumView:                JadeRichText  number = 12, ordinal = 12;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.649;
@@ -194,6 +216,10 @@ typeDefinitions
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:36:28.348;
 		nameView:                      JadeRichText  number = 6, ordinal = 6;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.647;
+		searchBar:                     TextBox  number = 21, ordinal = 23;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:53:18.654;
+		searchBtn:                     Button  number = 20, ordinal = 22;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:53:18.654;
 		transactionTitleLabel:         Label  number = 18, ordinal = 18;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:19:27.744;
 		viewTransactionBtn:            Button  number = 19, ordinal = 19;
@@ -215,6 +241,10 @@ typeDefinitions
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:56:30.060;
 		load() updating, number = 1001;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:56:44.958;
+		search() number = 1008;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:19:12:06.430;
+		searchBtn_click(btn: Button input) updating, number = 1009;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:19:05:06.652;
 		viewTransactionBtn_click(btn: Button input) updating, number = 1006;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:45:03.489;
 		withdrawDepositBtn_click(btn: Button input) updating, number = 1003;
@@ -225,12 +255,22 @@ typeDefinitions
 		checkForFraudBtn_click = click of Button;
 		gotFocus = gotFocus of Form;
 		load = load of Form;
+		searchBtn_click = click of Button;
 		viewTransactionBtn_click = click of Button;
 		withdrawDepositBtn_click = click of Button;
 	)
+	AccountViewFromSearch completeDefinition
+	(
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:17:12:11.475;
+	jadeMethodDefinitions
+		backBtn_click(btn: Button input) updating, number = 1001;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:17:13:14.078;
+	eventMethodMappings
+		backBtn_click = click of Button;
+	)
 	CustomerDetails completeDefinition
 	(
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:55:52.748;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:16:32:51.081;
 	referenceDefinitions
 		btnCancel:                     Button  number = 2, ordinal = 2;
 		setModifiedTimeStamp "cza14" "16.0.01" 2017:02:27:18:20:23.280;
@@ -305,39 +345,9 @@ typeDefinitions
 		btnOK_click = click of Button;
 		load = load of Form;
 	)
-	CustomerList completeDefinition
-	(
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:43:34.142;
-	referenceDefinitions
-		btnDisplay:                    Button  number = 3, ordinal = 3;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:25:16:00:08.570;
-		lstCustomers:                  ListBox  number = 1, ordinal = 1;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:25:15:51:21.651;
-	jadeMethodDefinitions
-		btnDisplay_click(btn: Button input) updating, number = 1005;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:13:33:49.590;
-		btnEdit_click(btn: Button input) updating, number = 1003;
-		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:10:13:51:52.487;
-		gotFocus(cntrl: Control input) updating, number = 1004;
-		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:06:16:05:31.671;
-		load() updating, number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:12:05:55.652;
-		lstCustomers_displayRow(
-			listbox: ListBox input; 
-			cust: Customer; 
-			lstIndex: Integer; 
-			bcontinue: Boolean io): String updating, number = 1002;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:25:17:33:59.803;
-	eventMethodMappings
-		btnDisplay_click = click of Button;
-		btnEdit_click = click of Button;
-		gotFocus = gotFocus of Form;
-		load = load of Form;
-		lstCustomers_displayRow = displayRow of ListBox;
-	)
 	CustomerSearch completeDefinition
 	(
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:47:01.774;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:28:22.058;
 	referenceDefinitions
 		addBtn:                        Button  number = 2, ordinal = 2;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:22:11.054;
@@ -349,6 +359,10 @@ typeDefinitions
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:37:13.352;
 		listOfCustomers:               ListBox  number = 1, ordinal = 1;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:22:11.039;
+		nameornum:                     Label  number = 8, ordinal = 8;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:28:22.058;
+		searchtitle:                   Label  number = 9, ordinal = 9;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:28:22.058;
 		txtSearchBar:                  TextBox  number = 6, ordinal = 6;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:37:13.352;
 		viewBtn:                       Button  number = 3, ordinal = 3;
@@ -371,7 +385,7 @@ typeDefinitions
 		load() updating, number = 1001;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:13:00:27.346;
 		search() number = 1002;
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:13:13:08.380;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:17:50:53.036;
 		viewBtn_click(btn: Button input) updating, number = 1004;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:13:33:40.867;
 	eventMethodMappings
@@ -447,7 +461,7 @@ typeDefinitions
 		updateDetails() number = 1001;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:16:08:57.989;
 		viewAccountBtn_click(btn: Button input) updating, number = 1006;
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:36:17.574;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:19:30:01.747;
 	eventMethodMappings
 		accountView_displayRow = displayRow of ListBox;
 		addAccBtn_click = click of Button;
@@ -456,45 +470,6 @@ typeDefinitions
 		gotFocus = gotFocus of Form;
 		load = load of Form;
 		viewAccountBtn_click = click of Button;
-	)
-	DisplayCustomer completeDefinition
-	(
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:14:37:09.961;
-	referenceDefinitions
-		accountsLabel:                 Label  number = 8, ordinal = 8;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:14:16:36.480;
-		btnAddAccnt:                   Button  number = 9, ordinal = 10;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:14:37:09.961;
-		btnEdit:                       Button  number = 6, ordinal = 6;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:13:50:24.864;
-		custAccounts:                  ListBox  number = 7, ordinal = 7;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:14:16:36.480;
-		custAddy:                      Label  number = 5, ordinal = 5;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:13:31:07.647;
-		custName:                      Label  number = 2, ordinal = 2;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:13:31:07.647;
-		custNumber:                    Label  number = 3, ordinal = 3;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:13:31:07.647;
-		custPhone:                     Label  number = 4, ordinal = 4;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:13:31:07.647;
-		myCustomer:                    Customer  number = 1, ordinal = 1;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:13:26:41.984;
-	jadeMethodDefinitions
-		btnAddAccnt_click(btn: Button input) updating, number = 1005;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:14:39:39.310;
-		btnEdit_click(btn: Button input) updating, number = 1002;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:13:51:48.513;
-		gotFocus(cntrl: Control input) updating, number = 1004;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:14:08:55.494;
-		load() updating, number = 1001;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:14:18:34.350;
-		updateDetails() number = 1003;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:14:05:07.175;
-	eventMethodMappings
-		btnAddAccnt_click = click of Button;
-		btnEdit_click = click of Button;
-		gotFocus = gotFocus of Form;
-		load = load of Form;
 	)
 	ImportXml completeDefinition
 	(
@@ -534,15 +509,6 @@ typeDefinitions
 		load = load of Form;
 		menuCustomerAdd_click = click of MenuItem;
 	)
-	NoFraud completeDefinition
-	(
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:30:20.139;
-	referenceDefinitions
-		noFraudDetectedLabel:          Label  number = 1, ordinal = 1;
-		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:08:05:33.537;
-		okBtn:                         Button  number = 2, ordinal = 2;
-		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:08:05:33.554;
-	)
 	OpeningScreen completeDefinition
 	(
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:09:47:58.600;
@@ -557,7 +523,7 @@ typeDefinitions
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:14:38:06.600;
 	jadeMethodDefinitions
 		accounAdminBtn_click(btn: Button input) updating, number = 1001;
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:38:54.865;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:16:23:10.674;
 		customerAdminBtn_click(btn: Button input) updating, number = 1002;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:51:35.659;
 		importCustBtn_click(btn: Button input) updating, number = 1004;
@@ -570,47 +536,32 @@ typeDefinitions
 		importCustBtn_click = click of Button;
 		load = load of Form;
 	)
-	TestForm completeDefinition
-	(
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:15:13:35.398;
-	referenceDefinitions
-		msgButton:                     Button  number = 1, ordinal = 1;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:15:11:38.145;
-	jadeMethodDefinitions
-		load() updating, number = 1001;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:15:13:46.432;
-		msgButton_click(btn: Button input) updating, number = 1002;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:15:12:59.769;
-	eventMethodMappings
-		load = load of Form;
-		msgButton_click = click of Button;
-	)
 	TransactionView completeDefinition
 	(
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:58:11.635;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:17:41:23.137;
 	referenceDefinitions
+		balanceAfterLabel:             Label  number = 6, ordinal = 6;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
 		balanceField:                  TextBox  number = 10, ordinal = 10;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.777;
 		dateField:                     TextBox  number = 1, ordinal = 1;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.775;
 		dateLabel:                     Label  number = 2, ordinal = 2;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.775;
-		dateLabel_1:                   Label  number = 3, ordinal = 3;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.775;
-		dateLabel_1_1:                 Label  number = 4, ordinal = 4;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
-		dateLabel_1_1_1:               Label  number = 5, ordinal = 5;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
-		dateLabel_1_1_1_1:             Label  number = 6, ordinal = 6;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
 		myTransaction:                 Transaction  protected, number = 11, ordinal = 11;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:28:55.180;
 		payeeField:                    TextBox  number = 9, ordinal = 9;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.777;
+		payeeLabel:                    Label  number = 5, ordinal = 5;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
 		typeField:                     TextBox  number = 8, ordinal = 8;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
+		typeLabel:                     Label  number = 4, ordinal = 4;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
 		valueField:                    TextBox  number = 7, ordinal = 7;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.776;
+		valueLabel:                    Label  number = 3, ordinal = 3;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.775;
 	jadeMethodDefinitions
 		load() updating, number = 1001;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:51:28.757;
@@ -621,7 +572,7 @@ typeDefinitions
 	)
 	WithdrawDeposit completeDefinition
 	(
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:20:19.786;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:02:17.415;
 	referenceDefinitions
 		accountNameLabel:              Label  number = 10, ordinal = 10;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:12:11:24.703;
@@ -645,13 +596,13 @@ typeDefinitions
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:35:21.287;
 	jadeMethodDefinitions
 		depositBtn_click(btn: Button input) updating, number = 1003;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:02:00.408;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:19:08.995;
 		load() updating, number = 1002;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:12:15:32.772;
 		setAccount(account: BankAccount) updating, number = 1001;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:50:18.547;
 		withdrawBtn_click(btn: Button input) updating, number = 1004;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:15:05:46.995;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:19:56.911;
 	eventMethodMappings
 		depositBtn_click = click of Button;
 		load = load of Form;
@@ -803,8 +754,13 @@ btnOK_click
 btnOK_click(btn: Button input) updating;
 
 vars
-
+	accountE : AccountException;
 begin
+	on AccountException do app.genericExceptionHandler(exception, "Please specify type and name");
+	if self.typeSelect.listIndex = -1 or self.txtAccountName.text = "" then
+		create accountE transient;
+		raise accountE;
+	endif;
 	self.createAccount();
 	self.unloadForm();
 end;
@@ -829,6 +785,103 @@ begin
 		savsAccount.set(txtAccountName.text, cust);
 	endif;
 	commitTransaction;
+end;
+}
+	)
+	AccountSearch (
+	jadeMethodSources
+backBtn_click
+{
+backBtn_click(btn: Button input) updating;
+
+vars
+	form : OpeningScreen;
+begin
+	create form transient;
+	form.show();
+	self.unloadForm();
+end;
+}
+listOfAccounts_displayRow
+{
+listOfAccounts_displayRow(listbox: ListBox input; acc: BankAccount; lstIndex: Integer; bcontinue: Boolean io):String updating;
+
+vars
+
+begin
+	return acc.accountNumber.String & ", " & acc.accountName & " <- " & acc.myCustomer.getFullName;
+end;
+}
+load
+{
+load() updating;
+
+vars
+
+begin
+	self.listOfAccounts.displayCollection(
+	app.ourBank.allAccountsByNumber, 
+	true, 
+	ListBox.DisplayCollection_Forward, 
+	null, 
+	"");
+end;
+}
+search
+{
+search();
+
+vars
+	searchNum : Integer;
+	accArray : ObjectArray;
+	searchE : SearchException;
+begin
+	on SearchException do app.genericExceptionHandler(exception, "Please enter an account number to search");
+	if searchBar.text = "" then
+		create searchE transient;
+		raise searchE;
+	endif;
+	searchNum := searchBar.text.Integer;
+	accArray := app.ourBank.searchAccountNumber(searchNum);
+	self.listOfAccounts.clear();
+	self.listOfAccounts.displayCollection(accArray, false,
+	ListBox.DisplayCollection_Forward, null, "");
+end;
+}
+searchBtn_click
+{
+searchBtn_click(btn: Button input) updating;
+
+vars
+
+begin
+	on SearchException do app.genericExceptionHandler(exception, exception.extendedErrorText);
+	self.search();
+end;
+}
+viewBtn_click
+{
+viewBtn_click(btn: Button input) updating;
+
+vars
+	form : AccountViewFromSearch;
+	acc : BankAccount;
+	cust : Customer;
+	searchE : SearchException;
+begin
+	on SearchException do app.genericExceptionHandler(exception, "Make sure you've selected an account");
+	if listOfAccounts.listObject.BankAccount = null then
+		create searchE transient;
+		raise searchE;
+	endif;
+	acc := listOfAccounts.listObject.BankAccount;
+	cust := acc.myCustomer;
+	create form transient;
+	form.myAccount := acc;
+	form.myCustomer := cust;
+	form.show();
+	self.unloadForm();
+	
 end;
 }
 	)
@@ -907,6 +960,37 @@ begin
 	ListBox.DisplayCollection_Reversed, null, '');
 end;
 }
+search
+{
+search();
+
+vars
+	searchQuery : String;
+	transactionArray : ObjectArray;
+	searchE : SearchException;
+begin
+	on SearchException do app.genericExceptionHandler(exception, "Please enter a payee/particular to search");
+	if searchBar.text = "" then
+		create searchE transient;
+		raise searchE;
+	endif;
+	searchQuery := searchBar.text;
+	transactionArray := self.myAccount.searchTransactions(searchQuery);
+	self.accountViewListBox.clear();
+	self.accountViewListBox.displayCollection(transactionArray, false,
+	ListBox.DisplayCollection_Forward, null, "");
+end;
+}
+searchBtn_click
+{
+searchBtn_click(btn: Button input) updating;
+
+vars
+
+begin
+	self.search();
+end;
+}
 viewTransactionBtn_click
 {
 viewTransactionBtn_click(btn: Button input) updating;
@@ -936,6 +1020,21 @@ begin
 	wDForm := create WithdrawDeposit transient;
 	wDForm.setAccount(self.myAccount);
 	wDForm.show();
+end;
+}
+	)
+	AccountViewFromSearch (
+	jadeMethodSources
+backBtn_click
+{
+backBtn_click(btn: Button input) updating;
+
+vars
+	form : AccountSearch;
+begin
+	create form transient;
+	form.show();
+	self.unloadForm();
 end;
 }
 	)
@@ -1130,85 +1229,6 @@ begin
 end;
 }
 	)
-	CustomerList (
-	jadeMethodSources
-btnDisplay_click
-{
-btnDisplay_click(btn: Button input) updating;
-
-vars
-	cust : Customer;
-	form : DisplayCustomer;
-
-begin
-	cust := self.lstCustomers.listObject.Customer;
-	
-	if cust = null then
-		app.msgBox("Select a customer to edit first, pretty please!", "No Customer Selected", MsgBox_OK_Only);
-	else
-		create form transient;
-		form.myCustomer := cust;
-		form.show();
-		
-	endif;
-end;
-}
-btnEdit_click
-{
-btnEdit_click(btn: Button input) updating;
-
-vars
-	cust: Customer;
-	form : CustomerEdit;
-
-begin
-	cust := self.lstCustomers.listObject.Customer;
-	
-	if cust = null then
-		app.msgBox("Select a customer to edit first, pretty please!" , "No customer selecter", MsgBox_OK_Only);
-	else
-		create form transient;
-		form.myCustomer := cust;
-		form.show();
-	
-	endif;
-end;
-}
-gotFocus
-{
-gotFocus(cntrl: Control input) updating;
-begin
-	// write currentSchema.name & "::" & self.name & "::" & method.name;
-	
-	// This is just one way of making sure the ListBox displays the latest changes to listed objects.
-	// It is a quick-and-dirty-good-enogh-for-now solution, but it would be more appropriate to use
-	// the mechanism of JADE notifications.
-	if self.lstCustomers.listIndex > 0 then
-		self.lstCustomers.refreshEntries(
-			self.lstCustomers.itemObject[self.lstCustomers.listIndex]);
-	endif;
-	
-end;
-}
-load
-{
-load() updating;
-
-begin
-	self.lstCustomers.displayCollection(app.ourBank.allCustomersByLastName, true,
-	ListBox.DisplayCollection_Forward, null, "");
-
-end;
-}
-lstCustomers_displayRow
-{
-lstCustomers_displayRow(listbox: ListBox input; cust: Customer; lstIndex: Integer; bcontinue: Boolean io):String updating;
-
-begin
-	return cust.getFullName();
-end;
-}
-	)
 	CustomerSearch (
 	jadeMethodSources
 addBtn_click
@@ -1297,8 +1317,17 @@ vars
 	search_str : String;
 	search_num : Integer;
 	custArray : ObjectArray;
-
+	searchE : SearchException;
 begin
+	on SearchException do app.genericExceptionHandler(exception, "Please enter both the search type and a search query");
+	if txtSearchBar.text = "" then
+		create searchE transient;
+		raise searchE;
+	endif;
+	if comBoxSearchType.listIndex = -1 then
+		create searchE transient;
+		raise searchE;
+	endif;
 	if comBoxSearchType.listIndex = 1 then
 		search_str := txtSearchBar.text;
 		custArray := app.ourBank.searchLastName(search_str);
@@ -1451,8 +1480,13 @@ vars
 	form : AccountView;
 	acc : BankAccount;
 	cust : Customer;
-
+	accE : AccountException;
 begin
+	on AccountException do app.genericExceptionHandler(exception, "Please select an account to view");
+	if accountView.listObject.BankAccount = null then
+		create accE transient;
+		raise accE;
+	endif;
 	acc := accountView.listObject.BankAccount;
 	cust := self.myCustomer;
 	create form transient;
@@ -1460,90 +1494,6 @@ begin
 	form.myCustomer := cust;
 	form.show();
 	self.unloadForm();
-end;
-}
-	)
-	DisplayCustomer (
-	jadeMethodSources
-btnAddAccnt_click
-{
-btnAddAccnt_click(btn: Button input) updating;
-
-vars
-	form : AccountDetails;
-	cust : Customer;
-
-begin
-	create form transient;
-	form.myCustomer := cust;
-	form.show();
-end;
-}
-btnEdit_click
-{
-btnEdit_click(btn: Button input) updating;
-
-vars
-	cust : Customer;
-	form : CustomerEdit;
-
-begin
-	cust := self.myCustomer;
-	
-	if cust = null then
-		app.msgBox("Select a customer to edit first, pretty please!", "No Customer Selected", MsgBox_OK_Only);
-	else
-		create form transient;
-		form.myCustomer := cust;
-		form.show();
-		
-	endif;
-end;
-}
-gotFocus
-{
-gotFocus(cntrl: Control input) updating;
-
-vars
-
-begin
-	updateDetails();
-end;
-}
-load
-{
-load() updating;
-
-vars
-	cust : Customer;
-
-begin
-	app.mdiFrame := MainMenu;
-	
-	cust := myCustomer;
-
-	self.custName.setPropertyValue("caption", "Name: " & myCustomer.getFullName());
-	self.custNumber.setPropertyValue("caption", "Number: " & myCustomer.getPropertyValue("number").String);
-	self.custPhone.setPropertyValue("caption", "Phone Number: " & myCustomer.getPropertyValue("phone").String);
-	self.custAddy.setPropertyValue("caption", "Address: " & myCustomer.getPropertyValue("streetAddress").String & 
-	" " & myCustomer.getPropertyValue("suburb").String & " " & myCustomer.getPropertyValue("city").String);
-	
-	self.custAccounts.displayCollection(cust.allBankAccounts, true,
-	ListBox.DisplayCollection_Forward, null, "");
-end;
-}
-updateDetails
-{
-updateDetails();
-
-vars
-
-begin
-	self.custName.setPropertyValue("caption", "Name: " & myCustomer.getFullName());
-	self.custNumber.setPropertyValue("caption", "Number: " & myCustomer.getPropertyValue("number").String);
-	self.custPhone.setPropertyValue("caption", "Phone Number: " & myCustomer.getPropertyValue("phone").String);
-	self.custAddy.setPropertyValue("caption", "Address: " & myCustomer.getPropertyValue("streetAddress").String & 
-	" " & myCustomer.getPropertyValue("suburb").String & " " & myCustomer.getPropertyValue("city").String);
 end;
 }
 	)
@@ -1617,6 +1567,7 @@ begin
 	
 	create form transient;
 	form.show();
+	self.unloadForm();
 
 end;
 }
@@ -1657,30 +1608,6 @@ begin
 end;
 }
 	)
-	TestForm (
-	jadeMethodSources
-load
-{
-load() updating;
-
-vars
-
-begin
-
-end;
-}
-msgButton_click
-{
-msgButton_click(btn: Button input) updating;
-
-vars
-
-begin
-	app.msgBox("Hello", "Swag", MsgBox_OK_Only);
-
-end;
-}
-	)
 	TransactionView (
 	jadeMethodSources
 load
@@ -1715,9 +1642,14 @@ depositBtn_click
 depositBtn_click(btn: Button input) updating;
 
 vars
-
+	transactionE : TransactionException;
 begin
-	self.myAccount.deposit(self.amountNumber.text.Decimal);
+	on TransactionException do app.genericExceptionHandler(exception, "Please enter a positive amount");
+	if self.amountNumber.text.Decimal < 1 then
+		create transactionE transient;
+		raise transactionE;
+	endif;
+	self.myAccount.deposit(self.amountNumber.text.Decimal, self.particularsField.text);
 	self.statusLine.caption := "Deposit of " & self.amountNumber.text.Decimal.currencyFormat & " successful!";
 end;
 }
@@ -1748,9 +1680,14 @@ withdrawBtn_click(btn: Button input) updating;
 vars
 	amount : Decimal[12];
 	withdrawText : String;
+	transactionE : TransactionException;
 begin
 	amount := self.amountNumber.text.Decimal;
-	
+	on TransactionException do app.genericExceptionHandler(exception, "Please enter a positive amount");
+	if amount < 1 then
+		create transactionE transient;
+		raise transactionE;
+	endif;
 	if self.particularsField.text <> '' then 
 		withdrawText := self.particularsField.text;
 	else
