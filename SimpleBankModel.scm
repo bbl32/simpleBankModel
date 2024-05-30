@@ -163,9 +163,9 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:03:48.079;
 	jadeMethodDefinitions
 		importXml(inputFile: String) number = 1002;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:12:48:40.916;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:14:31:42.900;
 		validateXML(account: BankAccount): String number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:58:47.817;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:14:48:40.923;
 	)
 	Customer completeDefinition
 	(
@@ -876,7 +876,10 @@ begin
 		commitTransaction;
 		
 		
-
+	else
+	xmlE := create XMLException();
+	xmlE.setMessage("Root element not <statement>");
+	raise xmlE;
 	endif;
 end;
 }
@@ -884,6 +887,12 @@ validateXML
 {
 validateXML(account : BankAccount) : String;
 // Generates and validates XML Statement of a particular customer's bank account
+constants
+	End_Point = "http://c141kn.canterbury.ac.nz/sbmxmlv";
+	Path = "uploadxml";
+	Bearer_Token = "7e95a54d-12ab-4d6c-8888-1a5ff4a4a249";
+	Data_Name = "data";
+	Content_Type = "application/xml";
 vars
 	xmlDoc : JadeXMLDocument;
 	statementElem, custElem, accountElem,  overdraftElem, transactionsElem, transactionElem, elmt: JadeXMLElement;
@@ -900,6 +909,9 @@ vars
 	accType : String;
 	overDraftLimit : Integer;
 	xmlException : XMLException;
+	client : JadeRestClient;
+	request : JadeRestRequest;
+	response : JadeRestResponse;
 begin
 	customerNumber := account.myCustomer.getNumber;
 	firstName := account.myCustomer.firstName;
@@ -953,8 +965,19 @@ begin
 		elmt.setText(transaction.getBalanceAfterTransaction.String);
 	endforeach;
 	
+	client := create JadeRestClient(End_Point) transient;
+	request := create JadeRestRequest(Path) transient;
+	request.addBearerToken(Bearer_Token);
+	request.dataFormat := JadeRestRequest.DataFormat_MultipartFormData;
+	
+	request.addMultipartFormData(Data_Name, "", Content_Type, xmlDoc.writeToString);
+	
+	create response transient;
+	client.post(request, response);
+	write "Request posted to " & response.url & " returned status " & 
+	response.statusCode.String & " and this data: " & response.data;
+	
 	return xmlDoc.writeToString;
-
 end;
 }
 	)
