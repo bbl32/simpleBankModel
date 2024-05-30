@@ -6,13 +6,14 @@ localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
 	setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.421;
 typeHeaders
-	SimpleBankModel subclassOf RootSchemaApp transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, highestOrdinal = 2, number = 2052;
+	SimpleBankModel subclassOf RootSchemaApp transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, highestOrdinal = 3, number = 2052;
 	Bank subclassOf Object highestSubId = 3, highestOrdinal = 6, number = 2058;
 	BankAccount subclassOf Object abstract, highestSubId = 1, highestOrdinal = 7, number = 2179;
 	CurrentAccount subclassOf BankAccount highestOrdinal = 1, number = 2183;
 	SavingsAccount subclassOf BankAccount highestOrdinal = 1, number = 2185;
 	BankXml subclassOf Object number = 2049;
 	Customer subclassOf Object highestSubId = 1, highestOrdinal = 10, number = 2054;
+	XMLException subclassOf NormalException transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2060;
 	GSimpleBankModel subclassOf RootSchemaGlobal transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2053;
 	Transaction subclassOf Object protected, highestOrdinal = 8, number = 2048;
 	Deposit subclassOf Transaction protected, number = 2050;
@@ -40,14 +41,21 @@ typeDefinitions
 	SimpleBankModel completeDefinition
 	(
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:06:15:47:30.570;
+	attributeDefinitions
+		errsFile:                      String[31] readonly, number = 3, ordinal = 3;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:11:14:21.059;
 	referenceDefinitions
 		bankXml:                       BankXml  readonly, number = 2, ordinal = 2;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:36:21.570;
 		ourBank:                       Bank  readonly, number = 1, ordinal = 1;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:19:14:04:41.264;
 	jadeMethodDefinitions
+		genericExceptionHandler(
+			exObj: Exception; 
+			message: String): Integer number = 1002;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:12:50:59.228;
 		initialize() updating, number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:36:44.513;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:11:16:42.324;
 	)
 	Bank completeDefinition
 	(
@@ -154,10 +162,10 @@ without inverses and requires manual maintenance.`
 	(
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:03:48.079;
 	jadeMethodDefinitions
-		importXml() number = 1002;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:23:59:10.385;
+		importXml(inputFile: String) number = 1002;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:12:48:40.916;
 		validateXML(account: BankAccount): String number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:18:22:03.736;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:58:47.817;
 	)
 	Customer completeDefinition
 	(
@@ -215,7 +223,22 @@ without inverses and requires manual maintenance.`
 			cStreetAddress: String; 
 			cSuburb: String; 
 			cCity: String) updating, number = 1003;
-		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:06:15:50:32.372;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:53:28.587;
+	)
+	Exception completeDefinition
+	(
+	)
+	NormalException completeDefinition
+	(
+	)
+	XMLException completeDefinition
+	(
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:47:26.888;
+	jadeMethodDefinitions
+		create() updating, protected, number = 1001;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:52:04.821;
+		setMessage(message: String) updating, number = 1002;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:52:28.762;
 	)
 	Global completeDefinition
 	(
@@ -249,7 +272,7 @@ without inverses and requires manual maintenance.`
 		testAutomatedInverseAssignment() updating, number = 1010;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
 		testImportXML() number = 1020;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:23:54:49.774;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:26:09.393;
 		testValidateXML() number = 1019;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:44:46.520;
 		transactionTesting() number = 1018;
@@ -425,10 +448,25 @@ databaseDefinitions
 		SimpleBankModel in "_usergui";
 		Transaction in "simplebankmodel";
 		TransactionsByDate in "simplebankmodel";
+		XMLException in "simplebankmodel";
 	)
 typeSources
 	SimpleBankModel (
 	jadeMethodSources
+genericExceptionHandler
+{
+genericExceptionHandler(exObj : Exception; message : String) : Integer;
+
+vars
+	errFile : String;
+begin
+	abortTransaction;
+	errFile := self.errsFile;
+	exObj.logSelf(errFile);
+	app.msgBox(message, "Error", MsgBox_OK_Only);
+	return Ex_Abort_Action;
+end;
+}
 initialize
 {
 /*
@@ -455,6 +493,13 @@ begin
 		create self.bankXml persistent;
 		commitTransaction;
 	endif;
+	
+	if self.errsFile = null then
+	beginTransaction;
+		self.errsFile := "C:\Jade2022\simpleBankLog";
+	commitTransaction;
+	endif;
+	
 end;
 }
 	)
@@ -713,10 +758,9 @@ end;
 	jadeMethodSources
 importXml
 {
-importXml();
+importXml(inputFile : String);
 
 vars
-	inputFile : String;
 	xmlDoc : JadeXMLDocument;
 	parser : JadeXMLDocumentParser;
 	rootElem, custElem, accountElem, transactionsElem, transactionElem : JadeXMLElement;
@@ -737,11 +781,13 @@ vars
 	tDate : String;
 	tPayee : String;
 	tBalance : String;
+	
+	xmlE: XMLException;
 begin
-	inputFile := "C:\account-statement.0.short.xml";
 	create xmlDoc transient;
 	create parser transient;
 	create transactions transient;
+
 	parser.parseDocumentFile(xmlDoc, inputFile);
 	rootElem := xmlDoc.rootElement;
 	if rootElem.tagName = "statement" then
@@ -772,6 +818,7 @@ begin
 		// write overdraftLimit;
 		
 		// Create customer etc 
+		
 		beginTransaction;
 		
 			cust := create Customer(
@@ -792,6 +839,10 @@ begin
 				account.set("Imported Savings Account", cust);
 			else
 				// raise exception
+				xmlE := create XMLException();
+				xmlE.setMessage("Incorrect account formatting");
+				delete cust;
+				raise xmlE;
 			endif;
 			
 			foreach transactionElem in (transactions) do
@@ -800,7 +851,10 @@ begin
 				tPayee := transactionElem.getElementByTagName("Payee").text;
 				tBalance := transactionElem.getElementByTagName("Balance").text;
 				if transactionElem.getElementByTagName("Payment") = null and transactionElem.getElementByTagName("Deposit") = null then
-					// raise exception
+					xmlE := create XMLException();
+					xmlE.setMessage("Incorrect transaction formatting");
+					delete cust;
+					raise xmlE;
 				elseif transactionElem.getElementByTagName("Payment") = null then
 					deposit := create Deposit(transactionElem.getElementByTagName("Deposit").text.Decimal, 
 					tBalance.Decimal, 
@@ -845,6 +899,7 @@ vars
 	transaction : Transaction;
 	accType : String;
 	overDraftLimit : Integer;
+	xmlException : XMLException;
 begin
 	customerNumber := account.myCustomer.getNumber;
 	firstName := account.myCustomer.firstName;
@@ -857,7 +912,11 @@ begin
 	transactions := account.getTransactions;
 	accType := account.class.name;
 	overDraftLimit := account.getOverdraft;
-	
+	if transactions.first = null then
+		xmlException := create XMLException() transient;
+		xmlException.setMessage("No transactions to process for fraud");
+		raise xmlException;
+	endif;
 	create xmlDoc transient;
 	statementElem := xmlDoc.addElement("statement");
 	custElem := statementElem.addElement("customer");
@@ -885,7 +944,7 @@ begin
 	foreach transaction in (transactions) do
 		transactionElem := transactionsElem.addElement("transaction");
 		elmt := transactionElem.addElement("Date");
-		elmt.setText(transaction.getDate.format("yyy-mm-dd"));
+		elmt.setText(transaction.getDate.format("yyy-MM-dd"));
 		elmt := transactionElem.addElement(transaction.class.name); // Payment or Deposit
 		elmt.setText(transaction.getValue.String);
 		elmt := transactionElem.addElement("Payee");
@@ -1027,6 +1086,29 @@ begin
 	self.streetAddress := cStreetAddress.trimBlanks();
 	self.suburb := cSuburb.trimBlanks();
 	self.city := cCity.trimBlanks();
+end;
+}
+	)
+	XMLException (
+	jadeMethodSources
+create
+{
+create() updating, protected;
+
+vars
+
+begin
+	self.errorCode := 64000;
+end;
+}
+setMessage
+{
+setMessage(message : String) updating;
+
+vars
+
+begin
+	self.extendedErrorText := message;
 end;
 }
 	)
@@ -1328,7 +1410,7 @@ vars
 
 begin
 	app.initialize();
-	app.bankXml.importXml();
+	app.bankXml.importXml("C:\account-statement.0.short.xml");
 end;
 }
 testValidateXML

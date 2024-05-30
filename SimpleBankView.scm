@@ -15,15 +15,16 @@ typeHeaders
 	AddAccount subclassOf AccountDetails transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2065;
 	EditAccount subclassOf AccountDetails transient, transientAllowed, subclassTransientAllowed, number = 2066;
 	AccountSearch subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 5, number = 2077;
-	AccountView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 19, number = 2072;
-	CustomerDetails subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 15, number = 2092;
+	AccountView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 21, number = 2072;
+	CustomerDetails subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 17, number = 2092;
 	CustomerAdd subclassOf CustomerDetails transient, transientAllowed, subclassTransientAllowed, number = 2186;
 	CustomerEdit subclassOf CustomerDetails transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2067;
 	CustomerList subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 3, number = 2068;
 	CustomerSearch subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 7, number = 2076;
-	CustomerView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 21, number = 2073;
+	CustomerView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 23, number = 2073;
 	DisplayCustomer subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 10, number = 2070;
-	MainMenu subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 7, number = 2069;
+	ImportXml subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 4, number = 2059;
+	MainMenu subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 8, number = 2069;
 	NoFraud subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 2, number = 2079;
 	OpeningScreen subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 5, number = 2074;
 	TestForm subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2071;
@@ -159,7 +160,7 @@ typeDefinitions
 	)
 	AccountView completeDefinition
 	(
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:16:53.358;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:42:32.437;
 	referenceDefinitions
 		accountNumView:                JadeRichText  number = 12, ordinal = 12;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:15:23:59.649;
@@ -208,10 +209,12 @@ typeDefinitions
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:09:32.076;
 		backBtn_click(btn: Button input) updating, number = 1002;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:59:31.956;
+		checkForFraudBtn_click(btn: Button input) updating, number = 1007;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:39:34.151;
 		gotFocus(cntrl: Control input) updating, number = 1004;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:53:02.753;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:56:30.060;
 		load() updating, number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:58:44.694;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:56:44.958;
 		viewTransactionBtn_click(btn: Button input) updating, number = 1006;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:45:03.489;
 		withdrawDepositBtn_click(btn: Button input) updating, number = 1003;
@@ -219,6 +222,7 @@ typeDefinitions
 	eventMethodMappings
 		accountViewListBox_displayRow = displayRow of ListBox;
 		backBtn_click = click of Button;
+		checkForFraudBtn_click = click of Button;
 		gotFocus = gotFocus of Form;
 		load = load of Form;
 		viewTransactionBtn_click = click of Button;
@@ -226,7 +230,7 @@ typeDefinitions
 	)
 	CustomerDetails completeDefinition
 	(
-		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:01:16:53:36.834;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:55:52.748;
 	referenceDefinitions
 		btnCancel:                     Button  number = 2, ordinal = 2;
 		setModifiedTimeStamp "cza14" "16.0.01" 2017:02:27:18:20:23.280;
@@ -262,11 +266,11 @@ typeDefinitions
 		btnCancel_click(btn: Button input) updating, number = 1001;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:14:12:25:02.455;
 		clearForm() number = 1002;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:14:13:42:44.577;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:56:39.199;
 		invalidInputExceptionHandler(exObj: Exception): Integer number = 1004;
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:03:28:12:51:09.165;
 		isFormFilled(): Boolean number = 1003;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:14:13:43:00.014;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:56:59.729;
 	eventMethodMappings
 		btnCancel_click = click of Button;
 	)
@@ -277,7 +281,7 @@ typeDefinitions
 		btnOK_click(btn: Button input) updating, number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:17:39:06.070;
 		createCustomer() number = 1001;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:20:42:32.870;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:58:01.633;
 		load() updating, number = 1003;
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:03:29:15:17:55.755;
 	eventMethodMappings
@@ -381,7 +385,7 @@ typeDefinitions
 	)
 	CustomerView completeDefinition
 	(
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:09:47:58.600;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:55:19.551;
 	referenceDefinitions
 		accountView:                   ListBox  number = 14, ordinal = 14;
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:14:59:27.368;
@@ -492,15 +496,35 @@ typeDefinitions
 		gotFocus = gotFocus of Form;
 		load = load of Form;
 	)
+	ImportXml completeDefinition
+	(
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:04:03.772;
+	referenceDefinitions
+		importBtn:                     Button  number = 4, ordinal = 4;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:04:03.772;
+		importPathField:               TextBox  number = 2, ordinal = 2;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:04:03.771;
+		importPathLabel:               Label  number = 3, ordinal = 3;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:04:03.771;
+		importXmlLabel:                Label  number = 1, ordinal = 1;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:04:03.771;
+	jadeMethodDefinitions
+		importBtn_click(btn: Button input) updating, number = 1001;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:14:04:16.641;
+	eventMethodMappings
+		importBtn_click = click of Button;
+	)
 	MainMenu completeDefinition
 	(
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:09:47:58.601;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:49:23.392;
 	referenceDefinitions
 		btnStart:                      Button  number = 7, ordinal = 7;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:48:29.345;
+		welcomeLabel:                  Label  number = 1, ordinal = 8;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:46:10.116;
 	jadeMethodDefinitions
 		btnStart_click(btn: Button input) updating, number = 1005;
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:49:38.929;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:47:58.803;
 		load() updating, number = 1001;
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:01:16:58:54.910;
 		menuCustomerAdd_click(menuItem: MenuItem input) updating, number = 1002;
@@ -536,11 +560,14 @@ typeDefinitions
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:38:54.865;
 		customerAdminBtn_click(btn: Button input) updating, number = 1002;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:51:35.659;
+		importCustBtn_click(btn: Button input) updating, number = 1004;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:12:09:10.503;
 		load() updating, number = 1003;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:43:50.438;
 	eventMethodMappings
 		accounAdminBtn_click = click of Button;
 		customerAdminBtn_click = click of Button;
+		importCustBtn_click = click of Button;
 		load = load of Form;
 	)
 	TestForm completeDefinition
@@ -560,7 +587,7 @@ typeDefinitions
 	)
 	TransactionView completeDefinition
 	(
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:50:16.742;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:58:11.635;
 	referenceDefinitions
 		balanceField:                  TextBox  number = 10, ordinal = 10;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:24:40.777;
@@ -834,6 +861,16 @@ begin
 	self.unloadForm();
 end;
 }
+checkForFraudBtn_click
+{
+checkForFraudBtn_click(btn: Button input) updating;
+
+vars
+
+begin
+	write app.bankXml.validateXML(self.myAccount);
+end;
+}
 gotFocus
 {
 gotFocus(cntrl: Control input) updating;
@@ -843,7 +880,7 @@ vars
 begin
 	self.nameView.text := myCustomer.getPropertyValue('firstName').String;
 	self.lastnameView.text := myCustomer.getPropertyValue('lastName').String;
-	self.balanceView.text := myAccount.getPropertyValue("balance").String;
+	self.balanceView.text := myAccount.getPropertyValue("balance").Decimal.currencyFormat;
 	self.customerNumView.text := myCustomer.getPropertyValue("number").String;
 	self.accountNumView.text := myAccount.getPropertyValue("accountNumber").String;
 	self.accountViewLabel.caption := "Account View: " & myAccount.accountName;
@@ -860,7 +897,7 @@ begin
 
 	self.nameView.text := myCustomer.getPropertyValue('firstName').String;
 	self.lastnameView.text := myCustomer.getPropertyValue('lastName').String;
-	self.balanceView.text := myAccount.getPropertyValue("balance").String;
+	self.balanceView.text := myAccount.getPropertyValue("balance").Decimal.currencyFormat;
 	self.customerNumView.text := myCustomer.getPropertyValue("number").String;
 	self.accountNumView.text := myAccount.getPropertyValue("accountNumber").String;
 	self.accountViewLabel.caption := "Account View: " & myAccount.accountName;
@@ -1509,6 +1546,22 @@ begin
 end;
 }
 	)
+	ImportXml (
+	jadeMethodSources
+importBtn_click
+{
+importBtn_click(btn: Button input) updating;
+
+vars
+
+begin
+	on Exception do app.genericExceptionHandler(exception, "An error occured while importing, please check you have entered the filename correctly and that it is of the right format");
+	app.bankXml.importXml(importPathField.text);
+	app.msgBox("Successful Import!", "Success", MsgBox_OK_Only);
+	self.unloadForm();
+end;
+}
+	)
 	MainMenu (
 	jadeMethodSources
 btnStart_click
@@ -1522,6 +1575,7 @@ begin
 	create form transient;
 	form.show();
 	btnStart.visible := false;
+	welcomeLabel.visible := false;
 
 end;
 }
@@ -1578,6 +1632,17 @@ begin
 	form.show();
 	self.unloadForm();
 
+end;
+}
+importCustBtn_click
+{
+importCustBtn_click(btn: Button input) updating;
+
+vars
+	form : ImportXml;
+begin
+	create form transient;
+	form.show();
 end;
 }
 load

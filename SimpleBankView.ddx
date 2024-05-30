@@ -1125,7 +1125,7 @@
 				<fontBold>false</fontBold>
 				<fontItalic>false</fontItalic>
 				<fontName>Tahoma</fontName>
-				<fontSize>14.25</fontSize>
+				<fontSize>12</fontSize>
 				<fontStrikethru>false</fontStrikethru>
 				<fontUnderline>false</fontUnderline>
 				<foreColor>-2147483640</foreColor>
@@ -1201,7 +1201,7 @@
 				<name>withdrawDepositBtn</name>
 				<parent name="AccountView" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>82</parentBottomOffset>
+				<parentBottomOffset>100</parentBottomOffset>
 				<parentRightOffset>388</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
@@ -1218,7 +1218,7 @@
 				<tabIndex>29</tabIndex>
 				<tabStop>true</tabStop>
 				<tag/>
-				<top>386</top>
+				<top>368</top>
 				<userScript/>
 				<value>false</value>
 				<visible>true</visible>
@@ -2010,21 +2010,21 @@
 				<foreColor>-2147483640</foreColor>
 				<form name="AccountView" />
 				<formatOut/>
-				<height>52</height>
+				<height>73</height>
 				<helpContextId>0</helpContextId>
 				<helpKeyword/>
 				<hyperlink/>
 				<ignoreSkin>false</ignoreSkin>
 				<index>0</index>
-				<left>210</left>
+				<left>135</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
 				<name>accountViewLabel</name>
 				<noPrefix>false</noPrefix>
 				<parent name="AccountView" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>432</parentBottomOffset>
-				<parentRightOffset>190</parentRightOffset>
+				<parentBottomOffset>413</parentBottomOffset>
+				<parentRightOffset>136</parentRightOffset>
 				<relativeHeight>false</relativeHeight>
 				<relativeLeft>false</relativeLeft>
 				<relativeTop>false</relativeTop>
@@ -2036,12 +2036,12 @@
 				<tabIndex>20</tabIndex>
 				<tabStop>false</tabStop>
 				<tag/>
-				<top>6</top>
+				<top>4</top>
 				<transparent>false</transparent>
 				<userScript/>
 				<visible>true</visible>
-				<width>288</width>
-				<wordWrap>false</wordWrap>
+				<width>417</width>
+				<wordWrap>true</wordWrap>
 			</Label>
 			<Button name="checkForFraudBtn">
 				<autoSize>1</autoSize>
@@ -3042,7 +3042,7 @@
 				<name>btnCancel</name>
 				<parent name="CustomerDetails" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>51</parentBottomOffset>
+				<parentBottomOffset>65</parentBottomOffset>
 				<parentRightOffset>57</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
@@ -3059,7 +3059,7 @@
 				<tabIndex>2</tabIndex>
 				<tabStop>true</tabStop>
 				<tag/>
-				<top>242</top>
+				<top>228</top>
 				<userScript/>
 				<value>false</value>
 				<visible>true</visible>
@@ -3103,7 +3103,7 @@
 				<name>btnOK</name>
 				<parent name="CustomerDetails" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>51</parentBottomOffset>
+				<parentBottomOffset>65</parentBottomOffset>
 				<parentRightOffset>155</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
@@ -3120,7 +3120,7 @@
 				<tabIndex>1</tabIndex>
 				<tabStop>true</tabStop>
 				<tag/>
-				<top>242</top>
+				<top>228</top>
 				<userScript/>
 				<value>false</value>
 				<visible>true</visible>
@@ -3983,7 +3983,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>78</left>
+		<left>212</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -4009,7 +4009,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>71</top>
+		<top>62</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -4237,7 +4237,7 @@
 				<name>editBtn</name>
 				<parent name="CustomerView" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>87</parentBottomOffset>
+				<parentBottomOffset>95</parentBottomOffset>
 				<parentRightOffset>431</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
@@ -4254,7 +4254,7 @@
 				<tabIndex>21</tabIndex>
 				<tabStop>true</tabStop>
 				<tag/>
-				<top>386</top>
+				<top>378</top>
 				<userScript/>
 				<value>false</value>
 				<visible>true</visible>
@@ -5753,6 +5753,317 @@
 		<menuList>
 		</menuList>
 	</Form>
+	<Form locale="5129" name="ImportXml">
+		<allowDocking>0</allowDocking>
+		<backBrush/>
+		<backBrushStyle>0</backBrushStyle>
+		<backColor>-2147483633</backColor>
+		<borderStyle>2</borderStyle>
+		<bubbleHelp/>
+		<caption>ImportXml</caption>
+		<clientHeight>345</clientHeight>
+		<clientWidth>492</clientWidth>
+		<clipControls>true</clipControls>
+		<controlBox>true</controlBox>
+		<description/>
+		<disableReason/>
+		<dragCursor/>
+		<enabled>true</enabled>
+		<height>384</height>
+		<helpContextId>0</helpContextId>
+		<helpKeyword/>
+		<icon/>
+		<ignoreSkin>false</ignoreSkin>
+		<ignoreSkinAllControls>false</ignoreSkinAllControls>
+		<left>440</left>
+		<maxButton>true</maxButton>
+		<mdiChild>2</mdiChild>
+		<mdiFrame>false</mdiFrame>
+		<mdiPinned>false</mdiPinned>
+		<minButton>true</minButton>
+		<minimumHeight>0</minimumHeight>
+		<minimumWidth>0</minimumWidth>
+		<mouseCursor/>
+		<mousePointer>0</mousePointer>
+		<name>ImportXml</name>
+		<paintedDialogBaseUnits>1048584</paintedDialogBaseUnits>
+		<printerForm>false</printerForm>
+		<scaleForm>true</scaleForm>
+		<scrollBars>0</scrollBars>
+		<secureForm>false</secureForm>
+		<securityLevelEnabled>0</securityLevelEnabled>
+		<securityLevelVisible>0</securityLevelVisible>
+		<showMdiCloseAllButPinnedMenu>false</showMdiCloseAllButPinnedMenu>
+		<showMdiCloseAllButThisMenu>false</showMdiCloseAllButThisMenu>
+		<showMdiCloseMenu>false</showMdiCloseMenu>
+		<showMdiDockMenu>false</showMdiDockMenu>
+		<showMdiFloatMenu>false</showMdiFloatMenu>
+		<showMdiPinMenu>false</showMdiPinMenu>
+		<skinCategoryName/>
+		<tag/>
+		<top>127</top>
+		<userScript/>
+		<visible>true</visible>
+		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
+		<webBrowserAutoRefreshURL/>
+		<webBrowserDisableBackButton>false</webBrowserDisableBackButton>
+		<webEncodingType/>
+		<webFileName/>
+		<width>508</width>
+		<windowState>0</windowState>
+		<controlList>
+			<Button name="importBtn">
+				<autoSize>1</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>0</borderStyle>
+				<bubbleHelp/>
+				<buttonPicture>0</buttonPicture>
+				<cancel>false</cancel>
+				<caption>Import</caption>
+				<default>false</default>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName/>
+				<fontSize>8.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483630</foreColor>
+				<form name="ImportXml" />
+				<height>42</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>163</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>importBtn</name>
+				<parent name="ImportXml" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>96</parentBottomOffset>
+				<parentRightOffset>163</parentRightOffset>
+				<picture/>
+				<pictureDisabled/>
+				<pictureDown/>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<style>0</style>
+				<tabIndex>4</tabIndex>
+				<tabStop>true</tabStop>
+				<tag/>
+				<top>207</top>
+				<userScript/>
+				<value>false</value>
+				<visible>true</visible>
+				<webFileName/>
+				<width>166</width>
+			</Button>
+			<Label name="importPathLabel">
+				<alignment>1</alignment>
+				<autoSize>true</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>0</borderStyle>
+				<bubbleHelp/>
+				<caption>Specify absolute filepath to XML file:</caption>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName>Tahoma</fontName>
+				<fontSize>9.75</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483640</foreColor>
+				<form name="ImportXml" />
+				<formatOut/>
+				<height>16</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<hyperlink/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>142</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>importPathLabel</name>
+				<noPrefix>false</noPrefix>
+				<parent name="ImportXml" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>218</parentBottomOffset>
+				<parentRightOffset>142</parentRightOffset>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<tabIndex>3</tabIndex>
+				<tabStop>false</tabStop>
+				<tag/>
+				<top>111</top>
+				<transparent>true</transparent>
+				<userScript/>
+				<visible>true</visible>
+				<width>208</width>
+				<wordWrap>false</wordWrap>
+			</Label>
+			<TextBox name="importPathField">
+				<alignment>0</alignment>
+				<autoTab>false</autoTab>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483643</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>2</borderStyle>
+				<bubbleHelp/>
+				<case>0</case>
+				<dataType>0</dataType>
+				<decimals>0</decimals>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName>Tahoma</fontName>
+				<fontSize>9.75</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483640</foreColor>
+				<form name="ImportXml" />
+				<formatOut/>
+				<height>37</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<hintBackColor>-2147483648</hintBackColor>
+				<hintForeColor>-2147483648</hintForeColor>
+				<hintText/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<integralHeight>false</integralHeight>
+				<left>41</left>
+				<maxLength>0</maxLength>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>importPathField</name>
+				<parent name="ImportXml" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>172</parentBottomOffset>
+				<parentRightOffset>42</parentRightOffset>
+				<passwordField>false</passwordField>
+				<readOnly>false</readOnly>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<scrollBars>0</scrollBars>
+				<scrollHorizontal>false</scrollHorizontal>
+				<scrollVertical>false</scrollVertical>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<selectionStyle>0</selectionStyle>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<tabIndex>2</tabIndex>
+				<tabStop>true</tabStop>
+				<tag/>
+				<text>C:\</text>
+				<textOffset>0</textOffset>
+				<top>136</top>
+				<userScript/>
+				<visible>true</visible>
+				<wantReturn>false</wantReturn>
+				<webInputType/>
+				<width>409</width>
+			</TextBox>
+			<Label name="importXmlLabel">
+				<alignment>1</alignment>
+				<autoSize>true</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>0</borderStyle>
+				<bubbleHelp/>
+				<caption>Import Customer via XML</caption>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName>Tahoma</fontName>
+				<fontSize>15.75</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483640</foreColor>
+				<form name="ImportXml" />
+				<formatOut/>
+				<height>25</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<hyperlink/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>127</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>importXmlLabel</name>
+				<noPrefix>false</noPrefix>
+				<parent name="ImportXml" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>291</parentBottomOffset>
+				<parentRightOffset>127</parentRightOffset>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<tabIndex>1</tabIndex>
+				<tabStop>false</tabStop>
+				<tag/>
+				<top>29</top>
+				<transparent>true</transparent>
+				<userScript/>
+				<visible>true</visible>
+				<width>238</width>
+				<wordWrap>false</wordWrap>
+			</Label>
+		</controlList>
+		<menuList>
+		</menuList>
+	</Form>
 	<Form locale="5129" name="MainMenu">
 		<allowDocking>0</allowDocking>
 		<backBrush/>
@@ -5761,21 +6072,21 @@
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
 		<caption>Simple Banking System</caption>
-		<clientHeight>510</clientHeight>
-		<clientWidth>1178</clientWidth>
+		<clientHeight>708</clientHeight>
+		<clientWidth>1310</clientWidth>
 		<clipControls>true</clipControls>
 		<controlBox>true</controlBox>
 		<description/>
 		<disableReason/>
 		<dragCursor/>
 		<enabled>true</enabled>
-		<height>549</height>
+		<height>747</height>
 		<helpContextId>0</helpContextId>
 		<helpKeyword/>
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>282</left>
+		<left>53</left>
 		<maxButton>true</maxButton>
 		<mdiChild>0</mdiChild>
 		<mdiFrame>true</mdiFrame>
@@ -5801,7 +6112,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>184</top>
+		<top>32</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -5809,9 +6120,67 @@
 		<webBrowserDisableBackButton>false</webBrowserDisableBackButton>
 		<webEncodingType/>
 		<webFileName/>
-		<width>1194</width>
+		<width>1326</width>
 		<windowState>0</windowState>
 		<controlList>
+			<Label name="welcomeLabel">
+				<alignment>1</alignment>
+				<autoSize>true</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>0</borderStyle>
+				<bubbleHelp/>
+				<caption>Welcome to MYBANK</caption>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName>Tahoma</fontName>
+				<fontSize>20.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483640</foreColor>
+				<form name="MainMenu" />
+				<formatOut/>
+				<height>33</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<hyperlink/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>529</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>welcomeLabel</name>
+				<noPrefix>false</noPrefix>
+				<parent name="MainMenu" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>414</parentBottomOffset>
+				<parentRightOffset>530</parentRightOffset>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<tabIndex>2</tabIndex>
+				<tabStop>false</tabStop>
+				<tag/>
+				<top>261</top>
+				<transparent>true</transparent>
+				<userScript/>
+				<visible>true</visible>
+				<width>251</width>
+				<wordWrap>false</wordWrap>
+			</Label>
 			<Button name="btnStart">
 				<autoSize>1</autoSize>
 				<backBrush/>
@@ -5832,25 +6201,25 @@
 				<focusForeColor>0</focusForeColor>
 				<fontBold>false</fontBold>
 				<fontItalic>false</fontItalic>
-				<fontName/>
-				<fontSize>8.25</fontSize>
+				<fontName>Tahoma</fontName>
+				<fontSize>12</fontSize>
 				<fontStrikethru>false</fontStrikethru>
 				<fontUnderline>false</fontUnderline>
 				<foreColor>-2147483630</foreColor>
 				<form name="MainMenu" />
-				<height>103</height>
+				<height>66</height>
 				<helpContextId>0</helpContextId>
 				<helpKeyword/>
 				<ignoreSkin>false</ignoreSkin>
 				<index>0</index>
-				<left>430</left>
+				<left>489</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
 				<name>btnStart</name>
 				<parent name="MainMenu" />
 				<parentAspect>0</parentAspect>
-				<parentBottomOffset>222</parentBottomOffset>
-				<parentRightOffset>564</parentRightOffset>
+				<parentBottomOffset>304</parentBottomOffset>
+				<parentRightOffset>490</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
 				<pictureDown/>
@@ -5866,12 +6235,12 @@
 				<tabIndex>1</tabIndex>
 				<tabStop>true</tabStop>
 				<tag/>
-				<top>185</top>
+				<top>338</top>
 				<userScript/>
 				<value>false</value>
 				<visible>true</visible>
 				<webFileName/>
-				<width>184</width>
+				<width>331</width>
 			</Button>
 		</controlList>
 		<menuList>
@@ -6511,7 +6880,7 @@
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
 		<left>308</left>
 		<maxButton>true</maxButton>
-		<mdiChild>0</mdiChild>
+		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
 		<mdiPinned>false</mdiPinned>
 		<minButton>true</minButton>
