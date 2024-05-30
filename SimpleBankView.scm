@@ -270,7 +270,7 @@ typeDefinitions
 	)
 	CustomerDetails completeDefinition
 	(
-		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:16:32:51.081;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:22:53:48.048;
 	referenceDefinitions
 		btnCancel:                     Button  number = 2, ordinal = 2;
 		setModifiedTimeStamp "cza14" "16.0.01" 2017:02:27:18:20:23.280;
@@ -311,6 +311,8 @@ typeDefinitions
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:03:28:12:51:09.165;
 		isFormFilled(): Boolean number = 1003;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:56:59.729;
+		isValid(): Boolean number = 1005;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:23:08:11.950;
 	eventMethodMappings
 		btnCancel_click = click of Button;
 	)
@@ -319,7 +321,7 @@ typeDefinitions
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:25:15:30:37.994;
 	jadeMethodDefinitions
 		btnOK_click(btn: Button input) updating, number = 1002;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:17:39:06.070;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:23:07:16.769;
 		createCustomer() number = 1001;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:58:01.633;
 		load() updating, number = 1003;
@@ -336,9 +338,9 @@ typeDefinitions
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:14:13:26:08.501;
 	jadeMethodDefinitions
 		btnOK_click(btn: Button input) updating, number = 1003;
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:56:45.629;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:23:09:52.066;
 		load() updating, number = 1001;
-		setModifiedTimeStamp "cza14" "22.0.01" 2024:03:29:15:18:25.088;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:22:48:41.413;
 		updateCustomer() protected, number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:05:15:29:45.849;
 	eventMethodMappings
@@ -1135,6 +1137,21 @@ begin
 	return true;
 end;
 }
+isValid
+{
+isValid() : Boolean;
+
+vars
+	validator : JadeRegex;
+begin
+	if validator@isMatch(self.txtPhone.text, "^\+64-\d{2}-\d{3}-\d{4}$", false) then
+		return true;
+	else
+		self.statusLine.caption := "Phone must be in format +64-00-000-0000";
+		return false;
+	endif;
+end;
+}
 	)
 	CustomerAdd (
 	jadeMethodSources
@@ -1145,7 +1162,7 @@ btnOK_click(btn: Button input) updating;
 vars
 
 begin
-	if self.isFormFilled() then
+	if self.isFormFilled() and self.isValid() then
 		self.createCustomer();
 		self.clearForm();
 		self.statusLine.caption := "Customer successfully added!";
@@ -1198,7 +1215,7 @@ btnOK_click(btn: Button input) updating;
 
 begin
 	on Exception do self.invalidInputExceptionHandler(exception);	
-	if self.isFormFilled() then
+	if self.isFormFilled() and self.isValid() then
 	self.updateCustomer();
 	self.unloadForm();
 	endif;
@@ -1214,10 +1231,10 @@ begin
 
 	self.txtFirstName.text := myCustomer.firstName;
 	self.txtLastName.text := myCustomer.lastName;
-	self.txtPhone.text := myCustomer.getPropertyValue('phone').String;
-	self.txtStreetAddress.text := myCustomer.getPropertyValue('streetAddress').String;
-	self.txtSuburb.text := myCustomer.getPropertyValue('suburb').String;
-	self.txtCity.text := myCustomer.getPropertyValue('city').String;
+	self.txtPhone.text := myCustomer.getPhone;
+	self.txtStreetAddress.text := myCustomer.getAddress;
+	self.txtSuburb.text := myCustomer.getSuburb;
+	self.txtCity.text := myCustomer.getCity;
 	
 end;
 }

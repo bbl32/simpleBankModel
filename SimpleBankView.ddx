@@ -2817,7 +2817,7 @@
 				<borderStyle>2</borderStyle>
 				<bubbleHelp/>
 				<case>0</case>
-				<dataType>1</dataType>
+				<dataType>0</dataType>
 				<decimals>0</decimals>
 				<description/>
 				<disableReason/>
