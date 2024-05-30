@@ -6,12 +6,17 @@ localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
 	setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.421;
 typeHeaders
-	SimpleBankModel subclassOf RootSchemaApp transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2052;
+	SimpleBankModel subclassOf RootSchemaApp transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, highestOrdinal = 3, number = 2052;
 	Bank subclassOf Object highestSubId = 3, highestOrdinal = 7, number = 2058;
-	BankAccount subclassOf Object abstract, highestSubId = 1, highestOrdinal = 6, number = 2179;
+	BankAccount subclassOf Object abstract, highestSubId = 1, highestOrdinal = 7, number = 2179;
 	CurrentAccount subclassOf BankAccount highestOrdinal = 1, number = 2183;
 	SavingsAccount subclassOf BankAccount highestOrdinal = 1, number = 2185;
+	BankXml subclassOf Object number = 2049;
 	Customer subclassOf Object highestSubId = 1, highestOrdinal = 10, number = 2054;
+	AccountException subclassOf NormalException transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2080;
+	SearchException subclassOf NormalException transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2062;
+	TransactionException subclassOf NormalException transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2075;
+	XMLException subclassOf NormalException transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2060;
 	GSimpleBankModel subclassOf RootSchemaGlobal transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2053;
 	Transaction subclassOf Object protected, highestOrdinal = 8, number = 2048;
 	Deposit subclassOf Transaction protected, number = 2050;
@@ -39,12 +44,21 @@ typeDefinitions
 	SimpleBankModel completeDefinition
 	(
 		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:06:15:47:30.570;
+	attributeDefinitions
+		errsFile:                      String[31] readonly, number = 3, ordinal = 3;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:11:14:21.059;
 	referenceDefinitions
+		bankXml:                       BankXml  readonly, number = 2, ordinal = 2;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:36:21.570;
 		ourBank:                       Bank  readonly, number = 1, ordinal = 1;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:19:14:04:41.264;
 	jadeMethodDefinitions
+		genericExceptionHandler(
+			exObj: Exception; 
+			message: String): Integer number = 1002;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:12:50:59.228;
 		initialize() updating, number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:16:14:42.451;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:11:16:42.324;
 	)
 	Bank completeDefinition
 	(
@@ -56,7 +70,7 @@ typeDefinitions
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:14:35:17.460;
 	referenceDefinitions
 		allAccountsByNumber:           BankAccountByNumberDict  implicitMemberInverse, readonly, subId = 1, number = 2, ordinal = 7;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:15:36:50.520;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:16:47:38.830;
 		allCustomersByLastName:        CustomerByLastNameDict  implicitMemberInverse, readonly, subId = 2, number = 4, ordinal = 5;
 		documentationText
 `WARNING! The Bank (allCustomers) to Customer (myBank) relationship was defined
@@ -72,7 +86,7 @@ without inverses and requires manual maintenance.`
 		nextCustomerNumber(): Integer updating, number = 1001;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:14:35:17.444;
 		searchAccountNumber(search_Num: Integer): ObjectArray number = 1006;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:16:01:13.279;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:16:50:31.848;
 		searchLastName(search_String: String): ObjectArray number = 1004;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:15:27:57.676;
 		searchNumber(search_Num: Integer): ObjectArray number = 1005;
@@ -93,6 +107,8 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:10:19:44.756;
 		balance:                       Decimal[12,2] protected, number = 3, ordinal = 3;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:21:34.509;
+		overDraftLimit:                Integer protected, number = 7, ordinal = 7;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:39:52.258;
 		transactionNumber:             Integer protected, number = 6, ordinal = 6;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:14:19:43.794;
 	referenceDefinitions
@@ -104,21 +120,29 @@ without inverses and requires manual maintenance.`
 		canWithdraw(amount: Decimal): Boolean abstract, number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:19:36.642;
 		create(number: Integer) updating, number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:14:29:37.201;
-		deposit(amount: Decimal) updating, number = 1003;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:16:27:59.735;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:16:49:48.757;
+		deposit(
+			amount: Decimal; 
+			payee: String) updating, number = 1003;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:07:54.084;
 		getAccountName(): String number = 1007;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:41:53.382;
 		getBalance(): Decimal number = 1004;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:22:44.932;
+		getOverdraft(): Integer number = 1011;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:39:40.188;
 		getTransactions(): TransactionsByDate number = 1008;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:53:58.564;
 		nextTransactionNumber(): Integer updating, number = 1009;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:14:21:09.507;
+		searchTransactions(searchQuery: String): ObjectArray number = 1012;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:19:08:13.410;
 		set(
 			accName: String; 
 			newMyCustomer: Customer) updating, number = 1006;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:14:58:52.479;
+		setOverdraft(amount: Integer) updating, number = 1010;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:39:30.625;
 		withdraw(
 			amount: Decimal; 
 			payee: String) updating, number = 1005;
@@ -126,15 +150,12 @@ without inverses and requires manual maintenance.`
 	)
 	CurrentAccount completeDefinition
 	(
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:10:20:08.021;
-	attributeDefinitions
-		overdraftLimit:                Integer readonly, number = 1, ordinal = 1;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:09:08.876;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:33:18.731;
 	jadeMethodDefinitions
 		canWithdraw(amount: Decimal): Boolean number = 1002;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:39:12.871;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:34:36.341;
 		create(number: Integer) updating, number = 1001;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:15:39:17.087;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:34:57.475;
 	)
 	SavingsAccount completeDefinition
 	(
@@ -146,7 +167,16 @@ without inverses and requires manual maintenance.`
 		canWithdraw(amount: Decimal): Boolean number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:38:23.262;
 		create(number: Integer) updating, number = 1001;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:15:39:33.281;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:36:24.288;
+	)
+	BankXml completeDefinition
+	(
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:03:48.079;
+	jadeMethodDefinitions
+		importXml(inputFile: String) number = 1002;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:09:22.242;
+		validateXML(account: BankAccount): String number = 1001;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:15:17:20.802;
 	)
 	Customer completeDefinition
 	(
@@ -182,9 +212,21 @@ without inverses and requires manual maintenance.`
 			cSuburb: String; 
 			cCity: String; 
 			cCreditScore: Integer) updating, number = 1001;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:15:28:44.056;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:21:42.194;
+		getAddress(): String number = 1007;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:24:13.514;
+		getCity(): String number = 1009;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:25:09.336;
+		getCredit(): Integer number = 1005;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:22:51.997;
 		getFullName(): String number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:20:57:26.171;
+		getNumber(): Integer number = 1004;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:22:18.399;
+		getPhone(): String number = 1006;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:23:28.595;
+		getSuburb(): String number = 1008;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:24:41.401;
 		setProps(
 			cFirstName: String; 
 			cLastName: String; 
@@ -192,7 +234,45 @@ without inverses and requires manual maintenance.`
 			cStreetAddress: String; 
 			cSuburb: String; 
 			cCity: String) updating, number = 1003;
-		setModifiedTimeStamp "cza14" "22.0.01" 2024:05:06:15:50:32.372;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:13:53:28.587;
+	)
+	Exception completeDefinition
+	(
+	)
+	NormalException completeDefinition
+	(
+	)
+	AccountException completeDefinition
+	(
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:46:38.764;
+	jadeMethodDefinitions
+		create() updating, protected, number = 1001;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:46:57.164;
+	)
+	SearchException completeDefinition
+	(
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:17:23:47.507;
+	jadeMethodDefinitions
+		create() updating, protected, number = 1001;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:16:52:16.477;
+		setMessage(message: String) updating, number = 1002;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:17:23:44.478;
+	)
+	TransactionException completeDefinition
+	(
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:16:12.494;
+	jadeMethodDefinitions
+		create() updating, protected, number = 1001;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:16:37.524;
+	)
+	XMLException completeDefinition
+	(
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:47:26.888;
+	jadeMethodDefinitions
+		create() updating, protected, number = 1001;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:52:04.821;
+		setMessage(message: String) updating, number = 1002;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:52:28.762;
 	)
 	Global completeDefinition
 	(
@@ -218,15 +298,19 @@ without inverses and requires manual maintenance.`
 		iterationWithIterator() number = 1014;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
 		makeTransaction() updating, number = 1008;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:35:41.876;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:09:35.631;
 		purgeAccounts() updating, number = 1011;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:10:28:36.294;
 		purgeCustomers() number = 1007;
-		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:37:17.472;
 		testAutomatedInverseAssignment() updating, number = 1010;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
+		testImportXML() number = 1020;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:26:09.393;
+		testValidateXML() number = 1019;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:09:47.046;
 		transactionTesting() number = 1018;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:31:50.299;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:10:11.727;
 		workingDecimalType() number = 1003;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:11:12:50:24.635;
 		workingWithDatesAndTimes() number = 1005;
@@ -267,9 +351,13 @@ without inverses and requires manual maintenance.`
 		getPayee(): String number = 1004;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:56:33.337;
 		getTransactionDetails(): String number = 1006;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:11:37:30.303;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:00:52:52.887;
 		getValue(): Decimal number = 1005;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:57:42.710;
+		setDate(date: Date) updating, number = 1007;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:23:34:58.726;
+		setPayee(payee: String) updating, number = 1008;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:23:37:42.396;
 	)
 	Deposit completeDefinition
 	(
@@ -277,9 +365,10 @@ without inverses and requires manual maintenance.`
 	jadeMethodDefinitions
 		create(
 			value: Decimal; 
+			payee: String; 
 			balanceAfterTransaction: Decimal; 
 			account: BankAccount) updating, number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:58:06.505;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:05:04.135;
 	)
 	Payment completeDefinition
 	(
@@ -372,15 +461,17 @@ databaseDefinitions
 	databaseFileDefinitions
 		"simplebankaccount" number = 64;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:10:18:08.973;
-		"simplebankcustomer" number = 55;
+		"simplebankcustomer" number = 53;
 		setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:39:06.027;
-		"simplebankmodel" number = 54;
+		"simplebankmodel" number = 52;
 		setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.457;
 	defaultFileDefinition "simplebankmodel";
 	classMapDefinitions
+		AccountException in "simplebankmodel";
 		Bank in "simplebankmodel";
 		BankAccount in "simplebankaccount";
 		BankAccountByNumberDict in "simplebankaccount";
+		BankXml in "simplebankmodel";
 		CurrentAccount in "simplebankaccount";
 		Customer in "simplebankcustomer";
 		CustomerByLastNameDict in "simplebankcustomer";
@@ -390,13 +481,30 @@ databaseDefinitions
 		Payment in "simplebankmodel";
 		SSimpleBankModel in "_environ";
 		SavingsAccount in "simplebankaccount";
+		SearchException in "simplebankmodel";
 		SimpleBankModel in "_usergui";
 		Transaction in "simplebankmodel";
+		TransactionException in "simplebankmodel";
 		TransactionsByDate in "simplebankmodel";
+		XMLException in "simplebankmodel";
 	)
 typeSources
 	SimpleBankModel (
 	jadeMethodSources
+genericExceptionHandler
+{
+genericExceptionHandler(exObj : Exception; message : String) : Integer;
+
+vars
+	errFile : String;
+begin
+	abortTransaction;
+	errFile := self.errsFile;
+	exObj.logSelf(errFile);
+	app.msgBox(message, "Error", MsgBox_OK_Only);
+	return Ex_Abort_Action;
+end;
+}
 initialize
 {
 /*
@@ -415,6 +523,21 @@ begin
 		create self.ourBank persistent;
 		commitTransaction;
 	endif;
+	
+	self.bankXml := BankXml.firstInstance();
+	
+	if self.bankXml = null then
+		beginTransaction;
+		create self.bankXml persistent;
+		commitTransaction;
+	endif;
+	
+	if self.errsFile = null then
+	beginTransaction;
+		self.errsFile := "C:\Jade2022\simpleBankLog";
+	commitTransaction;
+	endif;
+	
 end;
 }
 	)
@@ -537,22 +660,25 @@ vars
 begin
 	self.accountNumber := number;
 	self.transactionNumber := 0;
+	app.ourBank.allAccountsByNumber.add(self);
 end;
 }
 deposit
 {
-deposit(amount: Decimal) updating;
+deposit(amount: Decimal; payee : String) updating;
 vars
 	deposit : Deposit;
+	tempPayee : String;
 begin
-	if amount >= 1000000000 then
-		app.msgBox("Can not deposit more than $1 Billion at a time", "Amount Error", MsgBox_OK_Only);
+	if payee = "" then
+		tempPayee := self.getAccountName;
 	else
-		beginTransaction;
-			self.balance := self.balance + amount;
-			deposit := create Deposit(amount, self.getBalance(), self) persistent;
-		commitTransaction;
+		tempPayee := payee;
 	endif;
+	beginTransaction;
+		self.balance := self.balance + amount;
+		deposit := create Deposit(amount, tempPayee, self.getBalance(), self) persistent;
+	commitTransaction;
 end;
 }
 getAccountName
@@ -576,6 +702,16 @@ begin
 
 end;
 }
+getOverdraft
+{
+getOverdraft() : Integer;
+
+vars
+
+begin
+	return self.overDraftLimit;
+end;
+}
 getTransactions
 {
 getTransactions() : TransactionsByDate;
@@ -597,6 +733,28 @@ begin
 	return self.transactionNumber;
 end;
 }
+searchTransactions
+{
+searchTransactions(searchQuery : String) : ObjectArray;
+
+vars
+	transactionArray : ObjectArray;
+	iter : Iterator;
+	transaction : Transaction;
+
+begin
+	create transactionArray transient;
+	iter := app.ourBank.allAccountsByNumber.createIterator();
+	foreach transaction in self.myTransactions do
+		if transaction.getPayee = searchQuery then
+			transactionArray.add(transaction);
+		endif;
+	endforeach;
+	
+	return transactionArray;
+
+end;
+}
 set
 {
 set(accName : String; newMyCustomer : Customer) updating;
@@ -604,6 +762,16 @@ set(accName : String; newMyCustomer : Customer) updating;
 begin
 	accountName := accName;
 	myCustomer := newMyCustomer;
+end;
+}
+setOverdraft
+{
+setOverdraft(amount : Integer) updating;
+
+vars
+
+begin
+	self.overDraftLimit := amount;
 end;
 }
 withdraw
@@ -633,7 +801,7 @@ vars
 
 begin
 	// Can't withdraw if amount is greater than the sum of balance and overdraft.
-	if amount > self.balance + self.overdraftLimit then
+	if amount > self.balance + self.getOverdraft then
 		return false;
 	else
 		return true;
@@ -648,9 +816,7 @@ create(number : Integer) ::super(number) updating;
 vars
 
 begin
-	self.overdraftLimit := BankAccount.Default_Overdraft_Limit;
-	
-	app.ourBank.allAccountsByNumber.add(self);
+	self.setOverdraft(BankAccount.Default_Overdraft_Limit);
 
 end;
 }
@@ -673,10 +839,233 @@ create(number : Integer) ::super(number) updating;
 
 begin
 	self.interestRate := BankAccount.Default_Interest_Rate;
+	self.setOverdraft(0);
+end;
+}
+	)
+	BankXml (
+	jadeMethodSources
+importXml
+{
+importXml(inputFile : String);
+
+vars
+	xmlDoc : JadeXMLDocument;
+	parser : JadeXMLDocumentParser;
+	rootElem, custElem, accountElem, transactionsElem, transactionElem : JadeXMLElement;
+    transactions : JadeXMLElementArray;
+	custFirstName : String;
+	custLastName : String;
+	custPhone : String;
+	custAddress : String;
+	custSuburb : String;
+	custCity : String;
+	custCredit : String;
+	accountType : String;
+	overdraftLimit : String;
+	cust : Customer;
+	account : BankAccount;
+	deposit : Deposit;
+	payment : Payment;
+	tDate : String;
+	tPayee : String;
+	tBalance : String;
 	
-	app.ourBank.allAccountsByNumber.add(self);
+	xmlE: XMLException;
+begin
+	create xmlDoc transient;
+	create parser transient;
+	create transactions transient;
 
-
+	parser.parseDocumentFile(xmlDoc, inputFile);
+	rootElem := xmlDoc.rootElement;
+	if rootElem.tagName = "statement" then
+		custElem := rootElem.getElementByTagName("customer");
+		accountElem := rootElem.getElementByTagName("account");
+		transactionsElem := accountElem.getElementByTagName("transactions");
+		transactionsElem.getElementsByTagName("transaction", transactions);
+		
+		custFirstName := custElem.getElementByTagName("first_name").text;
+		custLastName := custElem.getElementByTagName("last_name").text;
+		custPhone := custElem.getElementByTagName("phone").text;
+		custAddress := custElem.getElementByTagName("street_address").text;
+		custSuburb := custElem.getElementByTagName("suburb").text;
+		custCity := custElem.getElementByTagName("city").text;
+		custCredit := custElem.getElementByTagName("credit_score").text;
+		
+		accountType := accountElem.getAttributeByName("type").value;
+		overdraftLimit := accountElem.getElementByTagName("overdraft_limit").text;
+		
+		// write custFirstName;
+		// write custLastName;
+		// write custPhone;
+		// write custAddress;
+		// write custSuburb;
+		// write custCity;
+		// write custCredit;
+		// write accountType;
+		// write overdraftLimit;
+		
+		// Create customer etc 
+		
+		beginTransaction;
+		
+			cust := create Customer(
+			custFirstName, 
+			custLastName, 
+			custPhone, 
+			custAddress, 
+			custSuburb, 
+			custCity, 
+			custCredit.Integer
+			) persistent;
+			
+			if accountType = "CurrentAccount" then
+				account := create CurrentAccount(app.ourBank.nextAccountNumber);
+				account.set("Imported Current Account", cust);
+			elseif accountType = "SavingsAccount" then
+				account := create SavingsAccount(app.ourBank.nextAccountNumber);
+				account.set("Imported Savings Account", cust);
+			else
+				// raise exception
+				xmlE := create XMLException();
+				xmlE.setMessage("Incorrect account formatting");
+				delete cust;
+				raise xmlE;
+			endif;
+			
+			foreach transactionElem in (transactions) do
+				
+				tDate := transactionElem.getElementByTagName("Date").text;
+				tPayee := transactionElem.getElementByTagName("Payee").text;
+				tBalance := transactionElem.getElementByTagName("Balance").text;
+				if transactionElem.getElementByTagName("Payment") = null and transactionElem.getElementByTagName("Deposit") = null then
+					xmlE := create XMLException();
+					xmlE.setMessage("Incorrect transaction formatting");
+					delete cust;
+					raise xmlE;
+				elseif transactionElem.getElementByTagName("Payment") = null then
+					deposit := create Deposit(transactionElem.getElementByTagName("Deposit").text.Decimal, 
+					tPayee,
+					tBalance.Decimal, 
+					account
+					);
+					deposit.setDate(tDate.Date);
+					deposit.setPayee(tPayee);
+				else
+					payment := create Payment(transactionElem.getElementByTagName("Payment").text.Decimal, 
+					tPayee, 
+					tBalance.Decimal,
+					account
+					);
+					payment.setDate(tDate.Date);
+				endif;
+				
+			endforeach;
+		
+		commitTransaction;
+		
+		
+	else
+	xmlE := create XMLException();
+	xmlE.setMessage("Root element not <statement>");
+	raise xmlE;
+	endif;
+end;
+}
+validateXML
+{
+validateXML(account : BankAccount) : String;
+// Generates and validates XML Statement of a particular customer's bank account
+constants
+	End_Point = "http://c141kn.canterbury.ac.nz/sbmxmlv";
+	Path = "uploadxml";
+	Bearer_Token = "7e95a54d-12ab-4d6c-8888-1a5ff4a4a249";
+	Data_Name = "data";
+	Content_Type = "application/xml";
+vars
+	xmlDoc : JadeXMLDocument;
+	statementElem, custElem, accountElem,  overdraftElem, transactionsElem, transactionElem, elmt: JadeXMLElement;
+	customerNumber : Integer;
+	firstName : String;
+	lastName : String;
+	phone : String;
+	streetAddress : String;
+	suburb : String;
+	city : String;
+	creditScore : Integer;
+	transactions : TransactionsByDate;
+	transaction : Transaction;
+	accType : String;
+	overDraftLimit : Integer;
+	xmlException : XMLException;
+	client : JadeRestClient;
+	request : JadeRestRequest;
+	response : JadeRestResponse;
+begin
+	customerNumber := account.myCustomer.getNumber;
+	firstName := account.myCustomer.firstName.replace__(" ", "", false);
+	lastName := account.myCustomer.lastName.replace__(" ", "", false);
+	phone := account.myCustomer.getPhone.replace__(" ", "", false);
+	streetAddress := account.myCustomer.getAddress.replace__(" ", "", false);
+	suburb := account.myCustomer.getSuburb.replace__(" ", "", false);
+	city := account.myCustomer.getCity.replace__(" ", "", false);
+	creditScore := account.myCustomer.getCredit;
+	transactions := account.getTransactions;
+	accType := account.class.name;
+	overDraftLimit := account.getOverdraft;
+	if transactions.first = null then
+		xmlException := create XMLException() transient;
+		xmlException.setMessage("No transactions to process for fraud");
+		raise xmlException;
+	endif;
+	create xmlDoc transient;
+	statementElem := xmlDoc.addElement("statement");
+	custElem := statementElem.addElement("customer");
+	elmt := custElem.addElement("customer_number");
+	elmt.setText(customerNumber.String);
+	elmt := custElem.addElement("first_name");
+	elmt.setText(firstName);
+	elmt := custElem.addElement("last_name");
+	elmt.setText(lastName);
+	elmt := custElem.addElement("phone");
+	elmt.setText(phone);
+	elmt := custElem.addElement("street_address");
+	elmt.setText(streetAddress);
+	elmt := custElem.addElement("suburb");
+	elmt.setText(suburb);
+	elmt := custElem.addElement("city");
+	elmt.setText(city);
+	elmt := custElem.addElement("credit_score");
+	elmt.setText(creditScore.String);
+	accountElem := statementElem.addElement("account");
+	accountElem.addAttribute("type", accType);
+	overdraftElem := accountElem.addElement("overdraft_limit");
+	overdraftElem.setText(overDraftLimit.String);
+	transactionsElem := accountElem.addElement("transactions");
+	foreach transaction in (transactions) do
+		transactionElem := transactionsElem.addElement("transaction");
+		elmt := transactionElem.addElement("Date");
+		elmt.setText(transaction.getDate.format("yyy-MM-dd"));
+		elmt := transactionElem.addElement(transaction.class.name); // Payment or Deposit
+		elmt.setText(transaction.getValue.String);
+		elmt := transactionElem.addElement("Payee");
+		elmt.setText(transaction.getPayee);
+		elmt := transactionElem.addElement("Balance");
+		elmt.setText(transaction.getBalanceAfterTransaction.String);
+	endforeach;
+	
+	client := create JadeRestClient(End_Point) transient;
+	request := create JadeRestRequest(Path) transient;
+	request.addBearerToken(Bearer_Token);
+	request.dataFormat := JadeRestRequest.DataFormat_MultipartFormData;
+	
+	request.addMultipartFormData(Data_Name, account.getAccountName, Content_Type, xmlDoc.writeToString);
+	
+	create response transient;
+	client.post(request, response);
+	
+	return response.data;
 end;
 }
 	)
@@ -713,6 +1102,36 @@ begin
 
 end;
 }
+getAddress
+{
+getAddress() : String;
+
+vars
+
+begin
+	return self.streetAddress;
+end;
+}
+getCity
+{
+getCity() : String ;
+
+vars
+
+begin
+	return self.city;
+end;
+}
+getCredit
+{
+getCredit() : Integer;
+
+vars
+
+begin
+	return self.creditScore;
+end;
+}
 getFullName
 {
 getFullName() : String;
@@ -725,6 +1144,36 @@ begin
 	fullName := self.lastName & ', ' & self.firstName;
 	return fullName;
 
+end;
+}
+getNumber
+{
+getNumber() : Integer;
+
+vars
+
+begin
+	return self.number;
+end;
+}
+getPhone
+{
+getPhone() : String;
+
+vars
+
+begin
+	return self.phone;
+end;
+}
+getSuburb
+{
+getSuburb() : String;
+
+vars
+
+begin
+	return self.suburb;
 end;
 }
 setProps
@@ -748,6 +1197,78 @@ begin
 	self.streetAddress := cStreetAddress.trimBlanks();
 	self.suburb := cSuburb.trimBlanks();
 	self.city := cCity.trimBlanks();
+end;
+}
+	)
+	AccountException (
+	jadeMethodSources
+create
+{
+create() updating, protected;
+
+vars
+
+begin
+	self.errorCode := 64003;
+end;
+}
+	)
+	SearchException (
+	jadeMethodSources
+create
+{
+create() updating, protected;
+
+vars
+
+begin
+	self.errorCode := 64001;
+end;
+}
+setMessage
+{
+setMessage(message : String) updating;
+
+vars
+
+begin
+	self.extendedErrorText := message;
+end;
+}
+	)
+	TransactionException (
+	jadeMethodSources
+create
+{
+create() updating, protected;
+
+vars
+
+begin
+	self.errorCode := 64002;
+end;
+}
+	)
+	XMLException (
+	jadeMethodSources
+create
+{
+create() updating, protected;
+
+vars
+
+begin
+	self.errorCode := 64000;
+end;
+}
+setMessage
+{
+setMessage(message : String) updating;
+
+vars
+
+begin
+	self.extendedErrorText := message;
 end;
 }
 	)
@@ -934,7 +1455,7 @@ begin
 		account := create CurrentAccount(100) persistent;
 		account.set("Test Acc", customer);
 	commitTransaction;
-	account.deposit(10);
+	account.deposit(10, "");
 	
 	foreach transaction in account.getTransactions do
 		write transaction.getTransactionDetails;
@@ -972,8 +1493,10 @@ begin
 	beginTransaction;
 	// Customer.instances.purge();
 	Bank.firstInstance().allCustomersByLastName.purge();
+	Bank.firstInstance().allCustomersByNumber.purge();
 	// Reset customer number initial value.
 	Bank.firstInstance().setPropertyValue('lastCustomerNumber', 0);
+	BankXml.instances.purge();
 	commitTransaction;
 end;
 }
@@ -1039,6 +1562,49 @@ begin
 	endif;
 end;
 }
+testImportXML
+{
+testImportXML();
+
+vars
+
+begin
+	app.initialize();
+	app.bankXml.importXml("C:\account-statement.0.short.xml");
+end;
+}
+testValidateXML
+{
+testValidateXML();
+
+vars
+	currentAcc : CurrentAccount;
+	savAcc : SavingsAccount;
+	bankXml : BankXml;
+	result : String;
+	cust1 : Customer;
+	cust2 : Customer;
+begin
+	app.initialize();
+	bankXml := app.bankXml;
+	beginTransaction;
+	cust1 := create Customer("first", "last",
+								'+64-03-266-0400', '32 Dovdale Avenue',
+								'Upper Riccarton', 'Chisrtchurch',
+								500) persistent;
+	savAcc := create SavingsAccount(1001) persistent;
+	currentAcc := create CurrentAccount(1002) persistent;
+	savAcc.set("testSaving", cust1);
+	currentAcc.set("testCurrentAcc", cust2);
+	commitTransaction;
+	savAcc.deposit(20, "");
+	currentAcc.deposit(20, "");
+	
+	result := bankXml.validateXML(savAcc);
+	write result;
+end;
+	
+}
 transactionTesting
 {
 transactionTesting();
@@ -1048,7 +1614,7 @@ vars
 	acc : CurrentAccount;
 begin
 	acc := create CurrentAccount(100) transient;
-	deposit := create Deposit(10, 10, acc) transient;
+	deposit := create Deposit(10, "Deposit", 10, acc) transient;
 	write deposit.getTransactionDetails;
 end;
 }
@@ -1221,12 +1787,32 @@ begin
 	return self.value;
 end;
 }
+setDate
+{
+setDate(date : Date) updating;
+
+vars
+
+begin
+	self.date := date;
+end;
+}
+setPayee
+{
+setPayee(payee : String) updating;
+
+vars
+
+begin
+	self.payee := payee;
+end;
+}
 	)
 	Deposit (
 	jadeMethodSources
 create
 {
-create(value : Decimal; balanceAfterTransaction : Decimal; account : BankAccount) ::super(value, account.accountName, balanceAfterTransaction, account) updating;
+create(value : Decimal; payee : String; balanceAfterTransaction : Decimal; account : BankAccount) ::super(value, payee, balanceAfterTransaction, account) updating;
 
 vars
 
