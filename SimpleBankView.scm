@@ -487,7 +487,7 @@ typeDefinitions
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:10:04:03.771;
 	jadeMethodDefinitions
 		importBtn_click(btn: Button input) updating, number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:14:04:16.641;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:31:09:27:03.491;
 	eventMethodMappings
 		importBtn_click = click of Button;
 	)
@@ -1533,7 +1533,7 @@ importBtn_click(btn: Button input) updating;
 vars
 
 begin
-	on Exception do app.genericExceptionHandler(exception, "An error occured while importing, please check you have entered the filename correctly and that it is of the right format");
+	on Exception do app.genericExceptionHandler(exception, "An error occured while importing, please check the file path and that the xml file is of the right format");
 	app.bankXml.importXml(importPathField.text);
 	app.msgBox("Successful Import!", "Success", MsgBox_OK_Only);
 	self.unloadForm();

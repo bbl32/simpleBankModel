@@ -174,7 +174,7 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:03:48.079;
 	jadeMethodDefinitions
 		importXml(inputFile: String) number = 1002;
-		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:09:22.242;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:31:09:29:33.260;
 		validateXML(account: BankAccount): String number = 1001;
 		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:15:17:20.802;
 	)
@@ -300,9 +300,9 @@ without inverses and requires manual maintenance.`
 		makeTransaction() updating, number = 1008;
 		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:09:35.631;
 		purgeAccounts() updating, number = 1011;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:10:28:36.294;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:31:09:23:08.050;
 		purgeCustomers() number = 1007;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:19:37:17.472;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:31:09:12:18.784;
 		testAutomatedInverseAssignment() updating, number = 1010;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.277;
 		testImportXML() number = 1020;
@@ -870,7 +870,7 @@ vars
 	tDate : String;
 	tPayee : String;
 	tBalance : String;
-	
+	validator : JadeRegex;
 	xmlE: XMLException;
 begin
 	create xmlDoc transient;
@@ -888,6 +888,10 @@ begin
 		custFirstName := custElem.getElementByTagName("first_name").text;
 		custLastName := custElem.getElementByTagName("last_name").text;
 		custPhone := custElem.getElementByTagName("phone").text;
+		if not validator@isMatch(custPhone, "^\+64-\d{2}-\d{3}-\d{4}$", false) then
+			create xmlE transient;
+			raise xmlE;
+		endif;
 		custAddress := custElem.getElementByTagName("street_address").text;
 		custSuburb := custElem.getElementByTagName("suburb").text;
 		custCity := custElem.getElementByTagName("city").text;
@@ -1482,6 +1486,7 @@ begin
 	
 	// Reset account number initial value.
 	Bank.firstInstance().setPropertyValue('lastAccountNumber', 0);
+	Bank.firstInstance().allAccountsByNumber.purge();
 	commitTransaction;
 end;
 }
