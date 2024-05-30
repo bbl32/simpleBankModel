@@ -447,7 +447,7 @@ typeDefinitions
 			acc: BankAccount; 
 			lstIndex: Integer; 
 			bcontinue: Boolean io): String updating, number = 1005;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:12:04:17.215;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:19:36:56.905;
 		addAccBtn_click(btn: Button input) updating, number = 1004;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:13:37:53.302;
 		backBtn_click(btn: Button input) updating, number = 1003;
@@ -1376,7 +1376,7 @@ accountView_displayRow(listbox: ListBox input; acc: BankAccount; lstIndex: Integ
 vars
 
 begin
-	return acc.getAccountName;
+	return acc.accountNumber.String & " - " & acc.getAccountName;
 end;
 }
 addAccBtn_click
