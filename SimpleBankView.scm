@@ -236,7 +236,7 @@ typeDefinitions
 		backBtn_click(btn: Button input) updating, number = 1002;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:59:31.956;
 		checkForFraudBtn_click(btn: Button input) updating, number = 1007;
-		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:15:13:42.927;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:19:45:13.955;
 		gotFocus(cntrl: Control input) updating, number = 1004;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:56:30.060;
 		load() updating, number = 1001;
@@ -920,9 +920,19 @@ checkForFraudBtn_click(btn: Button input) updating;
 
 vars
 	result : String;
+	transactionE : TransactionException;
 begin
+	on TransactionException do app.genericExceptionHandler(exception, "There are no transactions to check via fraud detection, please try again later");
+	if self.myAccount.getTransactions.first = null then
+		create transactionE transient;
+		raise transactionE;
+	endif;
 	result := app.bankXml.validateXML(self.myAccount);
+	if result = null or result = "" then
+	app.msgBox("Analysis results: " & "Data transfer failed, try again", "Fraud test results", MsgBox_OK_Only);
+	else
 	app.msgBox("Analysis results: " & result, "Fraud test results", MsgBox_OK_Only);
+	endif;
 end;
 }
 gotFocus
