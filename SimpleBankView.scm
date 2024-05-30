@@ -1,12 +1,12 @@
-﻿jadeVersionNumber "22.0.03";
+﻿jadeVersionNumber "22.0.01";
 schemaDefinition
-SimpleBankView subschemaOf SimpleBankModel completeDefinition;
+SimpleBankView subschemaOf SimpleBankModel completeDefinition, patchVersioningEnabled = false;
 	setModifiedTimeStamp "cza14" "16.0.01" 2017:02:24:18:50:00.343;
 localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
 	setModifiedTimeStamp "cza14" "22.0.03" 2024:03:13:16:39:52.846;
 	1033 "English (United States)" _cloneOf 5129;
-	setModifiedTimeStamp "<unknown>" "" 2024:05:28:12:23:19;
+	setModifiedTimeStamp "<unknown>" "" 2024:05:30:14:53:29;
 typeHeaders
 	SimpleBankView subclassOf SimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2088;
 	GSimpleBankView subclassOf GSimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2089;
@@ -210,7 +210,7 @@ typeDefinitions
 		backBtn_click(btn: Button input) updating, number = 1002;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:14:59:31.956;
 		checkForFraudBtn_click(btn: Button input) updating, number = 1007;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:39:34.151;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:15:13:42.927;
 		gotFocus(cntrl: Control input) updating, number = 1004;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:09:56:30.060;
 		load() updating, number = 1001;
@@ -866,9 +866,10 @@ checkForFraudBtn_click
 checkForFraudBtn_click(btn: Button input) updating;
 
 vars
-
+	result : String;
 begin
-	write app.bankXml.validateXML(self.myAccount);
+	result := app.bankXml.validateXML(self.myAccount);
+	app.msgBox("Analysis results: " & result, "Fraud test results", MsgBox_OK_Only);
 end;
 }
 gotFocus

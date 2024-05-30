@@ -1,6 +1,6 @@
-﻿jadeVersionNumber "22.0.03";
+﻿jadeVersionNumber "22.0.01";
 schemaDefinition
-SimpleBankModel subschemaOf RootSchema completeDefinition;
+SimpleBankModel subschemaOf RootSchema completeDefinition, patchVersioningEnabled = false;
 	setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.455;
 localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
@@ -165,7 +165,7 @@ without inverses and requires manual maintenance.`
 		importXml(inputFile: String) number = 1002;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:14:31:42.900;
 		validateXML(account: BankAccount): String number = 1001;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:14:48:40.923;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:15:17:20.802;
 	)
 	Customer completeDefinition
 	(
@@ -914,12 +914,12 @@ vars
 	response : JadeRestResponse;
 begin
 	customerNumber := account.myCustomer.getNumber;
-	firstName := account.myCustomer.firstName;
-	lastName := account.myCustomer.lastName;
-	phone := account.myCustomer.getPhone;
-	streetAddress := account.myCustomer.getAddress;
-	suburb := account.myCustomer.getSuburb;
-	city := account.myCustomer.getCity;
+	firstName := account.myCustomer.firstName.replace__(" ", "", false);
+	lastName := account.myCustomer.lastName.replace__(" ", "", false);
+	phone := account.myCustomer.getPhone.replace__(" ", "", false);
+	streetAddress := account.myCustomer.getAddress.replace__(" ", "", false);
+	suburb := account.myCustomer.getSuburb.replace__(" ", "", false);
+	city := account.myCustomer.getCity.replace__(" ", "", false);
 	creditScore := account.myCustomer.getCredit;
 	transactions := account.getTransactions;
 	accType := account.class.name;
@@ -970,14 +970,12 @@ begin
 	request.addBearerToken(Bearer_Token);
 	request.dataFormat := JadeRestRequest.DataFormat_MultipartFormData;
 	
-	request.addMultipartFormData(Data_Name, "", Content_Type, xmlDoc.writeToString);
+	request.addMultipartFormData(Data_Name, account.getAccountName, Content_Type, xmlDoc.writeToString);
 	
 	create response transient;
 	client.post(request, response);
-	write "Request posted to " & response.url & " returned status " & 
-	response.statusCode.String & " and this data: " & response.data;
 	
-	return xmlDoc.writeToString;
+	return response.data;
 end;
 }
 	)
