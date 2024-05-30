@@ -7,7 +7,7 @@ localeDefinitions
 	setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.421;
 typeHeaders
 	SimpleBankModel subclassOf RootSchemaApp transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2052;
-	Bank subclassOf Object highestSubId = 3, highestOrdinal = 6, number = 2058;
+	Bank subclassOf Object highestSubId = 3, highestOrdinal = 7, number = 2058;
 	BankAccount subclassOf Object abstract, highestSubId = 1, highestOrdinal = 6, number = 2179;
 	CurrentAccount subclassOf BankAccount highestOrdinal = 1, number = 2183;
 	SavingsAccount subclassOf BankAccount highestOrdinal = 1, number = 2185;
@@ -55,6 +55,8 @@ typeDefinitions
 		lastCustomerNumber:            Integer protected, number = 1, ordinal = 1;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:14:35:17.460;
 	referenceDefinitions
+		allAccountsByNumber:           BankAccountByNumberDict  implicitMemberInverse, readonly, subId = 1, number = 2, ordinal = 7;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:15:36:50.520;
 		allCustomersByLastName:        CustomerByLastNameDict  implicitMemberInverse, readonly, subId = 2, number = 4, ordinal = 5;
 		documentationText
 `WARNING! The Bank (allCustomers) to Customer (myBank) relationship was defined
@@ -69,6 +71,8 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:55:24.978;
 		nextCustomerNumber(): Integer updating, number = 1001;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:14:35:17.444;
+		searchAccountNumber(search_Num: Integer): ObjectArray number = 1006;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:16:01:13.279;
 		searchLastName(search_String: String): ObjectArray number = 1004;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:15:27:57.676;
 		searchNumber(search_Num: Integer): ObjectArray number = 1005;
@@ -102,7 +106,7 @@ without inverses and requires manual maintenance.`
 		create(number: Integer) updating, number = 1001;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:14:29:37.201;
 		deposit(amount: Decimal) updating, number = 1003;
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:13:17:01.431;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:16:27:59.735;
 		getAccountName(): String number = 1007;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:41:53.382;
 		getBalance(): Decimal number = 1004;
@@ -130,7 +134,7 @@ without inverses and requires manual maintenance.`
 		canWithdraw(amount: Decimal): Boolean number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:39:12.871;
 		create(number: Integer) updating, number = 1001;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:12:51.577;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:15:39:17.087;
 	)
 	SavingsAccount completeDefinition
 	(
@@ -142,7 +146,7 @@ without inverses and requires manual maintenance.`
 		canWithdraw(amount: Decimal): Boolean number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:38:23.262;
 		create(number: Integer) updating, number = 1001;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:27:10:09:18.285;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:15:39:33.281;
 	)
 	Customer completeDefinition
 	(
@@ -368,9 +372,9 @@ databaseDefinitions
 	databaseFileDefinitions
 		"simplebankaccount" number = 64;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:10:18:08.973;
-		"simplebankcustomer" number = 53;
+		"simplebankcustomer" number = 55;
 		setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:39:06.027;
-		"simplebankmodel" number = 52;
+		"simplebankmodel" number = 54;
 		setModifiedTimeStamp "Philippa" "18.0.01" 2020:02:26:10:10:55.457;
 	defaultFileDefinition "simplebankmodel";
 	classMapDefinitions
@@ -451,6 +455,28 @@ begin
 	return self.lastCustomerNumber;
 end;
 }
+searchAccountNumber
+{
+searchAccountNumber(search_Num : Integer) : ObjectArray;
+
+vars
+	accArray : ObjectArray;
+	iter : Iterator;
+	acc : BankAccount;
+
+begin
+	create accArray transient;
+	iter := app.ourBank.allAccountsByNumber.createIterator();
+	while iter.next(acc) do
+		if acc.getPropertyValue("accountNumber").Integer = search_Num then
+			accArray.add(acc);
+		endif;
+	endwhile;
+	
+	return accArray;
+
+end;
+}
 searchLastName
 {
 searchLastName(search_String : String) : ObjectArray;
@@ -519,10 +545,14 @@ deposit(amount: Decimal) updating;
 vars
 	deposit : Deposit;
 begin
-	beginTransaction;
-		self.balance := self.balance + amount;
-		deposit := create Deposit(amount, self.getBalance(), self) persistent;
-	commitTransaction;
+	if amount >= 1000000000 then
+		app.msgBox("Can not deposit more than $1 Billion at a time", "Amount Error", MsgBox_OK_Only);
+	else
+		beginTransaction;
+			self.balance := self.balance + amount;
+			deposit := create Deposit(amount, self.getBalance(), self) persistent;
+		commitTransaction;
+	endif;
 end;
 }
 getAccountName
@@ -619,6 +649,8 @@ vars
 
 begin
 	self.overdraftLimit := BankAccount.Default_Overdraft_Limit;
+	
+	app.ourBank.allAccountsByNumber.add(self);
 
 end;
 }
@@ -641,6 +673,9 @@ create(number : Integer) ::super(number) updating;
 
 begin
 	self.interestRate := BankAccount.Default_Interest_Rate;
+	
+	app.ourBank.allAccountsByNumber.add(self);
+
 
 end;
 }

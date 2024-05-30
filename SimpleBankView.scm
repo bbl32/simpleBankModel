@@ -6,7 +6,7 @@ localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
 	setModifiedTimeStamp "cza14" "22.0.03" 2024:03:13:16:39:52.846;
 	1033 "English (United States)" _cloneOf 5129;
-	setModifiedTimeStamp "<unknown>" "" 2024:05:28:12:23:19;
+	setModifiedTimeStamp "<unknown>" "" 2024:05:29:15:19:27;
 typeHeaders
 	SimpleBankView subclassOf SimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2088;
 	GSimpleBankView subclassOf GSimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2089;
@@ -16,6 +16,7 @@ typeHeaders
 	EditAccount subclassOf AccountDetails transient, transientAllowed, subclassTransientAllowed, number = 2066;
 	AccountSearch subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 5, number = 2077;
 	AccountView subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 18, number = 2072;
+	AccountViewFromSearch subclassOf AccountView transient, transientAllowed, subclassTransientAllowed, number = 2062;
 	CustomerDetails subclassOf Form transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 15, number = 2092;
 	CustomerAdd subclassOf CustomerDetails transient, transientAllowed, subclassTransientAllowed, number = 2186;
 	CustomerEdit subclassOf CustomerDetails transient, transientAllowed, subclassTransientAllowed, highestOrdinal = 1, number = 2067;
@@ -74,7 +75,7 @@ typeDefinitions
 		runCustomerDetailsForm() number = 1015;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:25:15:20:36.095;
 		runMainMenu() number = 1016;
-		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:25:02:04:32.306;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:15:53:15.575;
 	)
 	WebSession completeDefinition
 	(
@@ -155,6 +156,29 @@ typeDefinitions
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:15:08:29.021;
 		viewBtn:                       Button  number = 2, ordinal = 2;
 		setModifiedTimeStamp "Alyana" "22.0.03" 2024:05:24:07:24:56.427;
+	jadeMethodDefinitions
+		backBtn_click(btn: Button input) updating, number = 1003;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:15:55:26.509;
+		listOfAccounts_displayRow(
+			listbox: ListBox input; 
+			acc: BankAccount; 
+			lstIndex: Integer; 
+			bcontinue: Boolean io): String updating, number = 1002;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:16:17:16.606;
+		load() updating, number = 1001;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:15:51:25.069;
+		search() number = 1005;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:16:05:17.108;
+		searchBtn_click(btn: Button input) updating, number = 1004;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:16:02:12.538;
+		viewBtn_click(btn: Button input) updating, number = 1006;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:16:15:28.100;
+	eventMethodMappings
+		backBtn_click = click of Button;
+		listOfAccounts_displayRow = displayRow of ListBox;
+		load = load of Form;
+		searchBtn_click = click of Button;
+		viewBtn_click = click of Button;
 	)
 	AccountView completeDefinition
 	(
@@ -217,6 +241,15 @@ typeDefinitions
 		gotFocus = gotFocus of Form;
 		load = load of Form;
 		withdrawDepositBtn_click = click of Button;
+	)
+	AccountViewFromSearch completeDefinition
+	(
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:16:12:02.518;
+	jadeMethodDefinitions
+		backBtn_click(btn: Button input) updating, number = 1001;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:16:13:27.232;
+	eventMethodMappings
+		backBtn_click = click of Button;
 	)
 	CustomerDetails completeDefinition
 	(
@@ -527,7 +560,7 @@ typeDefinitions
 		setModifiedTimeStamp "apa243" "22.0.01" 2024:05:17:14:38:06.600;
 	jadeMethodDefinitions
 		accounAdminBtn_click(btn: Button input) updating, number = 1001;
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:38:54.865;
+		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:29:16:05:56.835;
 		customerAdminBtn_click(btn: Button input) updating, number = 1002;
 		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:28:12:51:35.659;
 		load() updating, number = 1003;
@@ -765,6 +798,91 @@ begin
 end;
 }
 	)
+	AccountSearch (
+	jadeMethodSources
+backBtn_click
+{
+backBtn_click(btn: Button input) updating;
+
+vars
+	form : OpeningScreen;
+
+begin
+	create form transient;
+	form.show();
+	self.unloadForm();
+	
+end;
+}
+listOfAccounts_displayRow
+{
+listOfAccounts_displayRow(listbox: ListBox input; acc: BankAccount; lstIndex: Integer; bcontinue: Boolean io):String updating;
+
+vars
+
+begin
+	return acc.accountNumber.String & ", " & acc.accountName;
+end;
+}
+load
+{
+load() updating;
+
+vars
+
+begin
+	self.listOfAccounts.displayCollection(app.ourBank.allAccountsByNumber, true, ListBox.DisplayCollection_Forward,
+	null, "");
+end;
+}
+search
+{
+search();
+
+vars
+		search_num : Integer;
+		accArray : ObjectArray;
+	
+begin
+	search_num := textBox1.text.Integer;
+	accArray := app.ourBank.searchAccountNumber(search_num);
+	self.listOfAccounts.clear();
+	self.listOfAccounts.displayCollection(accArray, false,
+	ListBox.DisplayCollection_Forward, null, '');
+end;
+}
+searchBtn_click
+{
+searchBtn_click(btn: Button input) updating;
+
+vars
+
+begin
+	self.search();
+
+end;
+}
+viewBtn_click
+{
+viewBtn_click(btn: Button input) updating;
+
+vars
+	form : AccountViewFromSearch;
+	acc : BankAccount;
+	cust : Customer;
+
+begin
+	acc := listOfAccounts.listObject.BankAccount;
+	cust := acc.myCustomer;
+	create form transient;
+	form.myAccount := acc;
+	form.myCustomer := cust;
+	form.show();
+	self.unloadForm();
+
+end;
+}
+	)
 	AccountView (
 	jadeMethodSources
 accountViewListBox_displayRow
@@ -839,6 +957,23 @@ begin
 	wDForm := create WithdrawDeposit transient;
 	wDForm.setAccount(self.myAccount);
 	wDForm.show();
+end;
+}
+	)
+	AccountViewFromSearch (
+	jadeMethodSources
+backBtn_click
+{
+backBtn_click(btn: Button input) updating;
+
+vars
+	form : AccountSearch;
+
+begin
+	create form transient;
+	form.show();
+	self.unloadForm();
+
 end;
 }
 	)
@@ -1503,6 +1638,7 @@ begin
 	
 	create form transient;
 	form.show();
+	self.unloadForm();
 
 end;
 }
