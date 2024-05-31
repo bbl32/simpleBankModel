@@ -1,12 +1,12 @@
-﻿jadeVersionNumber "22.0.03";
+﻿jadeVersionNumber "22.0.01";
 schemaDefinition
-SimpleBankView subschemaOf SimpleBankModel completeDefinition;
+SimpleBankView subschemaOf SimpleBankModel completeDefinition, patchVersioningEnabled = false;
 	setModifiedTimeStamp "cza14" "16.0.01" 2017:02:24:18:50:00.343;
 localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
 	setModifiedTimeStamp "cza14" "22.0.03" 2024:03:13:16:39:52.846;
 	1033 "English (United States)" _cloneOf 5129;
-	setModifiedTimeStamp "<unknown>" "" 2024:05:31:15:38:58;
+	setModifiedTimeStamp "<unknown>" "" 2024:05:31:18:32:54;
 typeHeaders
 	SimpleBankView subclassOf SimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2088;
 	GSimpleBankView subclassOf GSimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2089;
@@ -258,9 +258,9 @@ typeDefinitions
 		checkForFraudBtn_click(btn: Button input) updating, number = 1007;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:30:19:45:13.955;
 		gotFocus(cntrl: Control input) updating, number = 1004;
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:31:14:39:44.143;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:31:18:38:04.055;
 		load() updating, number = 1001;
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:31:14:40:52.259;
+		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:31:18:36:32.074;
 		search() number = 1008;
 		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:19:12:06.430;
 		searchBtn_click(btn: Button input) updating, number = 1009;
@@ -1044,7 +1044,7 @@ begin
 	self.nameView.text := myCustomer.getFirstName();
 	self.lastnameView.text := myCustomer.getLastName();
 	self.balanceView.text := myAccount.getBalance().currencyFormat;
-	self.customerNumView.text := myCustomer.getPhone();
+	self.customerNumView.text := myCustomer.getNumber().String;
 	self.accountNumView.text := myAccount.getAccountNumber();
 	self.accountViewLabel.caption := "Account View: " & myAccount.accountName;
 end;
@@ -1061,7 +1061,7 @@ begin
 	self.nameView.text := myCustomer.getFirstName();
 	self.lastnameView.text := myCustomer.getLastName();
 	self.balanceView.text := myAccount.getBalance().currencyFormat;
-	self.customerNumView.text := myCustomer.getPhone();
+	self.customerNumView.text := myCustomer.getNumber().String;
 	self.accountNumView.text := myAccount.getAccountNumber();
 	self.accountViewLabel.caption := "Account View: " & myAccount.accountName;
 	
