@@ -45,7 +45,7 @@
 		<backColor>-2147483633</backColor>
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
-		<caption>AccountDetails</caption>
+		<caption>Account Details</caption>
 		<clientHeight>134</clientHeight>
 		<clientWidth>192</clientWidth>
 		<clipControls>true</clipControls>
@@ -60,7 +60,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>55</left>
+		<left>938</left>
 		<maxButton>true</maxButton>
 		<mdiChild>0</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -86,7 +86,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>10</top>
+		<top>161</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -481,7 +481,7 @@
 		<backColor>-2147483633</backColor>
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
-		<caption>AddAccount</caption>
+		<caption>Add Account</caption>
 		<clientHeight>125</clientHeight>
 		<clientWidth>204</clientWidth>
 		<clipControls>true</clipControls>
@@ -544,7 +544,7 @@
 		<backColor>-2147483633</backColor>
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
-		<caption>EditAccount</caption>
+		<caption>Edit Account</caption>
 		<clientHeight>125</clientHeight>
 		<clientWidth>204</clientWidth>
 		<clipControls>true</clipControls>
@@ -559,9 +559,9 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>24</left>
+		<left>699</left>
 		<maxButton>true</maxButton>
-		<mdiChild>0</mdiChild>
+		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
 		<mdiPinned>false</mdiPinned>
 		<minButton>true</minButton>
@@ -585,7 +585,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>102</top>
+		<top>88</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -607,7 +607,7 @@
 		<backColor>-2147483633</backColor>
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
-		<caption>AccountSearch</caption>
+		<caption>Account Search</caption>
 		<clientHeight>488</clientHeight>
 		<clientWidth>411</clientWidth>
 		<clipControls>true</clipControls>
@@ -1051,7 +1051,7 @@
 		<backColor>-2147483633</backColor>
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
-		<caption>AccountView</caption>
+		<caption>Account View</caption>
 		<clientHeight>490</clientHeight>
 		<clientWidth>688</clientWidth>
 		<clipControls>true</clipControls>
@@ -1066,7 +1066,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>212</left>
+		<left>603</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -1092,7 +1092,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>12</top>
+		<top>38</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -1103,6 +1103,67 @@
 		<width>704</width>
 		<windowState>0</windowState>
 		<controlList>
+			<Button name="btnEditAccount">
+				<autoSize>1</autoSize>
+				<backBrush/>
+				<backBrushStyle>0</backBrushStyle>
+				<backColor>-2147483633</backColor>
+				<borderColorSingle>0</borderColorSingle>
+				<borderStyle>0</borderStyle>
+				<bubbleHelp/>
+				<buttonPicture>0</buttonPicture>
+				<cancel>false</cancel>
+				<caption>Edit Account</caption>
+				<default>false</default>
+				<description/>
+				<disableReason/>
+				<dragCursor/>
+				<enabled>true</enabled>
+				<focusBackColor>0</focusBackColor>
+				<focusForeColor>0</focusForeColor>
+				<fontBold>false</fontBold>
+				<fontItalic>false</fontItalic>
+				<fontName/>
+				<fontSize>8.25</fontSize>
+				<fontStrikethru>false</fontStrikethru>
+				<fontUnderline>false</fontUnderline>
+				<foreColor>-2147483630</foreColor>
+				<form name="AccountView" />
+				<height>22</height>
+				<helpContextId>0</helpContextId>
+				<helpKeyword/>
+				<ignoreSkin>false</ignoreSkin>
+				<index>0</index>
+				<left>139</left>
+				<mouseCursor/>
+				<mousePointer>0</mousePointer>
+				<name>btnEditAccount</name>
+				<parent name="AccountView" />
+				<parentAspect>0</parentAspect>
+				<parentBottomOffset>100</parentBottomOffset>
+				<parentRightOffset>447</parentRightOffset>
+				<picture/>
+				<pictureDisabled/>
+				<pictureDown/>
+				<relativeHeight>false</relativeHeight>
+				<relativeLeft>false</relativeLeft>
+				<relativeTop>false</relativeTop>
+				<relativeWidth>false</relativeWidth>
+				<securityLevelEnabled>0</securityLevelEnabled>
+				<securityLevelVisible>0</securityLevelVisible>
+				<show3D>3</show3D>
+				<skinCategoryName/>
+				<style>0</style>
+				<tabIndex>34</tabIndex>
+				<tabStop>true</tabStop>
+				<tag/>
+				<top>368</top>
+				<userScript/>
+				<value>false</value>
+				<visible>true</visible>
+				<webFileName/>
+				<width>102</width>
+			</Button>
 			<TextBox name="searchBar">
 				<alignment>0</alignment>
 				<autoTab>false</autoTab>
@@ -1385,14 +1446,14 @@
 				<helpKeyword/>
 				<ignoreSkin>false</ignoreSkin>
 				<index>0</index>
-				<left>198</left>
+				<left>263</left>
 				<mouseCursor/>
 				<mousePointer>0</mousePointer>
 				<name>withdrawDepositBtn</name>
 				<parent name="AccountView" />
 				<parentAspect>0</parentAspect>
 				<parentBottomOffset>100</parentBottomOffset>
-				<parentRightOffset>388</parentRightOffset>
+				<parentRightOffset>323</parentRightOffset>
 				<picture/>
 				<pictureDisabled/>
 				<pictureDown/>
@@ -2305,7 +2366,7 @@
 		<backColor>-2147483633</backColor>
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
-		<caption>AccountViewFromSearch</caption>
+		<caption>Account View</caption>
 		<clientHeight>481</clientHeight>
 		<clientWidth>700</clientWidth>
 		<clipControls>true</clipControls>
@@ -3517,7 +3578,7 @@
 		<backColor>-2147483633</backColor>
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
-		<caption>CustomerSearch</caption>
+		<caption>Customer Search</caption>
 		<clientHeight>510</clientHeight>
 		<clientWidth>409</clientWidth>
 		<clipControls>true</clipControls>
@@ -4144,7 +4205,7 @@
 		<backColor>-2147483633</backColor>
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
-		<caption>CustomerView</caption>
+		<caption>Customer View</caption>
 		<clientHeight>495</clientHeight>
 		<clientWidth>690</clientWidth>
 		<clipControls>true</clipControls>
@@ -4159,7 +4220,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>212</left>
+		<left>351</left>
 		<maxButton>true</maxButton>
 		<mdiChild>2</mdiChild>
 		<mdiFrame>false</mdiFrame>
@@ -5392,7 +5453,7 @@
 		<backColor>-2147483633</backColor>
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
-		<caption>ImportXml</caption>
+		<caption>Import Xml</caption>
 		<clientHeight>345</clientHeight>
 		<clientWidth>492</clientWidth>
 		<clipControls>true</clipControls>
@@ -5718,7 +5779,7 @@
 		<icon/>
 		<ignoreSkin>false</ignoreSkin>
 		<ignoreSkinAllControls>false</ignoreSkinAllControls>
-		<left>53</left>
+		<left>32</left>
 		<maxButton>true</maxButton>
 		<mdiChild>0</mdiChild>
 		<mdiFrame>true</mdiFrame>
@@ -5744,7 +5805,7 @@
 		<showMdiPinMenu>false</showMdiPinMenu>
 		<skinCategoryName/>
 		<tag/>
-		<top>32</top>
+		<top>28</top>
 		<userScript/>
 		<visible>true</visible>
 		<webBrowserAutoRefreshInterval>0</webBrowserAutoRefreshInterval>
@@ -6897,7 +6958,7 @@
 		<backColor>-2147483633</backColor>
 		<borderStyle>2</borderStyle>
 		<bubbleHelp/>
-		<caption>WithdrawDeposit</caption>
+		<caption>Withdraw/Deposit</caption>
 		<clientHeight>280</clientHeight>
 		<clientWidth>405</clientWidth>
 		<clipControls>true</clipControls>

@@ -69,18 +69,18 @@ typeDefinitions
 		lastCustomerNumber:            Integer protected, number = 1, ordinal = 1;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:14:35:17.460;
 	referenceDefinitions
-		allAccountsByNumber:           BankAccountByNumberDict  implicitMemberInverse, readonly, subId = 1, number = 2, ordinal = 7;
+		allAccountsByNumber:           BankAccountByNumberDict  implicitMemberInverse, readonly, subId = 3, number = 5, ordinal = 7;
 		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:16:47:38.830;
-		allCustomersByLastName:        CustomerByLastNameDict  implicitMemberInverse, readonly, subId = 2, number = 4, ordinal = 5;
+		allCustomersByLastName:        CustomerByLastNameDict  implicitMemberInverse, readonly, subId = 1, number = 2, ordinal = 3;
 		documentationText
 `WARNING! The Bank (allCustomers) to Customer (myBank) relationship was defined
 without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:14:26:31.300;
-		allCustomersByNumber:          CustomerByNumeberDict  implicitMemberInverse, readonly, subId = 3, number = 5, ordinal = 6;
+		allCustomersByNumber:          CustomerByNumeberDict  implicitMemberInverse, readonly, subId = 2, number = 4, ordinal = 5;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:24:15:34:38.046;
 	jadeMethodDefinitions
 		create() updating, number = 1003;
-		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:14:52:20.983;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:31:15:42:12.452;
 		nextAccountNumber(): Integer updating, number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:55:24.978;
 		nextCustomerNumber(): Integer updating, number = 1001;
@@ -125,15 +125,17 @@ without inverses and requires manual maintenance.`
 			amount: Decimal; 
 			payee: String) updating, number = 1003;
 		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:18:07:54.084;
-		getAccountName(): String number = 1007;
+		getAccountName(): String number = 1008;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:41:53.382;
+		getAccountNumber(): String number = 1014;
+		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:31:14:38:59.421;
 		getBalance(): Decimal number = 1004;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:15:22:44.932;
 		getOverdraft(): Integer number = 1011;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:39:40.188;
-		getTransactions(): TransactionsByDate number = 1008;
+		getTransactions(): TransactionsByDate number = 1009;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:28:15:53:58.564;
-		nextTransactionNumber(): Integer updating, number = 1009;
+		nextTransactionNumber(): Integer updating, number = 1010;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:14:21:09.507;
 		searchTransactions(searchQuery: String): ObjectArray number = 1012;
 		setModifiedTimeStamp "tpa128" "22.0.01" 2024:05:30:19:08:13.410;
@@ -141,7 +143,9 @@ without inverses and requires manual maintenance.`
 			accName: String; 
 			newMyCustomer: Customer) updating, number = 1006;
 		setModifiedTimeStamp "bblac" "22.0.03" 2024:05:17:14:58:52.479;
-		setOverdraft(amount: Integer) updating, number = 1010;
+		setName(name: String) updating, number = 1007;
+		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:31:13:53:33.118;
+		setOverdraft(amount: Integer) updating, number = 1013;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:39:30.625;
 		withdraw(
 			amount: Decimal; 
@@ -150,7 +154,7 @@ without inverses and requires manual maintenance.`
 	)
 	CurrentAccount completeDefinition
 	(
-		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:33:18.731;
+		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:31:13:08:45.275;
 	jadeMethodDefinitions
 		canWithdraw(amount: Decimal): Boolean number = 1002;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:34:36.341;
@@ -219,8 +223,12 @@ without inverses and requires manual maintenance.`
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:25:09.336;
 		getCredit(): Integer number = 1005;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:22:51.997;
+		getFirstName(): String number = 1010;
+		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:31:13:44:47.036;
 		getFullName(): String number = 1002;
 		setModifiedTimeStamp "cza14" "22.0.03" 2024:03:20:20:57:26.171;
+		getLastName(): String number = 1011;
+		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:31:13:45:12.674;
 		getNumber(): Integer number = 1004;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:17:22:18.399;
 		getPhone(): String number = 1006;
@@ -550,7 +558,7 @@ create() updating;
 vars
 
 begin
-	self.lastAccountNumber :=  1000000000; // 1,000,000,000 to MaxInteger (2147483647, 2^21 -1).
+	self.lastAccountNumber :=  0; // 1,000,000,000 to MaxInteger (2147483647, 2^21 -1).
 	self.lastCustomerNumber := 0;
 
 end;
@@ -691,6 +699,16 @@ begin
 	return self.accountName;
 end;
 }
+getAccountNumber
+{
+getAccountNumber() : String;
+
+vars
+
+begin
+	return self.accountNumber.String;
+end;
+}
 getBalance
 {
 getBalance() : Decimal;
@@ -762,6 +780,16 @@ set(accName : String; newMyCustomer : Customer) updating;
 begin
 	accountName := accName;
 	myCustomer := newMyCustomer;
+end;
+}
+setName
+{
+setName(name : String) updating;
+
+vars
+
+begin
+	accountName := name;
 end;
 }
 setOverdraft
@@ -1136,6 +1164,16 @@ begin
 	return self.creditScore;
 end;
 }
+getFirstName
+{
+getFirstName() : String;
+
+vars
+
+begin
+	return self.firstName;
+end;
+}
 getFullName
 {
 getFullName() : String;
@@ -1148,6 +1186,16 @@ begin
 	fullName := self.lastName & ', ' & self.firstName;
 	return fullName;
 
+end;
+}
+getLastName
+{
+getLastName() : String;
+
+vars
+
+begin
+	return self.lastName;
 end;
 }
 getNumber
