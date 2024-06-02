@@ -1,12 +1,12 @@
-﻿jadeVersionNumber "22.0.01";
+﻿jadeVersionNumber "22.0.03";
 schemaDefinition
-SimpleBankView subschemaOf SimpleBankModel completeDefinition, patchVersioningEnabled = false;
+SimpleBankView subschemaOf SimpleBankModel completeDefinition;
 	setModifiedTimeStamp "cza14" "16.0.01" 2017:02:24:18:50:00.343;
 localeDefinitions
 	5129 "English (New Zealand)" schemaDefaultLocale;
 	setModifiedTimeStamp "cza14" "22.0.03" 2024:03:13:16:39:52.846;
 	1033 "English (United States)" _cloneOf 5129;
-	setModifiedTimeStamp "<unknown>" "" 2024:05:31:18:32:54;
+	setModifiedTimeStamp "<unknown>" "" 2024:06:02:15:03:04;
 typeHeaders
 	SimpleBankView subclassOf SimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2088;
 	GSimpleBankView subclassOf GSimpleBankModel transient, sharedTransientAllowed, transientAllowed, subclassSharedTransientAllowed, subclassTransientAllowed, number = 2089;
@@ -595,7 +595,7 @@ typeDefinitions
 	)
 	WithdrawDeposit completeDefinition
 	(
-		setModifiedTimeStamp "bbl32" "22.0.01" 2024:05:31:14:58:38.202;
+		setModifiedTimeStamp "Theo" "22.0.03" 2024:06:02:15:21:34.676;
 	referenceDefinitions
 		accountNameLabel:              Label  number = 10, ordinal = 10;
 		setModifiedTimeStamp "Theo" "22.0.03" 2024:05:29:12:11:24.703;
